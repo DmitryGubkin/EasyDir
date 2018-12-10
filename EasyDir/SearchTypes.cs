@@ -6,7 +6,20 @@ namespace EasyDir
     public enum SearchTypes
     {
         None,
-        CurrentFolder,
-        AllSubRoots
+        TopFolder,
+        AllSubFolders
+    }
+    [Flags]
+    public enum NameMatchModes
+    {
+        None,
+        MatchName,
+        AbsoluteMatch
+    }
+    [Flags]
+    public enum ComboBoxTypes
+    {
+        Seartch,
+        NameMatch
     }
 }

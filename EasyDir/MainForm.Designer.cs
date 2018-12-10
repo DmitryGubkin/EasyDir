@@ -29,24 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tb_Out = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SelOut = new System.Windows.Forms.Button();
-            this.tp_out = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_Process = new System.Windows.Forms.Button();
+            this.btn_SearchAssets = new System.Windows.Forms.Button();
             this.tp_in = new System.Windows.Forms.TableLayoutPanel();
             this.btn_SeTopRoot = new System.Windows.Forms.Button();
-            this.btn_SelIn = new System.Windows.Forms.Button();
             this.tb_TopRoot = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tb_In = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_SelIn = new System.Windows.Forms.Button();
+            this.btn_MakeFolders = new System.Windows.Forms.Button();
             this.tb_AssetName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cb_SearchMode = new System.Windows.Forms.ComboBox();
+            this.cb_NameMatchMode = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.btn_RemoveName = new System.Windows.Forms.Button();
+            this.btn_AddName = new System.Windows.Forms.Button();
             this.cbl_Names = new System.Windows.Forms.CheckedListBox();
             this.AN_ContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AN_QuickNameEditor = new System.Windows.Forms.ToolStripTextBox();
@@ -58,28 +63,24 @@
             this.AN_RemoveSel = new System.Windows.Forms.ToolStripMenuItem();
             this.AN_RemoveCheked = new System.Windows.Forms.ToolStripMenuItem();
             this.AN_ClearAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_RemoveName = new System.Windows.Forms.Button();
-            this.btn_AddName = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.DataEditor = new System.Windows.Forms.DataGridView();
-            this.Col_Cheked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Col_FullPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Ext = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolOpenSourceFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolOpenOut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPreviewPath = new System.Windows.Forms.ToolStripMenuItem();
-            this.tp_out.SuspendLayout();
+            this.Col_Cheked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Col_FullPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Ext = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AN_AddNode = new System.Windows.Forms.ToolStripMenuItem();
             this.tp_in.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.AN_ContexMenu.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.AN_ContexMenu.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataEditor)).BeginInit();
             this.MainContexMenu.SuspendLayout();
@@ -91,10 +92,10 @@
             this.tb_Out.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
             this.tb_Out.Font = new System.Drawing.Font("Tahoma", 10F);
             this.tb_Out.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.tb_Out.Location = new System.Drawing.Point(51, 6);
+            this.tb_Out.Location = new System.Drawing.Point(91, 54);
             this.tb_Out.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Out.Name = "tb_Out";
-            this.tb_Out.Size = new System.Drawing.Size(595, 24);
+            this.tb_Out.Size = new System.Drawing.Size(484, 24);
             this.tb_Out.TabIndex = 1;
             this.tb_Out.MouseEnter += new System.EventHandler(this.tb_Out_MouseEnter);
             // 
@@ -104,7 +105,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Turquoise;
-            this.label1.Location = new System.Drawing.Point(5, 8);
+            this.label1.Location = new System.Drawing.Point(5, 56);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 19);
@@ -114,119 +115,85 @@
             // 
             // btn_SelOut
             // 
-            this.btn_SelOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SelOut.AutoSize = true;
             this.btn_SelOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_SelOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SelOut.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_SelOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_SelOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_SelOut.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btn_SelOut.ForeColor = System.Drawing.Color.Turquoise;
-            this.btn_SelOut.Location = new System.Drawing.Point(656, 3);
-            this.btn_SelOut.Margin = new System.Windows.Forms.Padding(10, 0, 5, 0);
+            this.btn_SelOut.Location = new System.Drawing.Point(580, 54);
+            this.btn_SelOut.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btn_SelOut.Name = "btn_SelOut";
-            this.btn_SelOut.Size = new System.Drawing.Size(96, 29);
+            this.btn_SelOut.Size = new System.Drawing.Size(111, 24);
             this.btn_SelOut.TabIndex = 2;
-            this.btn_SelOut.Text = "Select";
+            this.btn_SelOut.Text = "Select ...";
             this.btn_SelOut.UseVisualStyleBackColor = false;
             this.btn_SelOut.Click += new System.EventHandler(this.btn_SelOut_Click);
             // 
-            // tp_out
+            // btn_SearchAssets
             // 
-            this.tp_out.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tp_out.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.tp_out.ColumnCount = 3;
-            this.tp_out.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tp_out.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tp_out.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tp_out.Controls.Add(this.label1, 0, 0);
-            this.tp_out.Controls.Add(this.tb_Out, 1, 0);
-            this.tp_out.Controls.Add(this.btn_SelOut, 2, 0);
-            this.tp_out.Controls.Add(this.btn_Process, 0, 1);
-            this.tp_out.Location = new System.Drawing.Point(9, 448);
-            this.tp_out.Margin = new System.Windows.Forms.Padding(0);
-            this.tp_out.Name = "tp_out";
-            this.tp_out.RowCount = 2;
-            this.tp_out.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tp_out.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tp_out.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tp_out.Size = new System.Drawing.Size(757, 73);
-            this.tp_out.TabIndex = 1;
-            // 
-            // btn_Process
-            // 
-            this.btn_Process.AutoSize = true;
-            this.btn_Process.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.tp_out.SetColumnSpan(this.btn_Process, 3);
-            this.btn_Process.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_Process.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Process.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_Process.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_Process.Location = new System.Drawing.Point(5, 41);
-            this.btn_Process.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.btn_Process.Name = "btn_Process";
-            this.btn_Process.Size = new System.Drawing.Size(747, 32);
-            this.btn_Process.TabIndex = 3;
-            this.btn_Process.Text = "Process";
-            this.btn_Process.UseVisualStyleBackColor = false;
-            this.btn_Process.Click += new System.EventHandler(this.btn_Process_Click);
+            this.btn_SearchAssets.AutoSize = true;
+            this.btn_SearchAssets.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.tableLayoutPanel4.SetColumnSpan(this.btn_SearchAssets, 2);
+            this.btn_SearchAssets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_SearchAssets.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_SearchAssets.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_SearchAssets.ForeColor = System.Drawing.Color.Turquoise;
+            this.btn_SearchAssets.Location = new System.Drawing.Point(0, 67);
+            this.btn_SearchAssets.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btn_SearchAssets.Name = "btn_SearchAssets";
+            this.btn_SearchAssets.Size = new System.Drawing.Size(264, 29);
+            this.btn_SearchAssets.TabIndex = 3;
+            this.btn_SearchAssets.Text = "Search in Source";
+            this.btn_SearchAssets.UseVisualStyleBackColor = false;
+            this.btn_SearchAssets.Click += new System.EventHandler(this.btn_SearchAssets_Click);
             // 
             // tp_in
             // 
             this.tp_in.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tp_in.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.tp_in.ColumnCount = 3;
+            this.tp_in.ColumnCount = 4;
             this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tp_in.Controls.Add(this.btn_SelOut, 2, 2);
+            this.tp_in.Controls.Add(this.tb_Out, 1, 2);
+            this.tp_in.Controls.Add(this.label1, 0, 2);
             this.tp_in.Controls.Add(this.btn_SeTopRoot, 2, 1);
-            this.tp_in.Controls.Add(this.btn_SelIn, 2, 0);
             this.tp_in.Controls.Add(this.tb_TopRoot, 1, 1);
             this.tp_in.Controls.Add(this.label3, 0, 1);
             this.tp_in.Controls.Add(this.tb_In, 1, 0);
             this.tp_in.Controls.Add(this.label2, 0, 0);
+            this.tp_in.Controls.Add(this.btn_SelIn, 2, 0);
+            this.tp_in.Controls.Add(this.btn_MakeFolders, 3, 0);
             this.tp_in.Location = new System.Drawing.Point(9, 9);
             this.tp_in.Margin = new System.Windows.Forms.Padding(0);
             this.tp_in.Name = "tp_in";
-            this.tp_in.RowCount = 2;
-            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tp_in.Size = new System.Drawing.Size(757, 66);
+            this.tp_in.RowCount = 3;
+            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tp_in.Size = new System.Drawing.Size(766, 80);
             this.tp_in.TabIndex = 0;
             // 
             // btn_SeTopRoot
             // 
-            this.btn_SeTopRoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SeTopRoot.AutoSize = true;
             this.btn_SeTopRoot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_SeTopRoot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SeTopRoot.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_SeTopRoot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_SeTopRoot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_SeTopRoot.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btn_SeTopRoot.ForeColor = System.Drawing.Color.Turquoise;
-            this.btn_SeTopRoot.Location = new System.Drawing.Point(656, 35);
-            this.btn_SeTopRoot.Margin = new System.Windows.Forms.Padding(10, 0, 5, 0);
+            this.btn_SeTopRoot.Location = new System.Drawing.Point(580, 28);
+            this.btn_SeTopRoot.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btn_SeTopRoot.Name = "btn_SeTopRoot";
-            this.btn_SeTopRoot.Size = new System.Drawing.Size(96, 29);
+            this.btn_SeTopRoot.Size = new System.Drawing.Size(111, 22);
             this.btn_SeTopRoot.TabIndex = 4;
-            this.btn_SeTopRoot.Text = "Select";
+            this.btn_SeTopRoot.Text = "Select ...";
             this.btn_SeTopRoot.UseVisualStyleBackColor = false;
             this.btn_SeTopRoot.Click += new System.EventHandler(this.btn_SeTopRoot_Click);
-            // 
-            // btn_SelIn
-            // 
-            this.btn_SelIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SelIn.AutoSize = true;
-            this.btn_SelIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_SelIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SelIn.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_SelIn.ForeColor = System.Drawing.Color.Turquoise;
-            this.btn_SelIn.Location = new System.Drawing.Point(656, 2);
-            this.btn_SelIn.Margin = new System.Windows.Forms.Padding(10, 0, 5, 0);
-            this.btn_SelIn.Name = "btn_SelIn";
-            this.btn_SelIn.Size = new System.Drawing.Size(96, 29);
-            this.btn_SelIn.TabIndex = 2;
-            this.btn_SelIn.Text = "Select";
-            this.btn_SelIn.UseVisualStyleBackColor = false;
-            this.btn_SelIn.Click += new System.EventHandler(this.btn_SelIn_Click);
             // 
             // tb_TopRoot
             // 
@@ -234,10 +201,10 @@
             this.tb_TopRoot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
             this.tb_TopRoot.Font = new System.Drawing.Font("Tahoma", 10F);
             this.tb_TopRoot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.tb_TopRoot.Location = new System.Drawing.Point(91, 37);
+            this.tb_TopRoot.Location = new System.Drawing.Point(91, 27);
             this.tb_TopRoot.Margin = new System.Windows.Forms.Padding(0);
             this.tb_TopRoot.Name = "tb_TopRoot";
-            this.tb_TopRoot.Size = new System.Drawing.Size(555, 24);
+            this.tb_TopRoot.Size = new System.Drawing.Size(484, 24);
             this.tb_TopRoot.TabIndex = 3;
             this.tb_TopRoot.MouseEnter += new System.EventHandler(this.tb_TopRoot_MouseEnter);
             // 
@@ -247,7 +214,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Turquoise;
-            this.label3.Location = new System.Drawing.Point(5, 40);
+            this.label3.Location = new System.Drawing.Point(5, 29);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 19);
@@ -261,10 +228,10 @@
             this.tb_In.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(51)))));
             this.tb_In.Font = new System.Drawing.Font("Tahoma", 10F);
             this.tb_In.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.tb_In.Location = new System.Drawing.Point(91, 4);
+            this.tb_In.Location = new System.Drawing.Point(91, 1);
             this.tb_In.Margin = new System.Windows.Forms.Padding(0);
             this.tb_In.Name = "tb_In";
-            this.tb_In.Size = new System.Drawing.Size(555, 24);
+            this.tb_In.Size = new System.Drawing.Size(484, 24);
             this.tb_In.TabIndex = 1;
             this.tb_In.MouseEnter += new System.EventHandler(this.tb_In_MouseEnter);
             // 
@@ -274,13 +241,48 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Turquoise;
-            this.label2.Location = new System.Drawing.Point(5, 7);
+            this.label2.Location = new System.Drawing.Point(5, 3);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Source :   ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_SelIn
+            // 
+            this.btn_SelIn.AutoSize = true;
+            this.btn_SelIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_SelIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_SelIn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_SelIn.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btn_SelIn.ForeColor = System.Drawing.Color.Turquoise;
+            this.btn_SelIn.Location = new System.Drawing.Point(580, 2);
+            this.btn_SelIn.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
+            this.btn_SelIn.Name = "btn_SelIn";
+            this.btn_SelIn.Size = new System.Drawing.Size(111, 22);
+            this.btn_SelIn.TabIndex = 2;
+            this.btn_SelIn.Text = "Select ...";
+            this.btn_SelIn.UseVisualStyleBackColor = false;
+            this.btn_SelIn.Click += new System.EventHandler(this.btn_SelIn_Click);
+            // 
+            // btn_MakeFolders
+            // 
+            this.btn_MakeFolders.AutoSize = true;
+            this.btn_MakeFolders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_MakeFolders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_MakeFolders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_MakeFolders.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.btn_MakeFolders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_MakeFolders.Location = new System.Drawing.Point(696, 2);
+            this.btn_MakeFolders.Margin = new System.Windows.Forms.Padding(0, 2, 5, 2);
+            this.btn_MakeFolders.Name = "btn_MakeFolders";
+            this.tp_in.SetRowSpan(this.btn_MakeFolders, 3);
+            this.btn_MakeFolders.Size = new System.Drawing.Size(65, 76);
+            this.btn_MakeFolders.TabIndex = 2;
+            this.btn_MakeFolders.Text = "Make Folders";
+            this.btn_MakeFolders.UseVisualStyleBackColor = false;
+            this.btn_MakeFolders.Click += new System.EventHandler(this.btn_MakeFolders_Click);
             // 
             // tb_AssetName
             // 
@@ -308,11 +310,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 78);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 92);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(757, 367);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 387);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -329,7 +331,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(751, 361);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(760, 381);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -339,17 +341,102 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.cbl_Names, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cb_SearchMode, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cb_NameMatchMode, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cbl_Names, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(270, 355);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(270, 375);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // cb_SearchMode
+            // 
+            this.cb_SearchMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_SearchMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cb_SearchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_SearchMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_SearchMode.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cb_SearchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.cb_SearchMode.FormattingEnabled = true;
+            this.cb_SearchMode.Location = new System.Drawing.Point(5, 0);
+            this.cb_SearchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.cb_SearchMode.Name = "cb_SearchMode";
+            this.cb_SearchMode.Size = new System.Drawing.Size(260, 24);
+            this.cb_SearchMode.TabIndex = 1;
+            // 
+            // cb_NameMatchMode
+            // 
+            this.cb_NameMatchMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_NameMatchMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cb_NameMatchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_NameMatchMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_NameMatchMode.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cb_NameMatchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.cb_NameMatchMode.FormattingEnabled = true;
+            this.cb_NameMatchMode.Location = new System.Drawing.Point(5, 29);
+            this.cb_NameMatchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.cb_NameMatchMode.Name = "cb_NameMatchMode";
+            this.cb_NameMatchMode.Size = new System.Drawing.Size(260, 24);
+            this.cb_NameMatchMode.TabIndex = 1;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.btn_RemoveName, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btn_SearchAssets, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.tb_AssetName, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btn_AddName, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 276);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.16667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.41667F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(264, 96);
+            this.tableLayoutPanel4.TabIndex = 12;
+            // 
+            // btn_RemoveName
+            // 
+            this.btn_RemoveName.AutoSize = true;
+            this.btn_RemoveName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_RemoveName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_RemoveName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_RemoveName.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_RemoveName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_RemoveName.Location = new System.Drawing.Point(137, 33);
+            this.btn_RemoveName.Margin = new System.Windows.Forms.Padding(5, 5, 0, 0);
+            this.btn_RemoveName.Name = "btn_RemoveName";
+            this.btn_RemoveName.Size = new System.Drawing.Size(127, 29);
+            this.btn_RemoveName.TabIndex = 13;
+            this.btn_RemoveName.Text = "Remove";
+            this.btn_RemoveName.UseVisualStyleBackColor = false;
+            this.btn_RemoveName.Click += new System.EventHandler(this.btn_RemoveName_Click);
+            // 
+            // btn_AddName
+            // 
+            this.btn_AddName.AutoSize = true;
+            this.btn_AddName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_AddName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AddName.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_AddName.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_AddName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_AddName.Location = new System.Drawing.Point(0, 33);
+            this.btn_AddName.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
+            this.btn_AddName.Name = "btn_AddName";
+            this.btn_AddName.Size = new System.Drawing.Size(127, 29);
+            this.btn_AddName.TabIndex = 14;
+            this.btn_AddName.Text = "Add";
+            this.btn_AddName.UseVisualStyleBackColor = false;
+            this.btn_AddName.Click += new System.EventHandler(this.btn_AddName_Click);
             // 
             // cbl_Names
             // 
@@ -363,10 +450,10 @@
             this.cbl_Names.HorizontalScrollbar = true;
             this.cbl_Names.Items.AddRange(new object[] {
             "Asset_Name"});
-            this.cbl_Names.Location = new System.Drawing.Point(5, 32);
+            this.cbl_Names.Location = new System.Drawing.Point(5, 61);
             this.cbl_Names.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.cbl_Names.Name = "cbl_Names";
-            this.cbl_Names.Size = new System.Drawing.Size(260, 249);
+            this.cbl_Names.Size = new System.Drawing.Size(260, 212);
             this.cbl_Names.TabIndex = 11;
             this.cbl_Names.SelectedIndexChanged += new System.EventHandler(this.cbl_Names_SelectedIndexChanged);
             this.cbl_Names.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cbl_Names_MouseDown);
@@ -378,6 +465,7 @@
             this.AN_ContexMenu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AN_ContexMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.AN_ContexMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AN_AddNode,
             this.AN_QuickNameEditor,
             this.AN_QNESeparator,
             this.AN_CheckAll,
@@ -389,7 +477,8 @@
             this.AN_ClearAll});
             this.AN_ContexMenu.Name = "ImgContexMenu";
             this.AN_ContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.AN_ContexMenu.Size = new System.Drawing.Size(211, 174);
+            this.AN_ContexMenu.ShowImageMargin = false;
+            this.AN_ContexMenu.Size = new System.Drawing.Size(186, 196);
             this.AN_ContexMenu.Opening += new System.ComponentModel.CancelEventHandler(this.AN_ContexMenu_Opening);
             // 
             // AN_QuickNameEditor
@@ -409,7 +498,7 @@
             // AN_QNESeparator
             // 
             this.AN_QNESeparator.Name = "AN_QNESeparator";
-            this.AN_QNESeparator.Size = new System.Drawing.Size(207, 6);
+            this.AN_QNESeparator.Size = new System.Drawing.Size(182, 6);
             // 
             // AN_CheckAll
             // 
@@ -418,7 +507,7 @@
             this.AN_CheckAll.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.AN_CheckAll.Name = "AN_CheckAll";
             this.AN_CheckAll.ShowShortcutKeys = false;
-            this.AN_CheckAll.Size = new System.Drawing.Size(210, 22);
+            this.AN_CheckAll.Size = new System.Drawing.Size(185, 22);
             this.AN_CheckAll.Text = "Check All";
             this.AN_CheckAll.Click += new System.EventHandler(this.AN_CheckAll_Click);
             // 
@@ -428,7 +517,7 @@
             this.AN_UnCheckAll.ForeColor = System.Drawing.Color.Turquoise;
             this.AN_UnCheckAll.Name = "AN_UnCheckAll";
             this.AN_UnCheckAll.ShowShortcutKeys = false;
-            this.AN_UnCheckAll.Size = new System.Drawing.Size(210, 22);
+            this.AN_UnCheckAll.Size = new System.Drawing.Size(185, 22);
             this.AN_UnCheckAll.Text = "UnCheck All";
             this.AN_UnCheckAll.Click += new System.EventHandler(this.AN_UnCheckAll_Click);
             // 
@@ -436,20 +525,20 @@
             // 
             this.AN_InvertAll.ForeColor = System.Drawing.Color.Turquoise;
             this.AN_InvertAll.Name = "AN_InvertAll";
-            this.AN_InvertAll.Size = new System.Drawing.Size(210, 22);
+            this.AN_InvertAll.Size = new System.Drawing.Size(185, 22);
             this.AN_InvertAll.Text = "Invert All";
             this.AN_InvertAll.Click += new System.EventHandler(this.AN_InvertAll_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(182, 6);
             // 
             // AN_RemoveSel
             // 
             this.AN_RemoveSel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.AN_RemoveSel.Name = "AN_RemoveSel";
-            this.AN_RemoveSel.Size = new System.Drawing.Size(210, 22);
+            this.AN_RemoveSel.Size = new System.Drawing.Size(185, 22);
             this.AN_RemoveSel.Text = "Remove Selected";
             this.AN_RemoveSel.Click += new System.EventHandler(this.AN_RemoveSel_Click);
             // 
@@ -457,7 +546,7 @@
             // 
             this.AN_RemoveCheked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.AN_RemoveCheked.Name = "AN_RemoveCheked";
-            this.AN_RemoveCheked.Size = new System.Drawing.Size(210, 22);
+            this.AN_RemoveCheked.Size = new System.Drawing.Size(185, 22);
             this.AN_RemoveCheked.Text = "Remove All Cheked";
             this.AN_RemoveCheked.Click += new System.EventHandler(this.AN_RemoveCheked_Click);
             // 
@@ -465,75 +554,9 @@
             // 
             this.AN_ClearAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.AN_ClearAll.Name = "AN_ClearAll";
-            this.AN_ClearAll.Size = new System.Drawing.Size(210, 22);
+            this.AN_ClearAll.Size = new System.Drawing.Size(185, 22);
             this.AN_ClearAll.Text = "Clear List";
             this.AN_ClearAll.Click += new System.EventHandler(this.AN_ClearAll_Click);
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.tb_AssetName, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btn_RemoveName, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btn_AddName, 1, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 284);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(264, 68);
-            this.tableLayoutPanel4.TabIndex = 12;
-            // 
-            // btn_RemoveName
-            // 
-            this.btn_RemoveName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_RemoveName.AutoSize = true;
-            this.btn_RemoveName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_RemoveName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_RemoveName.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_RemoveName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_RemoveName.Location = new System.Drawing.Point(0, 29);
-            this.btn_RemoveName.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
-            this.btn_RemoveName.Name = "btn_RemoveName";
-            this.btn_RemoveName.Size = new System.Drawing.Size(127, 39);
-            this.btn_RemoveName.TabIndex = 13;
-            this.btn_RemoveName.Text = "Remove";
-            this.btn_RemoveName.UseVisualStyleBackColor = false;
-            this.btn_RemoveName.Click += new System.EventHandler(this.btn_RemoveName_Click);
-            // 
-            // btn_AddName
-            // 
-            this.btn_AddName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_AddName.AutoSize = true;
-            this.btn_AddName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_AddName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_AddName.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_AddName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_AddName.Location = new System.Drawing.Point(137, 29);
-            this.btn_AddName.Margin = new System.Windows.Forms.Padding(5, 5, 0, 0);
-            this.btn_AddName.Name = "btn_AddName";
-            this.btn_AddName.Size = new System.Drawing.Size(127, 39);
-            this.btn_AddName.TabIndex = 14;
-            this.btn_AddName.Text = "Add";
-            this.btn_AddName.UseVisualStyleBackColor = false;
-            this.btn_AddName.Click += new System.EventHandler(this.btn_AddName_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(5, 0);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(260, 27);
-            this.comboBox1.TabIndex = 1;
             // 
             // tableLayoutPanel5
             // 
@@ -545,65 +568,44 @@
             this.tableLayoutPanel5.Location = new System.Drawing.Point(279, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.352113F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.56338F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.666667F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.46667F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.80282F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(469, 355);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(478, 375);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // DataEditor
             // 
-            this.DataEditor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(63)))));
+            this.DataEditor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(58)))));
             this.DataEditor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Col_Cheked,
             this.Col_FullPath,
             this.Col_Name,
             this.Col_Ext});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle4;
             this.DataEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataEditor.Location = new System.Drawing.Point(3, 22);
+            this.DataEditor.Location = new System.Drawing.Point(3, 13);
             this.DataEditor.Name = "DataEditor";
-            this.DataEditor.Size = new System.Drawing.Size(463, 280);
+            this.DataEditor.Size = new System.Drawing.Size(472, 307);
             this.DataEditor.TabIndex = 1;
-            // 
-            // Col_Cheked
-            // 
-            this.Col_Cheked.HeaderText = "Select";
-            this.Col_Cheked.Name = "Col_Cheked";
-            // 
-            // Col_FullPath
-            // 
-            this.Col_FullPath.HeaderText = "Full Path";
-            this.Col_FullPath.Name = "Col_FullPath";
-            this.Col_FullPath.ReadOnly = true;
-            // 
-            // Col_Name
-            // 
-            this.Col_Name.HeaderText = "Name";
-            this.Col_Name.Name = "Col_Name";
-            // 
-            // Col_Ext
-            // 
-            this.Col_Ext.HeaderText = ".*";
-            this.Col_Ext.Name = "Col_Ext";
-            this.Col_Ext.ReadOnly = true;
             // 
             // MainContexMenu
             // 
@@ -654,39 +656,70 @@
             this.toolPreviewPath.Text = "Preview Final Path";
             this.toolPreviewPath.Click += new System.EventHandler(this.toolPreviewPath_Click);
             // 
+            // Col_Cheked
+            // 
+            this.Col_Cheked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Col_Cheked.HeaderText = "";
+            this.Col_Cheked.MinimumWidth = 50;
+            this.Col_Cheked.Name = "Col_Cheked";
+            this.Col_Cheked.Width = 50;
+            // 
+            // Col_FullPath
+            // 
+            this.Col_FullPath.HeaderText = "Full Path";
+            this.Col_FullPath.Name = "Col_FullPath";
+            this.Col_FullPath.ReadOnly = true;
+            // 
+            // Col_Name
+            // 
+            this.Col_Name.HeaderText = "Name";
+            this.Col_Name.Name = "Col_Name";
+            // 
+            // Col_Ext
+            // 
+            this.Col_Ext.HeaderText = ".*";
+            this.Col_Ext.Name = "Col_Ext";
+            this.Col_Ext.ReadOnly = true;
+            // 
+            // AN_AddNode
+            // 
+            this.AN_AddNode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.AN_AddNode.Name = "AN_AddNode";
+            this.AN_AddNode.Size = new System.Drawing.Size(185, 22);
+            this.AN_AddNode.Text = "Add Name Pattern";
+            this.AN_AddNode.Click += new System.EventHandler(this.AN_AddNode_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(775, 530);
+            this.ClientSize = new System.Drawing.Size(784, 491);
             this.ContextMenuStrip = this.MainContexMenu;
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.tp_in);
-            this.Controls.Add(this.tp_out);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(791, 569);
+            this.MinimumSize = new System.Drawing.Size(800, 530);
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EasyDir";
-            this.tp_out.ResumeLayout(false);
-            this.tp_out.PerformLayout();
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tp_in.ResumeLayout(false);
             this.tp_in.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.AN_ContexMenu.ResumeLayout(false);
-            this.AN_ContexMenu.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.AN_ContexMenu.ResumeLayout(false);
+            this.AN_ContexMenu.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataEditor)).EndInit();
             this.MainContexMenu.ResumeLayout(false);
@@ -698,7 +731,6 @@
         private System.Windows.Forms.TextBox tb_Out;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_SelOut;
-        private System.Windows.Forms.TableLayoutPanel tp_out;
         private System.Windows.Forms.TableLayoutPanel tp_in;
         private System.Windows.Forms.Button btn_SelIn;
         private System.Windows.Forms.Label label2;
@@ -716,7 +748,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolOpenSourceFolder;
         private System.Windows.Forms.ToolStripMenuItem toolOpenOut;
         private System.Windows.Forms.ToolStripMenuItem toolPreviewPath;
-        private System.Windows.Forms.Button btn_Process;
+        private System.Windows.Forms.Button btn_SearchAssets;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip AN_ContexMenu;
         private System.Windows.Forms.ToolStripMenuItem AN_CheckAll;
@@ -730,13 +762,16 @@
         private System.Windows.Forms.ToolStripMenuItem AN_RemoveSel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_SearchMode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.DataGridView DataEditor;
+        private System.Windows.Forms.ComboBox cb_NameMatchMode;
+        private System.Windows.Forms.Button btn_MakeFolders;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Col_Cheked;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_FullPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Ext;
+        private System.Windows.Forms.ToolStripMenuItem AN_AddNode;
     }
 }
 

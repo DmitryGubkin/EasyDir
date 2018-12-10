@@ -7,7 +7,7 @@ using System.IO;
 
 namespace EasyDir
 {
-    class Asset
+   public class Asset
     {
         private string _fileName;
         private string _fileExt;

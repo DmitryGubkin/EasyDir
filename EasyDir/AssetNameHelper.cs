@@ -145,7 +145,7 @@ namespace EasyDir
         public List<string> GetNames()
         {
             List<string> AssetNames = new List<string>();
-            if (checkedList == null || checkedList.Items.Count < 1)
+            if (checkedList == null || checkedList.Items.Count == 0)
             {
                 return AssetNames;
             }
@@ -154,11 +154,11 @@ namespace EasyDir
                 for (int i =0; i<checkedList.Items.Count; i++)
                 {
                     if(checkedList.GetItemChecked(i) == true &&  
-                        String.IsNullOrEmpty(checkedList.GetItemText(checkedList.Items[i])) == false)
+                        String.IsNullOrEmpty(checkedList.Items[i].ToString()) == false)
                     {
-                        if(AssetNames.Contains(checkedList.GetItemText(CheckedList.Items[i])))
+                        if(AssetNames.Contains(checkedList.Items[i].ToString()) == false)
                         {
-                            AssetNames.Add(checkedList.GetItemText(CheckedList.Items[i]));
+                            AssetNames.Add(checkedList.Items[i].ToString());
                         }
                     }
                 }

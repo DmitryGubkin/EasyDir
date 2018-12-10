@@ -16,17 +16,23 @@ namespace EasyDir
     {
         DialogHelper _dialogHelper = new DialogHelper();
         PathHelper _pathHelper = PathHelper.GetInstance;
-        FileSearcher _fileSearcher = FileSearcher.GetInstance; 
+        FileSearcher _fileSearcher = FileSearcher.GetInstance;
+        ComboBoxHelper _comboBoxHelper = new ComboBoxHelper();
+        DataEditorHelper _dataEditorHelper;
+
         AssetNameHelper _assetNameHelper;
-        ToolTip PathToolTip = new ToolTip(); 
+        ToolTip PathToolTip = new ToolTip();
         private string DefTTPath = "NO PATH";
         private string DefAssetName = "Asset_Name";
 
-  
+
         public MainForm()
         {
             InitializeComponent();
-            
+
+            _dataEditorHelper = new DataEditorHelper( ref DataEditor);
+            _fileSearcher.SetDataGridView = DataEditor;
+
             PathToolTip.ToolTipIcon = ToolTipIcon.Info;
             PathToolTip.AutoPopDelay = Int16.MaxValue;
             PathToolTip.InitialDelay = 1500;
@@ -48,67 +54,49 @@ namespace EasyDir
 
             _assetNameHelper = AssetNameHelper.instance;
             _assetNameHelper.CheckedListBoxControl = cbl_Names;
-        
+
             tb_AssetName.DataBindings.Add("Text", _assetNameHelper, "NodeName", true, DataSourceUpdateMode.OnPropertyChanged);
 
             //Asset Manager Init
-            DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DataEditor.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            DataEditor.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
-            DataEditor.ColumnHeadersDefaultCellStyle.ForeColor = Color.Turquoise;
-            DataEditor.EnableHeadersVisualStyles = false;
-            DataEditor.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
-            DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 128);
-            DataEditor.Columns[0].Width = 60;
-            DataEditor.Columns[3].Width = 60;
+
+            _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
+            _comboBoxHelper.FillComboBox(cb_NameMatchMode, ComboBoxTypes.NameMatch);
+
+           // MessageBox.Show(cb_SearchMode.SelectedItem.ToString());
+
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
 
         }
 
         private void btn_SelOut_Click(object sender, EventArgs e)
         {
-           tb_Out.Text = _dialogHelper.GetFolder(tb_Out.Text, "Select Out Folder") ?? tb_Out.Text;
+            tb_Out.Text = _dialogHelper.GetFolder(tb_Out.Text, "Select Out Folder") ?? tb_Out.Text;
         }
 
         private void btn_SelIn_Click(object sender, EventArgs e)
         {
-            
+
             tb_In.Text = _dialogHelper.GetFolder(tb_In.Text, "Select Source Folder") ?? tb_In.Text;
-            
+
         }
 
         private void btn_SeTopRoot_Click(object sender, EventArgs e) // Progress Bar Testing
         {
-             tb_TopRoot.Text = _dialogHelper.GetFolder(tb_TopRoot.Text,"Select Top Root") ?? tb_TopRoot.Text;
+            tb_TopRoot.Text = _dialogHelper.GetFolder(tb_TopRoot.Text, "Select Top Root") ?? tb_TopRoot.Text;
 
             //TaskProgressForm _progressDlg = new TaskProgressForm();
             //_progressDlg.ShowDialog();
 
             //_fileSearcher.Search(tb_In.Text, SearchTypes.CurrentFolder);
 
-           
+
         }
 
-        private void btn_Process_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(tb_In.Text))
-            {
-                btn_SelIn_Click(sender, e);
-            }
 
-            if (String.IsNullOrEmpty(tb_TopRoot.Text) && System.IO.Directory.Exists(tb_In.Text))
-            {
-                btn_SeTopRoot_Click(sender, e);
-            }
-
-            if (String.IsNullOrEmpty(tb_Out.Text))
-            {
-                btn_SelOut_Click(sender, e);
-            }
-
-            _pathHelper.MakeFolders(tb_Out.Text, _pathHelper.GetFolders(tb_In.Text, tb_TopRoot.Text), true);
-            // _pathHelper.SetTop()
-            //_pathHelper.GetFolders(tb_In.Text, tb_TopRoot.Text);
-        }
 
         private void toolOpenSourceFolder_Click(object sender, EventArgs e)
         {
@@ -123,7 +111,7 @@ namespace EasyDir
 
         private void toolPreviewPath_Click(object sender, EventArgs e)
         {
-         
+
             _pathHelper.MakeFolders(tb_Out.Text, _pathHelper.GetFolders(tb_In.Text, tb_TopRoot.Text), false);
         }
 
@@ -137,10 +125,10 @@ namespace EasyDir
             else
             {
                 PathToolTip.SetToolTip(_control, _control.Text);
-            }  
+            }
         }
 
-        private void PathTT_Disable( object sender, EventArgs e)
+        private void PathTT_Disable(object sender, EventArgs e)
         {
             PathToolTip.Active = false;
         }
@@ -163,7 +151,7 @@ namespace EasyDir
 
         private void tb_AssetName_Validated(object sender, EventArgs e)
         {
-            if ( String.IsNullOrEmpty( ((TextBox)sender).Text))
+            if (String.IsNullOrEmpty(((TextBox)sender).Text))
             {
                 ((TextBox)sender).Text = DefAssetName;
             }
@@ -172,7 +160,7 @@ namespace EasyDir
         private void btn_AddName_Click(object sender, EventArgs e)
         {
             _assetNameHelper.AddNode(tb_AssetName.Text);
-            
+
         }
 
         private void btn_RemoveName_Click(object sender, EventArgs e)
@@ -190,14 +178,16 @@ namespace EasyDir
 
         private void AN_ContexMenu_Opening(object sender, CancelEventArgs e)
         {
-            if(cbl_Names.Items.Count>0 && cbl_Names.SelectedItems.Count>0)
+            if (cbl_Names.Items.Count > 0 && cbl_Names.SelectedItems.Count > 0)
             {
-               this.AN_QNESeparator.Visible = this.AN_QuickNameEditor.Visible = true;
-               this.AN_QuickNameEditor.Text = cbl_Names.SelectedItem.ToString();
+                this.AN_QuickNameEditor.Visible = true;
+                this.AN_AddNode.Visible = false;
+                this.AN_QuickNameEditor.Text = cbl_Names.SelectedItem.ToString();
             }
             else
             {
-               this.AN_QNESeparator.Visible = this.AN_QuickNameEditor.Visible = false;
+                this.AN_AddNode.Visible = true;
+                this.AN_QuickNameEditor.Visible = false;
             }
         }
 
@@ -218,7 +208,7 @@ namespace EasyDir
 
         private void AN_QuickNameEditor_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 e.Handled = e.SuppressKeyPress = true;
                 _assetNameHelper.RenameNode(AN_QuickNameEditor.Text);
@@ -270,6 +260,37 @@ namespace EasyDir
             }
         }
 
+        private void btn_SearchAssets_Click(object sender, EventArgs e)
+        {
+            //  _assetNameHelper.GetNames().Count.ToString();
+            _fileSearcher.Search(tb_In.Text, (SearchTypes)_comboBoxHelper.GetSearchMode(cb_SearchMode),
+                (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cb_NameMatchMode), _assetNameHelper.GetNames());
 
+        }
+
+        private void btn_MakeFolders_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tb_In.Text))
+            {
+                btn_SelIn_Click(sender, e);
+            }
+
+            //if (String.IsNullOrEmpty(tb_TopRoot.Text) && System.IO.Directory.Exists(tb_In.Text))
+            //{
+            //    btn_SeTopRoot_Click(sender, e);
+            //}
+
+            if (String.IsNullOrEmpty(tb_Out.Text))
+            {
+                btn_SelOut_Click(sender, e);
+            }
+
+            _pathHelper.MakeFolders(tb_Out.Text, _pathHelper.GetFolders(tb_In.Text, tb_TopRoot.Text), true);
+        }
+
+        private void AN_AddNode_Click(object sender, EventArgs e)
+        {
+            _assetNameHelper.AddNode(tb_AssetName.Text);
+        }
     }
-}
+    }
