@@ -30,7 +30,7 @@ namespace EasyDir
         {
             InitializeComponent();
 
-            _dataEditorHelper = new DataEditorHelper( ref DataEditor);
+            _dataEditorHelper = new DataEditorHelper(ref DataEditor);
             _fileSearcher.SetDataGridView = DataEditor;
 
             PathToolTip.ToolTipIcon = ToolTipIcon.Info;
@@ -57,12 +57,13 @@ namespace EasyDir
 
             tb_AssetName.DataBindings.Add("Text", _assetNameHelper, "NodeName", true, DataSourceUpdateMode.OnPropertyChanged);
 
+
             //Asset Manager Init
 
             _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
             _comboBoxHelper.FillComboBox(cb_NameMatchMode, ComboBoxTypes.NameMatch);
 
-           // MessageBox.Show(cb_SearchMode.SelectedItem.ToString());
+            // MessageBox.Show(cb_SearchMode.SelectedItem.ToString());
 
 
         }
@@ -212,6 +213,12 @@ namespace EasyDir
             {
                 e.Handled = e.SuppressKeyPress = true;
                 _assetNameHelper.RenameNode(AN_QuickNameEditor.Text);
+                //AN_ContexMenu.Close();
+            }
+            if (e.KeyCode == Keys.Space)
+            {
+                e.Handled = e.SuppressKeyPress = true;
+                _assetNameHelper.RenameNode(AN_QuickNameEditor.Text);
                 AN_ContexMenu.Close();
             }
         }
@@ -291,6 +298,21 @@ namespace EasyDir
         private void AN_AddNode_Click(object sender, EventArgs e)
         {
             _assetNameHelper.AddNode(tb_AssetName.Text);
+        }
+
+        private void cbl_Names_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.D))
+            {
+                e.Handled = e.SuppressKeyPress = true;
+                _assetNameHelper.AddNode(tb_AssetName.Text);
+
+            }
+            if (e.KeyData == (Keys.Control | Keys.X))
+            {
+                e.Handled = e.SuppressKeyPress = true;
+                _assetNameHelper.RemoveNode();
+            }
         }
     }
     }
