@@ -24,7 +24,7 @@ namespace EasyDir
         ToolTip PathToolTip = new ToolTip();
         private string DefTTPath = "NO PATH";
         private string DefAssetName = "Asset_Name";
-
+        private List<string> DragFilesBuffer = new List<string>();
 
         public MainForm()
         {
@@ -52,6 +52,18 @@ namespace EasyDir
             tb_Out.KeyDown += new KeyEventHandler(TBEnterPress);
             tb_TopRoot.KeyDown += new KeyEventHandler(TBEnterPress);
 
+            tb_In.DragEnter += new DragEventHandler(DataDragEnter);
+            tb_In.DragDrop += new DragEventHandler(TextBoxDragAndDrop);
+
+            tb_TopRoot.DragEnter += new DragEventHandler(DataDragEnter);
+            tb_TopRoot.DragDrop += new DragEventHandler(TextBoxDragAndDrop);
+
+            tb_Out.DragEnter += new DragEventHandler(DataDragEnter);
+            tb_Out.DragDrop += new DragEventHandler(TextBoxDragAndDrop);
+
+            cbl_Names.DragEnter += new DragEventHandler(DataDragEnter);
+            cbl_Names.DragDrop += new DragEventHandler(CBLDragAndDrop);
+
             _assetNameHelper = AssetNameHelper.instance;
             _assetNameHelper.CheckedListBoxControl = cbl_Names;
 
@@ -59,12 +71,10 @@ namespace EasyDir
 
 
             //Asset Manager Init
-
             _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
             _comboBoxHelper.FillComboBox(cb_NameMatchMode, ComboBoxTypes.NameMatch);
 
             // MessageBox.Show(cb_SearchMode.SelectedItem.ToString());
-
 
         }
 
@@ -184,6 +194,7 @@ namespace EasyDir
                 this.AN_QuickNameEditor.Visible = true;
                 this.AN_AddNode.Visible = false;
                 this.AN_QuickNameEditor.Text = cbl_Names.SelectedItem.ToString();
+               
             }
             else
             {
@@ -313,6 +324,56 @@ namespace EasyDir
                 e.Handled = e.SuppressKeyPress = true;
                 _assetNameHelper.RemoveNode();
             }
+            if(e.KeyCode == Keys.Space)
+            {
+                e.Handled = e.SuppressKeyPress = true;             
+                if(AN_ContexMenu.Visible == false)
+                {
+                    AN_ContexMenu.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void DataDragEnter (object sender, DragEventArgs e)
+        {
+            DragFilesBuffer.Clear();
+            e.Effect = DragDropEffects.None;
+            DragFilesBuffer = _pathHelper.GetDragedFiles(sender,e);
+            if(DragFilesBuffer.Count>0)
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void TextBoxDragAndDrop (object sender, DragEventArgs e)
+        {
+            if (DragFilesBuffer.Count > 0)
+                ((TextBox)sender).Text = DragFilesBuffer[0];
+
+            DragFilesBuffer.Clear();
+        }
+
+        private void CBLDragAndDrop (object sender, DragEventArgs e)
+        {
+            if (DragFilesBuffer.Count > 0)
+                _assetNameHelper.AddNodes(DragFilesBuffer);
+
+            DragFilesBuffer.Clear();
+        }
+
+        private void AN_ContexMenu_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space )
+            {
+                _assetNameHelper.RenameNode(AN_QuickNameEditor.Text);
+                ((ContextMenuStrip)sender).Close();
+            }
+            
+        }
+
+        private void AN_ContexMenu_Opened(object sender, EventArgs e)
+        {
+            AN_QuickNameEditor.Focus();
         }
     }
     }

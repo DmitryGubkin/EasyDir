@@ -50,9 +50,34 @@ namespace EasyDir
 
         public void AddNode(string _name)
         {
-            checkedList.Items.Add(_name, true);
+            checkedList.Items.Add(_name,true);
         }
-       
+
+        public void AddNodes(List<string> _names)
+        {
+            if( _names!= null && _names.Count>0)
+            {
+                bool flag = true;
+
+                if (_names.Count>9)
+                {
+                    var AddDlg = MessageBox.Show((_names.Count.ToString()) + " Names Patterns will be added.\nAdd them ?", "Add Names Patterns",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (AddDlg == DialogResult.No)
+                        flag = false;
+                  
+                }
+
+                if(flag)
+                {
+                    foreach (var _name in _names)
+                    {
+                        AddNode(_name);
+                    }
+                }
+            }
+        }
+
         public void RemoveNode()
         {
             if(checkedList.Items.Count>0 && checkedList.SelectedItems.Count>0)

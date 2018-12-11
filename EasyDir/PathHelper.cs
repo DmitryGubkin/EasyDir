@@ -182,6 +182,75 @@ namespace EasyDir
                 
             }
         }
-        
+
+        public List<string>  GetDragedFiles(object sender, DragEventArgs e)
+        {
+            string[] paths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            List<string> files = new List<string>();
+
+            if (paths == null && paths.Length<1)
+                return files;
+
+            foreach(var path in paths)
+            {
+                files.AddRange(PathToFiles(path,sender));
+            }
+
+            return (files.Distinct().ToList());
+        }
+
+
+        private List<string> PathToFiles(string _path, object sender)
+        {
+            List<string> res = new List<string>();
+            if (File.Exists(_path))
+            {
+                if (sender.GetType() == typeof(TextBox))
+                {
+                    res.Add(Path.GetDirectoryName(_path));
+                }
+                else
+                {
+                    if (sender.GetType() == typeof(CheckedListBox))
+                    {
+                        res.Add(Path.GetFileNameWithoutExtension(_path));
+                    }
+                    else
+                    {
+                        res.Add(_path);
+                    }
+
+                }
+            }
+            else
+            {
+                if (Directory.Exists(_path))
+                {
+                    if (sender.GetType() == typeof(TextBox))
+                    {
+                        res.Add(_path);
+                    }
+                    else
+                    {
+                        var files = Directory.GetFiles(_path, "*", SearchOption.TopDirectoryOnly).ToList();
+
+                        if (sender.GetType() == typeof(CheckedListBox))
+                        {
+                            res.AddRange((files.Select(x => Path.GetFileNameWithoutExtension(x)).ToList()));
+                        }
+                        else
+                        {
+                            res.AddRange(files);
+                        }
+                           
+                    }
+
+                }
+            }
+
+           
+            return res;
+                 
+        }
     }
 }
