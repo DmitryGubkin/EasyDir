@@ -14,23 +14,39 @@ namespace EasyDir
 {
     public partial class MainForm : Form
     {
+        private static MainForm MainFormInstance ;
+
+        private CheckBox topCheckBox = new CheckBox();
+
         DialogHelper _dialogHelper = new DialogHelper();
         PathHelper _pathHelper = PathHelper.GetInstance;
         FileSearcher _fileSearcher = FileSearcher.GetInstance;
         ComboBoxHelper _comboBoxHelper = new ComboBoxHelper();
-        DataEditorHelper _dataEditorHelper;
+
 
         AssetNameHelper _assetNameHelper;
         ToolTip PathToolTip = new ToolTip();
         private string DefTTPath = "NO PATH";
         private string DefAssetName = "Asset_Name";
+        private bool FocusQNameEditor = false;
         private List<string> DragFilesBuffer = new List<string>();
 
-        public MainForm()
+        public CheckBox GetTopCheckBox { get => topCheckBox; }
+
+        public static MainForm GetFormInstance
+        {
+            get {
+                if (MainFormInstance == null || MainFormInstance.IsDisposed)
+                {
+                    MainFormInstance = new MainForm();
+                }
+                return MainFormInstance;
+            }
+        }
+
+        private MainForm()
         {
             InitializeComponent();
-
-            _dataEditorHelper = new DataEditorHelper(ref DataEditor);
             _fileSearcher.SetDataGridView = DataEditor;
 
             PathToolTip.ToolTipIcon = ToolTipIcon.Info;
@@ -74,9 +90,50 @@ namespace EasyDir
             _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
             _comboBoxHelper.FillComboBox(cb_NameMatchMode, ComboBoxTypes.NameMatch);
 
-            // MessageBox.Show(cb_SearchMode.SelectedItem.ToString());
+            //data editor init
+            DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DataEditor.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            DataEditor.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
+            DataEditor.ColumnHeadersDefaultCellStyle.ForeColor = Color.Turquoise;
+            DataEditor.EnableHeadersVisualStyles = false;
+            DataEditor.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
+            DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 128);
+            DataEditor.Columns[0].Width = 30;
+            DataEditor.Columns[3].Width = 50;
+            DataEditor.RowHeadersVisible = false;
+            DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
+            ColumnCheckbox();
 
         }
+
+      
+
+
+        private CheckBox ColumnCheckbox()
+        {
+            topCheckBox.Size = new Size(15, 15);
+            topCheckBox.BackColor = Color.Transparent;
+
+            // Reset properties
+            topCheckBox.Padding = new Padding(0);
+            topCheckBox.Margin = new Padding(0);
+            topCheckBox.Text = "";
+
+
+            // Add checkbox to datagrid cell
+            DataEditor.Controls.Add(topCheckBox);
+
+            DataGridViewHeaderCell header = DataEditor.Columns[0].HeaderCell;
+            topCheckBox.Location = new Point(
+                (header.ContentBounds.Left +
+                 (header.ContentBounds.Right - header.ContentBounds.Left + topCheckBox.Size.Width)
+                 / 2) + 13,
+                (header.ContentBounds.Top +
+                 (header.ContentBounds.Bottom - header.ContentBounds.Top + topCheckBox.Size.Height)
+                 / 2) - 2);
+            return topCheckBox;
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -99,15 +156,7 @@ namespace EasyDir
         {
             tb_TopRoot.Text = _dialogHelper.GetFolder(tb_TopRoot.Text, "Select Top Root") ?? tb_TopRoot.Text;
 
-            //TaskProgressForm _progressDlg = new TaskProgressForm();
-            //_progressDlg.ShowDialog();
-
-            //_fileSearcher.Search(tb_In.Text, SearchTypes.CurrentFolder);
-
-
         }
-
-
 
         private void toolOpenSourceFolder_Click(object sender, EventArgs e)
         {
@@ -326,8 +375,9 @@ namespace EasyDir
             }
             if(e.KeyCode == Keys.Space)
             {
-                e.Handled = e.SuppressKeyPress = true;             
-                if(AN_ContexMenu.Visible == false)
+                e.Handled = e.SuppressKeyPress = true;
+                FocusQNameEditor = true;
+                if (AN_ContexMenu.Visible == false)
                 {
                     AN_ContexMenu.Show(Cursor.Position);
                 }
@@ -373,7 +423,13 @@ namespace EasyDir
 
         private void AN_ContexMenu_Opened(object sender, EventArgs e)
         {
+            if(FocusQNameEditor)
             AN_QuickNameEditor.Focus();
+        }
+
+        private void AN_ContexMenu_Closing(object sender, ToolStripDropDownClosingEventArgs e)
+        {
+            FocusQNameEditor = false;
         }
     }
     }

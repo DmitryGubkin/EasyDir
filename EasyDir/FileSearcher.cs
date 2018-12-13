@@ -14,10 +14,13 @@ namespace EasyDir
     {
         private static FileSearcher _fileSearcher = new FileSearcher();
         public static FileSearcher GetInstance { get => _fileSearcher;}
+
         private DataGridView dataGridView;
-        public DataGridView SetDataGridView { set => dataGridView = value; }
+        public DataGridView SetDataGridView { get => dataGridView; set => dataGridView = value; }
+
         public HashSet<Asset> Assets = new HashSet<Asset>(new AssetPathComparer());
         private FileSearcher() { }
+
         private bool modified = false;
 
         public void Search(string _path, SearchTypes _searchType, NameMatchModes _nameMatchMode, List<string> NamePatters)
