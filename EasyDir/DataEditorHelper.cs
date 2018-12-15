@@ -58,11 +58,11 @@ namespace EasyDir
         public void DeadClean()
         {
             int DeadCount = 0;
-            foreach (var item in _fileSearcher.Assets)
+            for (int i=0; i<_fileSearcher.Assets.Count; i++)
             {
-                if(!(System.IO.File.Exists( item.FullPath)))
+                if(!(System.IO.File.Exists( _fileSearcher.Assets[i].FullPath)))
                 {
-                    _fileSearcher.Assets.Remove(item);
+                    _fileSearcher.Assets.Remove(_fileSearcher.Assets[i]);
                     DeadCount++;
                 }
             }
