@@ -48,6 +48,7 @@ namespace EasyDir
             _dataEditorHelper = DataEditorHelper.Getinstance();
             _dataEditorHelper.SetDataViewer();
 
+            //Data Source Binding
             var source = new BindingSource(_fileSearcher.Assets, null);
             DataEditor.DataSource = source;
 
@@ -86,7 +87,8 @@ namespace EasyDir
             _assetNameHelper.CheckedListBoxControl = cbl_Names;
 
             tb_AssetName.DataBindings.Add("Text", _assetNameHelper, "NodeName", true, DataSourceUpdateMode.OnPropertyChanged);
-
+            lb_CheckInfo.DataBindings.Add("Text", _fileSearcher, "AssetsInfo", true, DataSourceUpdateMode.OnPropertyChanged);
+               
 
             //Asset Manager Init
             _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
@@ -106,6 +108,7 @@ namespace EasyDir
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
             DataEditor.AllowUserToResizeRows = false;
 
+
         }
 
 
@@ -120,6 +123,11 @@ namespace EasyDir
 
             DataEditor.Columns[3].Width = 50;
             DataEditor.Columns[3].HeaderText = ".*";
+           DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
+            DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_CellChanged);
+            DataEditor.CellValueChanged += new DataGridViewCellEventHandler(DE_CellValueChanged);
+          
+            
         }
 
         private void btn_SelOut_Click(object sender, EventArgs e)
@@ -207,10 +215,8 @@ namespace EasyDir
 
         private void btn_RemoveName_Click(object sender, EventArgs e)
         {
-            //_assetNameHelper.RemoveNode();
-            // _dataEditorHelper.SetCheck(topCheckBox.Checked);
-            var a = _fileSearcher.Assets.Where(x => x.Checked == true).Select(x => x);
-            MessageBox.Show(a.Count().ToString());
+            _assetNameHelper.RemoveNode();
+
         }
 
         private void toolStripTextBox1_Validated(object sender, EventArgs e)
@@ -417,9 +423,58 @@ namespace EasyDir
             FocusQNameEditor = false;
         }
 
+        private void DE_CellChanged (object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 0 && e.RowIndex != -1)
+            {
+                _dataEditorHelper.MultyCheck(e.RowIndex);
+                DataEditor.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void DE_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)
+            {
+                _fileSearcher.UpdateCheckInfo();
+            }
+            
+        }
+
+
         private void CheckBoxCheck (object sender, EventArgs e)
         {
             _dataEditorHelper.SetCheck(((CheckBox)sender).Checked);
+
+        }
+
+        private void btn_DE_CheckAll_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetCheck(true);
+        }
+
+        private void btn_DE_UNCheckAll_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetCheck(false);
+        }
+
+        private void btn_DE_InvCheck_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.InvCheck();
+        }
+
+        private void btn_DE_DeadClear_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.DeadClean();
+        }
+
+        private void btn_DE_CleaAll_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.ClearData();
+        }
+
+        private void DataEditor_MouseDown(object sender, MouseEventArgs e)
+        {
 
         }
     }

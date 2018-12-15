@@ -9,23 +9,46 @@ using System.IO;
 
 namespace EasyDir
 {
-    class FileSearcher
+    class FileSearcher : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         private static FileSearcher _fileSearcher = new FileSearcher();
+        private string _assetsInfo = "0/0";
         public static FileSearcher GetInstance { get => _fileSearcher;}
+
+       
 
         private DataGridView dataGridView;
         public DataGridView DataViewer { get => dataGridView; set => dataGridView = value; }
+
+        public string AssetsInfo
+        {
+            get => _assetsInfo;
+            set
+            {
+                if( _assetsInfo != value)
+                {
+                    _assetsInfo = value;
+                    Notify("AssetsInfo");
+                }
+            }
+        }
 
         public BindingList<Asset> Assets = new BindingList<Asset>();
         
 
         private FileSearcher()
         {
-          
-           
+            Assets.ListChanged += new ListChangedEventHandler(UpdateList);
         }
 
+        protected void Notify(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         public void Search(string _path, SearchTypes _searchType, NameMatchModes _nameMatchMode, List<string> NamePatters)
         {
@@ -109,10 +132,6 @@ namespace EasyDir
                             }     
                         }
 
-                        MessageBox.Show(Assets.Count.ToString());
-                        
-
-                        
                     }
 
                     GC.Collect();
@@ -152,5 +171,18 @@ namespace EasyDir
 
             return null;
         }
+
+        public void UpdateCheckInfo()
+        {
+            var selItems = Assets.Where(x => x.Checked == true).Select(x => x).Count().ToString();
+            AssetsInfo = selItems + "/" + Assets.Count.ToString();
+        }
+
+        private void UpdateList(object sender, ListChangedEventArgs e)
+        {
+            UpdateCheckInfo();
+        }
+
+
     }
 }
