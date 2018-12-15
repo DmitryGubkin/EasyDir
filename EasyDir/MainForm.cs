@@ -16,13 +16,11 @@ namespace EasyDir
     {
         private static MainForm MainFormInstance ;
 
-        private CheckBox topCheckBox = new CheckBox();
-
         DialogHelper _dialogHelper = new DialogHelper();
         PathHelper _pathHelper = PathHelper.GetInstance;
         FileSearcher _fileSearcher = FileSearcher.GetInstance;
         ComboBoxHelper _comboBoxHelper = new ComboBoxHelper();
-
+        DataEditorHelper _dataEditorHelper;
 
         AssetNameHelper _assetNameHelper;
         ToolTip PathToolTip = new ToolTip();
@@ -31,7 +29,6 @@ namespace EasyDir
         private bool FocusQNameEditor = false;
         private List<string> DragFilesBuffer = new List<string>();
 
-        public CheckBox GetTopCheckBox { get => topCheckBox; }
 
         public static MainForm GetFormInstance
         {
@@ -47,7 +44,12 @@ namespace EasyDir
         private MainForm()
         {
             InitializeComponent();
-            _fileSearcher.SetDataGridView = DataEditor;
+            _fileSearcher.DataViewer = DataEditor;
+            _dataEditorHelper = DataEditorHelper.Getinstance();
+            _dataEditorHelper.SetDataViewer();
+
+            var source = new BindingSource(_fileSearcher.Assets, null);
+            DataEditor.DataSource = source;
 
             PathToolTip.ToolTipIcon = ToolTipIcon.Info;
             PathToolTip.AutoPopDelay = Int16.MaxValue;
@@ -92,52 +94,32 @@ namespace EasyDir
 
             //data editor init
             DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DataEditor.AllowUserToAddRows = false;
             DataEditor.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             DataEditor.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
             DataEditor.ColumnHeadersDefaultCellStyle.ForeColor = Color.Turquoise;
             DataEditor.EnableHeadersVisualStyles = false;
             DataEditor.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
             DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 128);
-            DataEditor.Columns[0].Width = 30;
-            DataEditor.Columns[3].Width = 50;
+            
             DataEditor.RowHeadersVisible = false;
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
-            ColumnCheckbox();
+            DataEditor.AllowUserToResizeRows = false;
 
-        }
-
-      
-
-
-        private CheckBox ColumnCheckbox()
-        {
-            topCheckBox.Size = new Size(15, 15);
-            topCheckBox.BackColor = Color.Transparent;
-
-            // Reset properties
-            topCheckBox.Padding = new Padding(0);
-            topCheckBox.Margin = new Padding(0);
-            topCheckBox.Text = "";
-
-
-            // Add checkbox to datagrid cell
-            DataEditor.Controls.Add(topCheckBox);
-
-            DataGridViewHeaderCell header = DataEditor.Columns[0].HeaderCell;
-            topCheckBox.Location = new Point(
-                (header.ContentBounds.Left +
-                 (header.ContentBounds.Right - header.ContentBounds.Left + topCheckBox.Size.Width)
-                 / 2) + 13,
-                (header.ContentBounds.Top +
-                 (header.ContentBounds.Bottom - header.ContentBounds.Top + topCheckBox.Size.Height)
-                 / 2) - 2);
-            return topCheckBox;
         }
 
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            DataEditor.Columns[0].Width = 30;
+            DataEditor.Columns[0].HeaderText = "";
 
+            DataEditor.Columns[1].ReadOnly = true;
+            DataEditor.Columns[2].ReadOnly = true;
+            DataEditor.Columns[3].ReadOnly = true;
+
+            DataEditor.Columns[3].Width = 50;
+            DataEditor.Columns[3].HeaderText = ".*";
         }
 
         private void btn_SelOut_Click(object sender, EventArgs e)
@@ -225,7 +207,10 @@ namespace EasyDir
 
         private void btn_RemoveName_Click(object sender, EventArgs e)
         {
-            _assetNameHelper.RemoveNode();
+            //_assetNameHelper.RemoveNode();
+            // _dataEditorHelper.SetCheck(topCheckBox.Checked);
+            var a = _fileSearcher.Assets.Where(x => x.Checked == true).Select(x => x);
+            MessageBox.Show(a.Count().ToString());
         }
 
         private void toolStripTextBox1_Validated(object sender, EventArgs e)
@@ -430,6 +415,12 @@ namespace EasyDir
         private void AN_ContexMenu_Closing(object sender, ToolStripDropDownClosingEventArgs e)
         {
             FocusQNameEditor = false;
+        }
+
+        private void CheckBoxCheck (object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetCheck(((CheckBox)sender).Checked);
+
         }
     }
     }

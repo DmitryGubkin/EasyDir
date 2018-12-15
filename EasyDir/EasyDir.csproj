@@ -63,6 +63,7 @@
     <Compile Include="ComboBoxHelper.cs" />
     <Compile Include="CustomContextMenuRender.cs" />
     <Compile Include="CCMRC.cs" />
+    <Compile Include="DataEditorHelper.cs" />
     <Compile Include="DialogHelper.cs" />
     <Compile Include="FileSearcher.cs" />
     <Compile Include="MainForm.cs">

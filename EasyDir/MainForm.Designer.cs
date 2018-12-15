@@ -65,10 +65,6 @@
             this.AN_ClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.DataEditor = new System.Windows.Forms.DataGridView();
-            this.Col_Cheked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Col_FullPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Ext = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolOpenSourceFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolOpenOut = new System.Windows.Forms.ToolStripMenuItem();
@@ -462,7 +458,7 @@
             this.AN_ContexMenu.Name = "ImgContexMenu";
             this.AN_ContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.AN_ContexMenu.ShowImageMargin = false;
-            this.AN_ContexMenu.Size = new System.Drawing.Size(200, 218);
+            this.AN_ContexMenu.Size = new System.Drawing.Size(200, 196);
             this.AN_ContexMenu.Closing += new System.Windows.Forms.ToolStripDropDownClosingEventHandler(this.AN_ContexMenu_Closing);
             this.AN_ContexMenu.Opening += new System.ComponentModel.CancelEventHandler(this.AN_ContexMenu_Opening);
             this.AN_ContexMenu.Opened += new System.EventHandler(this.AN_ContexMenu_Opened);
@@ -576,6 +572,9 @@
             // 
             // DataEditor
             // 
+            this.DataEditor.AllowDrop = true;
+            this.DataEditor.AllowUserToAddRows = false;
+            this.DataEditor.AllowUserToDeleteRows = false;
             this.DataEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -590,11 +589,6 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataEditor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Col_Cheked,
-            this.Col_FullPath,
-            this.Col_Name,
-            this.Col_Ext});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -607,31 +601,6 @@
             this.DataEditor.Name = "DataEditor";
             this.DataEditor.Size = new System.Drawing.Size(504, 299);
             this.DataEditor.TabIndex = 1;
-            // 
-            // Col_Cheked
-            // 
-            this.Col_Cheked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Col_Cheked.HeaderText = "";
-            this.Col_Cheked.MinimumWidth = 50;
-            this.Col_Cheked.Name = "Col_Cheked";
-            this.Col_Cheked.Width = 50;
-            // 
-            // Col_FullPath
-            // 
-            this.Col_FullPath.HeaderText = "Full Path";
-            this.Col_FullPath.Name = "Col_FullPath";
-            this.Col_FullPath.ReadOnly = true;
-            // 
-            // Col_Name
-            // 
-            this.Col_Name.HeaderText = "Name";
-            this.Col_Name.Name = "Col_Name";
-            // 
-            // Col_Ext
-            // 
-            this.Col_Ext.HeaderText = ".*";
-            this.Col_Ext.Name = "Col_Ext";
-            this.Col_Ext.ReadOnly = true;
             // 
             // MainContexMenu
             // 
@@ -773,15 +742,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox cb_SearchMode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.DataGridView DataEditor;
         private System.Windows.Forms.ComboBox cb_NameMatchMode;
         private System.Windows.Forms.Button btn_MakeFolders;
         private System.Windows.Forms.ToolStripMenuItem AN_AddNode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Col_Cheked;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_FullPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_Ext;
+        public System.Windows.Forms.DataGridView DataEditor;
     }
 }
 

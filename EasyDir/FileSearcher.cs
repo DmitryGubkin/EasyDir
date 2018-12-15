@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.IO;
+using System.ComponentModel;
 using System.Drawing;
+using System.Text;
+using System.Linq;
 using System.Windows.Forms;
+using System.IO;
 
 namespace EasyDir
 {
@@ -16,12 +15,17 @@ namespace EasyDir
         public static FileSearcher GetInstance { get => _fileSearcher;}
 
         private DataGridView dataGridView;
-        public DataGridView SetDataGridView { get => dataGridView; set => dataGridView = value; }
+        public DataGridView DataViewer { get => dataGridView; set => dataGridView = value; }
 
-        public HashSet<Asset> Assets = new HashSet<Asset>(new AssetPathComparer());
-        private FileSearcher() { }
+        public BindingList<Asset> Assets = new BindingList<Asset>();
+        
 
-        private bool modified = false;
+        private FileSearcher()
+        {
+          
+           
+        }
+
 
         public void Search(string _path, SearchTypes _searchType, NameMatchModes _nameMatchMode, List<string> NamePatters)
         {
@@ -92,22 +96,21 @@ namespace EasyDir
                             if (clearDlg == DialogResult.Yes)
                             {
                                 Assets.Clear();
-                                dataGridView.Rows.Clear();
-                                modified = false;
                             }
                         }
 
+                        
                         foreach (var pathItem in FilePaths)
                         {
                             Asset _asset = new Asset(pathItem);
-                            if (Assets.Add(_asset))
+                            if (Assets.Contains(_asset,new AssetPathComparer()) == false)
                             {
-                                AddRow(_asset);
-                                modified = true;                               
+                                Assets.Add(_asset);                            
                             }     
                         }
 
-                        MessageBox.Show(Assets.Count.ToString(), "Search Error");
+                        MessageBox.Show(Assets.Count.ToString());
+                        
 
                         
                     }
@@ -118,25 +121,20 @@ namespace EasyDir
             }
         }
 
-        public void FillData()
+        public void AddAsset(string _path)
         {
-
-            if (Assets.Count > 0 && modified == true)
+            if(String.IsNullOrEmpty(_path) == false)
             {
-                if (dataGridView.Rows.Count>0 )
-                dataGridView.Rows.Clear();
-
-                foreach (var asset in Assets)
+                if(File.Exists(_path))
                 {
-
-                    dataGridView.Rows.Add(asset.Checked, asset.FullPath, asset.FileName, asset.FileExt);
+                    Asset _asset = new Asset(_path);
+                    if (Assets.Contains(_asset, new AssetPathComparer()) == false)
+                    {
+                        Assets.Add(_asset);
+                        
+                    }
                 }
             }
-        }
-
-        private  void AddRow(Asset asset)
-        {
-            dataGridView.Rows.Add(asset.Checked, asset.FullPath, asset.FileName, asset.FileExt);
         }
 
         private List<string> GetPathsMatched(string NamePattern,string[] Paths, NameMatchModes _nameMatchMode)

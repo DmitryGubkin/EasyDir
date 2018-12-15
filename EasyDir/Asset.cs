@@ -15,11 +15,17 @@ namespace EasyDir
         private string _fullPath;
         private bool _checked;
 
+        public bool Checked { get => _checked; set => _checked = value; }
+        public string FullPath { get => _fullPath; set => _fullPath = value; }
         public string FileName { get => _fileName; set => _fileName = value; }
         public string FileExt { get => _fileExt; set => _fileExt = value; }
-        public string DirPath { get => _dirPath; set => _dirPath = value; }
-        public string FullPath { get => _fullPath; set => _fullPath = value; }
-        public bool Checked { get => _checked; set => _checked = value; }
+
+        public string GetDirPath()
+        {
+            return _dirPath;
+        }
+       
+       
 
         public bool isEmpty()
         {
