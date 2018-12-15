@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tb_Out = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SelOut = new System.Windows.Forms.Button();
@@ -70,14 +70,14 @@
             this.btn_DE_UNCheckAll = new System.Windows.Forms.Button();
             this.btn_DE_InvCheck = new System.Windows.Forms.Button();
             this.btn_DE_DeadClear = new System.Windows.Forms.Button();
+            this.lb_CheckInfo = new System.Windows.Forms.Label();
+            this.btn_DE_CleaAll = new System.Windows.Forms.Button();
             this.MainContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolOpenSourceFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolOpenOut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPreviewPath = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.lb_CheckInfo = new System.Windows.Forms.Label();
-            this.btn_DE_CleaAll = new System.Windows.Forms.Button();
             this.tp_in.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -588,23 +588,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataEditor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(58)))));
             this.DataEditor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle4;
             this.DataEditor.Location = new System.Drawing.Point(5, 44);
             this.DataEditor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 3);
             this.DataEditor.Name = "DataEditor";
@@ -708,6 +708,38 @@
             this.btn_DE_DeadClear.UseVisualStyleBackColor = false;
             this.btn_DE_DeadClear.Click += new System.EventHandler(this.btn_DE_DeadClear_Click);
             // 
+            // lb_CheckInfo
+            // 
+            this.lb_CheckInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lb_CheckInfo.AutoSize = true;
+            this.lb_CheckInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lb_CheckInfo.Location = new System.Drawing.Point(5, 0);
+            this.lb_CheckInfo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lb_CheckInfo.Name = "lb_CheckInfo";
+            this.lb_CheckInfo.Size = new System.Drawing.Size(33, 33);
+            this.lb_CheckInfo.TabIndex = 16;
+            this.lb_CheckInfo.Text = "0/0";
+            this.lb_CheckInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btn_DE_CleaAll
+            // 
+            this.btn_DE_CleaAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_DE_CleaAll.AutoSize = true;
+            this.btn_DE_CleaAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_DE_CleaAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_DE_CleaAll.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_DE_CleaAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btn_DE_CleaAll.Location = new System.Drawing.Point(420, 0);
+            this.btn_DE_CleaAll.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
+            this.btn_DE_CleaAll.Name = "btn_DE_CleaAll";
+            this.btn_DE_CleaAll.Size = new System.Drawing.Size(79, 33);
+            this.btn_DE_CleaAll.TabIndex = 15;
+            this.btn_DE_CleaAll.Text = "Clear All";
+            this.btn_DE_CleaAll.UseVisualStyleBackColor = false;
+            this.btn_DE_CleaAll.Click += new System.EventHandler(this.btn_DE_CleaAll_Click);
+            // 
             // MainContexMenu
             // 
             this.MainContexMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
@@ -773,38 +805,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 378);
             this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // lb_CheckInfo
-            // 
-            this.lb_CheckInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lb_CheckInfo.AutoSize = true;
-            this.lb_CheckInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lb_CheckInfo.Location = new System.Drawing.Point(5, 0);
-            this.lb_CheckInfo.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lb_CheckInfo.Name = "lb_CheckInfo";
-            this.lb_CheckInfo.Size = new System.Drawing.Size(33, 33);
-            this.lb_CheckInfo.TabIndex = 16;
-            this.lb_CheckInfo.Text = "0/0";
-            this.lb_CheckInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btn_DE_CleaAll
-            // 
-            this.btn_DE_CleaAll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_DE_CleaAll.AutoSize = true;
-            this.btn_DE_CleaAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_DE_CleaAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_DE_CleaAll.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_DE_CleaAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btn_DE_CleaAll.Location = new System.Drawing.Point(420, 0);
-            this.btn_DE_CleaAll.Margin = new System.Windows.Forms.Padding(3, 0, 5, 0);
-            this.btn_DE_CleaAll.Name = "btn_DE_CleaAll";
-            this.btn_DE_CleaAll.Size = new System.Drawing.Size(79, 33);
-            this.btn_DE_CleaAll.TabIndex = 15;
-            this.btn_DE_CleaAll.Text = "Clear All";
-            this.btn_DE_CleaAll.UseVisualStyleBackColor = false;
-            this.btn_DE_CleaAll.Click += new System.EventHandler(this.btn_DE_CleaAll_Click);
             // 
             // MainForm
             // 

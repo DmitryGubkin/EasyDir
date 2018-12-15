@@ -14,7 +14,7 @@ namespace EasyDir
 {
     public partial class MainForm : Form
     {
-        private static MainForm MainFormInstance ;
+        private static MainForm MainFormInstance;
 
         DialogHelper _dialogHelper = new DialogHelper();
         PathHelper _pathHelper = PathHelper.GetInstance;
@@ -88,7 +88,7 @@ namespace EasyDir
 
             tb_AssetName.DataBindings.Add("Text", _assetNameHelper, "NodeName", true, DataSourceUpdateMode.OnPropertyChanged);
             lb_CheckInfo.DataBindings.Add("Text", _fileSearcher, "AssetsInfo", true, DataSourceUpdateMode.OnPropertyChanged);
-               
+
 
             //Asset Manager Init
             _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
@@ -103,7 +103,7 @@ namespace EasyDir
             DataEditor.EnableHeadersVisualStyles = false;
             DataEditor.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
             DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 128);
-            
+
             DataEditor.RowHeadersVisible = false;
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
             DataEditor.AllowUserToResizeRows = false;
@@ -123,11 +123,14 @@ namespace EasyDir
 
             DataEditor.Columns[3].Width = 50;
             DataEditor.Columns[3].HeaderText = ".*";
-           DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
+
+
+            DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
             DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_CellChanged);
             DataEditor.CellValueChanged += new DataGridViewCellEventHandler(DE_CellValueChanged);
-          
-            
+          DataEditor.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(SortDataByClick);
+
+
         }
 
         private void btn_SelOut_Click(object sender, EventArgs e)
@@ -216,7 +219,6 @@ namespace EasyDir
         private void btn_RemoveName_Click(object sender, EventArgs e)
         {
             _assetNameHelper.RemoveNode();
-
         }
 
         private void toolStripTextBox1_Validated(object sender, EventArgs e)
@@ -234,7 +236,7 @@ namespace EasyDir
                 this.AN_QuickNameEditor.Visible = true;
                 this.AN_AddNode.Visible = false;
                 this.AN_QuickNameEditor.Text = cbl_Names.SelectedItem.ToString();
-               
+
             }
             else
             {
@@ -364,7 +366,7 @@ namespace EasyDir
                 e.Handled = e.SuppressKeyPress = true;
                 _assetNameHelper.RemoveNode();
             }
-            if(e.KeyCode == Keys.Space)
+            if (e.KeyCode == Keys.Space)
             {
                 e.Handled = e.SuppressKeyPress = true;
                 FocusQNameEditor = true;
@@ -375,18 +377,18 @@ namespace EasyDir
             }
         }
 
-        private void DataDragEnter (object sender, DragEventArgs e)
+        private void DataDragEnter(object sender, DragEventArgs e)
         {
             DragFilesBuffer.Clear();
             e.Effect = DragDropEffects.None;
-            DragFilesBuffer = _pathHelper.GetDragedFiles(sender,e);
-            if(DragFilesBuffer.Count>0)
+            DragFilesBuffer = _pathHelper.GetDragedFiles(sender, e);
+            if (DragFilesBuffer.Count > 0)
             {
                 e.Effect = DragDropEffects.Copy;
             }
         }
 
-        private void TextBoxDragAndDrop (object sender, DragEventArgs e)
+        private void TextBoxDragAndDrop(object sender, DragEventArgs e)
         {
             if (DragFilesBuffer.Count > 0)
                 ((TextBox)sender).Text = DragFilesBuffer[0];
@@ -394,7 +396,7 @@ namespace EasyDir
             DragFilesBuffer.Clear();
         }
 
-        private void CBLDragAndDrop (object sender, DragEventArgs e)
+        private void CBLDragAndDrop(object sender, DragEventArgs e)
         {
             if (DragFilesBuffer.Count > 0)
                 _assetNameHelper.AddNodes(DragFilesBuffer);
@@ -404,18 +406,18 @@ namespace EasyDir
 
         private void AN_ContexMenu_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if(e.KeyCode == Keys.Space )
+            if (e.KeyCode == Keys.Space)
             {
                 _assetNameHelper.RenameNode(AN_QuickNameEditor.Text);
                 ((ContextMenuStrip)sender).Close();
             }
-            
+
         }
 
         private void AN_ContexMenu_Opened(object sender, EventArgs e)
         {
-            if(FocusQNameEditor)
-            AN_QuickNameEditor.Focus();
+            if (FocusQNameEditor)
+                AN_QuickNameEditor.Focus();
         }
 
         private void AN_ContexMenu_Closing(object sender, ToolStripDropDownClosingEventArgs e)
@@ -423,9 +425,9 @@ namespace EasyDir
             FocusQNameEditor = false;
         }
 
-        private void DE_CellChanged (object sender, DataGridViewCellEventArgs e)
+        private void DE_CellChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 0 && e.RowIndex != -1)
+            if (e.ColumnIndex == 0 && e.RowIndex != -1)
             {
                 _dataEditorHelper.MultyCheck(e.RowIndex);
                 DataEditor.CommitEdit(DataGridViewDataErrorContexts.Commit);
@@ -438,9 +440,16 @@ namespace EasyDir
             {
                 _fileSearcher.UpdateCheckInfo();
             }
-            
+
         }
 
+        private void SortDataByClick (object sender, DataGridViewCellMouseEventArgs e)
+        {
+            _dataEditorHelper.SortData(e.ColumnIndex);
+           
+        }
+
+        
 
         private void CheckBoxCheck (object sender, EventArgs e)
         {
@@ -475,7 +484,9 @@ namespace EasyDir
 
         private void DataEditor_MouseDown(object sender, MouseEventArgs e)
         {
-
+           
         }
+
+
     }
     }

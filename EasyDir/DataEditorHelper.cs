@@ -107,5 +107,87 @@ namespace EasyDir
             }
 
         }
+
+        public void SortData( int colIndex)
+        {
+            var list = _fileSearcher.Assets.ToList();
+
+            if (list.Count < 2)
+                return;
+
+            switch(colIndex)
+            {
+                case 0 :
+                    {
+                       
+                        var RevSortlist = list.OrderByDescending(x => x.Checked).ToList();
+                        if (list[0].Checked == RevSortlist[0].Checked)
+                        {
+                            list = list.OrderBy(x => x.Checked).ToList();
+                        }
+                        else
+                        {
+                            list = RevSortlist;
+                        }
+                        
+                        break;
+                    }
+
+                case 1:
+                    {
+
+                        var RevSortlist = list.OrderByDescending(x => x.FullPath).ToList();
+                        if (list[0].FullPath == RevSortlist[0].FullPath)
+                        {
+                            list = list.OrderBy(x => x.FullPath).ToList();
+                        }
+                        else
+                        {
+                            list = RevSortlist;
+                        }
+
+                        break;
+                    }
+                case 2:
+                    {
+
+                        var RevSortlist = list.OrderByDescending(x => x.FileName).ToList();
+                        if (list[0].FileName == RevSortlist[0].FileName)
+                        {
+                            list = list.OrderBy(x => x.FileName).ToList();
+                        }
+                        else
+                        {
+                            list = RevSortlist;
+                        }
+
+                        break;
+                    }
+                case 3:
+                    {
+
+                        var RevSortlist = list.OrderByDescending(x => x.FileExt).ToList();
+                        if (list[0].FileExt == RevSortlist[0].FileExt)
+                        {
+                            list = list.OrderBy(x => x.FileExt).ToList();
+                        }
+                        else
+                        {
+                            list = RevSortlist;
+                        }
+
+                        break;
+                    }
+
+                default:
+                    {
+                        GC.Collect();
+                        return;
+                    }
+            }
+            _fileSearcher.Assets = new BindingList<Asset>(list);
+            dataGridView.DataSource = _fileSearcher.Assets;
+            GC.Collect();
+        }
 }
 }

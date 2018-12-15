@@ -133,7 +133,7 @@ namespace EasyDir
                         }
 
                     }
-
+                    _fileSearcher.UpdateCheckInfo();
                     GC.Collect();
                 }
 
