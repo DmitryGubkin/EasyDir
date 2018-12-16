@@ -540,6 +540,8 @@ namespace EasyDir
 
         private void btn_CopyFiles_Click(object sender, EventArgs e)
         {
+            DataEditor.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
             if (String.IsNullOrEmpty(tb_Out.Text))
             {
                 btn_SelOut_Click(sender, e);

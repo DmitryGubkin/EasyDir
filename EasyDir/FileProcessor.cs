@@ -25,12 +25,19 @@ namespace EasyDir
                 return;
 
             var assets = _fileSearcher.Assets.Where(x => x.Checked == true && File.Exists(x.FullPath)).Select(x => x).ToList();
-
+           // System.Windows.Forms.MessageBox.Show(assets.Count.ToString());
             foreach (var asset in assets)
             {
                 if (SubRoots == false)
                 {
-                    File.Copy(asset.FullPath, (_OutPath + Path.GetFileName(asset.FullPath)), overwrite);
+                    if (Path.GetFullPath(_OutPath + Path.GetFileName(asset.FullPath)) == asset.FullPath)
+                    {
+                    }
+                    else
+                    {
+                        File.Copy(asset.FullPath, _OutPath, overwrite);
+                    }
+                   
                 }
                 else
                 {
@@ -51,9 +58,21 @@ namespace EasyDir
                     }
                     else
                     {
-                        if (File.Exists(_newPath + @"\" + Path.GetFileName(asset.FullPath)) == true && overwrite == false)
-                            continue;
-                        File.Copy(asset.FullPath, (_newPath + @"\" + Path.GetFileName(asset.FullPath)), overwrite);
+                        if (Path.GetFullPath(_newPath + @"\" + Path.GetFileName(asset.FullPath)) == asset.FullPath) //source protect
+                        {
+
+                        }
+                        else
+                        {
+                            if (File.Exists(_newPath + @"\" + Path.GetFileName(asset.FullPath)) == true && overwrite == false)
+                            {
+                            }
+                            else
+                            {
+                                File.Copy(asset.FullPath, (_newPath + @"\" + Path.GetFileName(asset.FullPath)), overwrite);
+                            }
+                        }
+                        
                     }
                    
 
