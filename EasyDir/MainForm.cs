@@ -21,13 +21,16 @@ namespace EasyDir
         FileSearcher _fileSearcher = FileSearcher.GetInstance;
         ComboBoxHelper _comboBoxHelper = new ComboBoxHelper();
         DataEditorHelper _dataEditorHelper;
+        FileProcessor _fileProcessor = FileProcessor.GetFileProcessor();
 
         AssetNameHelper _assetNameHelper;
         ToolTip PathToolTip = new ToolTip();
+
         private string DefTTPath = "NO PATH";
         private string DefAssetName = "Asset_Name";
         private bool FocusQNameEditor = false;
         private List<string> DragFilesBuffer = new List<string>();
+        
 
 
         public static MainForm GetFormInstance
@@ -518,13 +521,13 @@ namespace EasyDir
                 if(DragFilesBuffer.Count > 0)
                 {
                     this.DoDragDrop(new DataObject(DataFormats.FileDrop, DragFilesBuffer.ToArray()), DragDropEffects.Copy);
-                   
 
                 }
             }
 
             DataEditor.DragEnter += new DragEventHandler(DataDragEnter);
             DataEditor.DragDrop += new DragEventHandler(DE_DragAndDrop);
+            DragFilesBuffer.Clear();
         }
 
         private void DataEditor_KeyDown(object sender, KeyEventArgs e)
@@ -533,6 +536,16 @@ namespace EasyDir
             {
                 _dataEditorHelper.RevoveSelData();
             }
+        }
+
+        private void btn_CopyFiles_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tb_Out.Text))
+            {
+                btn_SelOut_Click(sender, e);
+            }
+
+            _fileProcessor.CopyFiles(tb_Out.Text,tb_TopRoot.Text, cb_AllowOverWrite.Checked,true);
         }
     }
     }

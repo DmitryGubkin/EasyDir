@@ -75,8 +75,6 @@ namespace EasyDir
                 PathStart(ref _path);
             }
 
-           // MessageBox.Show(_path);
-
             return _path;
         }
 
@@ -267,6 +265,12 @@ namespace EasyDir
     
             return res;
                  
+        }
+
+        public string GetFoldersFromFile(string _filePath,string _topRoot)
+        {
+           string res = GetFolders(_filePath, _topRoot) +_pathDivs[0];
+            return res;
         }
     }
 }
