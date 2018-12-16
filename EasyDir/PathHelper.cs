@@ -264,8 +264,7 @@ namespace EasyDir
 
                 }
             }
-
-           
+    
             return res;
                  
         }

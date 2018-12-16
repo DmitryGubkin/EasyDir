@@ -887,7 +887,6 @@
         private System.Windows.Forms.Button btn_MakeFolders;
         private System.Windows.Forms.ToolStripMenuItem AN_AddNode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        public System.Windows.Forms.DataGridView DataEditor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btn_DE_CheckAll;
         private System.Windows.Forms.Button btn_DE_UNCheckAll;
@@ -895,6 +894,7 @@
         private System.Windows.Forms.Button btn_DE_DeadClear;
         private System.Windows.Forms.Label lb_CheckInfo;
         private System.Windows.Forms.Button btn_DE_CleaAll;
+        private System.Windows.Forms.DataGridView DataEditor;
     }
 }
 

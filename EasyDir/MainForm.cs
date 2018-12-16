@@ -36,6 +36,8 @@ namespace EasyDir
                 if (MainFormInstance == null || MainFormInstance.IsDisposed)
                 {
                     MainFormInstance = new MainForm();
+                   //MainFormInstance.ResizeBegin += (s, e) => { MainFormInstance.SuspendLayout(); };
+                   // MainFormInstance.ResizeEnd += (s, e) => { MainFormInstance.ResumeLayout(true); };
                 }
                 return MainFormInstance;
             }
@@ -383,11 +385,11 @@ namespace EasyDir
         }
 
         private void DataDragEnter(object sender, DragEventArgs e)
-        {
+        { 
             DragFilesBuffer.Clear();
             e.Effect = DragDropEffects.None;
             DragFilesBuffer = _pathHelper.GetDragedFiles(sender, e);
-            if (DragFilesBuffer.Count > 0)
+            if (DragFilesBuffer.Count > 0 )
             {
                 e.Effect = DragDropEffects.Copy;
             }
@@ -506,12 +508,28 @@ namespace EasyDir
 
         private void DataEditor_MouseDown(object sender, MouseEventArgs e)
         {
-           
+            //DataGridView dataGridView = (DataGridView)sender;
+            DataEditor.DragEnter -= new DragEventHandler(DataDragEnter);
+            DataEditor.DragDrop -= new DragEventHandler(DE_DragAndDrop);
+
+            if (e.Button == MouseButtons.Middle)
+            {
+                DragFilesBuffer = _dataEditorHelper.GetSelectedFiles();
+                if(DragFilesBuffer.Count > 0)
+                {
+                    this.DoDragDrop(new DataObject(DataFormats.FileDrop, DragFilesBuffer.ToArray()), DragDropEffects.Copy);
+                   
+
+                }
+            }
+
+            DataEditor.DragEnter += new DragEventHandler(DataDragEnter);
+            DataEditor.DragDrop += new DragEventHandler(DE_DragAndDrop);
         }
 
         private void DataEditor_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete)
+            if(e.KeyCode == Keys.Delete || e.KeyData == (Keys.Control | Keys.X))
             {
                 _dataEditorHelper.RevoveSelData();
             }

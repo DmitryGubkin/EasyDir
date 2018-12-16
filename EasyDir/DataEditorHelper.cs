@@ -163,6 +163,20 @@ namespace EasyDir
             }
         }
 
+        public List<string> GetSelectedFiles()
+        {
+            HashSet<string> _paths = new HashSet<string>();
+
+            if (dataGridView.SelectedCells.Count < 1)
+                return (_paths.ToList());
+            for(var i=0; i<dataGridView.SelectedCells.Count;i++)
+            {
+                _paths.Add((string)dataGridView.Rows[dataGridView.SelectedCells[i].RowIndex].Cells[1].Value);
+            }
+            return (_paths.ToList());
+
+        }
+
         public void SortData( int colIndex)
         {
             var list = _fileSearcher.Assets.ToList();
