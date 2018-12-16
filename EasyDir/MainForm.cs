@@ -127,8 +127,12 @@ namespace EasyDir
 
             DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
             DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_CellChanged);
+            DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_ShowFileInExplorer);
             DataEditor.CellValueChanged += new DataGridViewCellEventHandler(DE_CellValueChanged);
-          DataEditor.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(SortDataByClick);
+            DataEditor.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(SortDataByClick);
+            DataEditor.ColumnHeaderMouseDoubleClick += new DataGridViewCellMouseEventHandler(SortDataByClick); 
+            DataEditor.DragEnter += new DragEventHandler(DataDragEnter);
+            DataEditor.DragDrop += new DragEventHandler(DE_DragAndDrop);
 
 
         }
@@ -219,6 +223,7 @@ namespace EasyDir
         private void btn_RemoveName_Click(object sender, EventArgs e)
         {
             _assetNameHelper.RemoveNode();
+
         }
 
         private void toolStripTextBox1_Validated(object sender, EventArgs e)
@@ -361,7 +366,7 @@ namespace EasyDir
                 _assetNameHelper.AddNode(tb_AssetName.Text);
 
             }
-            if (e.KeyData == (Keys.Control | Keys.X))
+            if (e.KeyData == (Keys.Control | Keys.X) || e.KeyCode == Keys.Delete)
             {
                 e.Handled = e.SuppressKeyPress = true;
                 _assetNameHelper.RemoveNode();
@@ -404,6 +409,13 @@ namespace EasyDir
             DragFilesBuffer.Clear();
         }
 
+        private void DE_DragAndDrop(object sender, DragEventArgs e)
+        {
+            if (DragFilesBuffer.Count > 0)
+                _fileSearcher.AddAssets(DragFilesBuffer);
+            DragFilesBuffer.Clear();
+        }
+
         private void AN_ContexMenu_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
@@ -431,6 +443,16 @@ namespace EasyDir
             {
                 _dataEditorHelper.MultyCheck(e.RowIndex);
                 DataEditor.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+            
+        }
+
+        private void DE_ShowFileInExplorer(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1 && e.RowIndex != -1)
+            {
+               // MessageBox.Show("");
+                _dataEditorHelper.ShowFileinExplorer((string)DataEditor.Rows[e.RowIndex].Cells[1].Value);
             }
         }
 
@@ -487,6 +509,12 @@ namespace EasyDir
            
         }
 
-
+        private void DataEditor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                _dataEditorHelper.RevoveSelData();
+            }
+        }
     }
     }

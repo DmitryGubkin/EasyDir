@@ -154,6 +154,16 @@ namespace EasyDir
                     }
                 }
             }
+
+            UpdateCheckInfo();
+        }
+
+        public void AddAssets (List<string> _paths)
+        {
+            foreach (var _path in _paths)
+            {
+                AddAsset(_path);
+            }
         }
 
         private List<string> GetPathsMatched(string NamePattern,string[] Paths, NameMatchModes _nameMatchMode)

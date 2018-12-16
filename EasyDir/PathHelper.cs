@@ -168,12 +168,29 @@ namespace EasyDir
         public void ShowFolder(string _path)
         {
             
-            if(String.IsNullOrEmpty(_path) == false && Directory.Exists(_path) )
+            if(String.IsNullOrEmpty(_path) == false )
             {
-              //  _path = Path.GetDirectoryName(_path);
+                string filePath = null;
+
+                if(Directory.Exists(_path))
+                {
+                    filePath = _path;
+                }
+                else
+                {
+                    if (File.Exists(_path))
+                    {
+                        filePath = "/select, \"" + _path + "\""; ;
+                    }
+                }
+
+                if (filePath == null)
+                    return;
+
+                    //  _path = Path.GetDirectoryName(_path);
                 try
                 {
-                    Process.Start(_path);
+                    Process.Start("explorer.exe", filePath);
                 }
                 catch
                 {

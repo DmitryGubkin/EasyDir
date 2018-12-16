@@ -16,6 +16,7 @@ namespace EasyDir
         private FileSearcher _fileSearcher = FileSearcher.GetInstance;
         private static DataEditorHelper dataEditorHelper;
         private DataGridView dataGridView;
+        private PathHelper _pathHelper = PathHelper.GetInstance;
         
         private DataEditorHelper() { }
 
@@ -82,6 +83,50 @@ namespace EasyDir
             _fileSearcher.UpdateCheckInfo();
         }
 
+        public void RevoveSelData()
+        {
+            if(dataGridView.SelectedCells.Count<1)
+            {
+                return;
+            }
+
+            HashSet<string> selData = new HashSet<string>();
+            List<Asset> assetsToRemove = new List<Asset>();
+
+            for (int i = 0; i < dataGridView.SelectedCells.Count; i++)
+            {
+                selData.Add((string)dataGridView.Rows[dataGridView.SelectedCells[i].RowIndex].Cells[1].Value);
+            }
+
+            if (selData.Count>0)
+            {
+                if(selData.Count>4)
+                {
+                    if(MessageBox.Show("Delete " + selData.Count.ToString() +" Assets ?","Assets Delete",
+                        MessageBoxButtons.YesNo,MessageBoxIcon.Question) != DialogResult.Yes)
+                    {
+                        GC.Collect();
+                        return;
+                    }
+                }
+               
+                foreach(var fullPath in selData)
+                {
+                    var asset = _fileSearcher.Assets.Where(x => x.FullPath == fullPath).Select(x => x).ToList();
+                    if(asset.Count>0)
+                    {
+                        assetsToRemove.AddRange(asset);
+                    } 
+                }
+            }
+
+            foreach (var asset in assetsToRemove)
+            {
+                _fileSearcher.Assets.Remove(asset);
+            }
+            GC.Collect();
+        }
+
         public void MultyCheck(int Row)
         {
            if(dataGridView.SelectedCells.Count>0)
@@ -106,6 +151,16 @@ namespace EasyDir
                 }
             }
 
+        }
+
+        public void ShowFileinExplorer (string _path)
+        {
+            if (dataGridView.SelectedCells.Count < 1 && string.IsNullOrEmpty(_path))
+                return;
+            if(System.IO.File.Exists(_path))
+            {
+                _pathHelper.ShowFolder(_path);
+            }
         }
 
         public void SortData( int colIndex)
