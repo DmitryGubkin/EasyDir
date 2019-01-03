@@ -177,6 +177,17 @@ namespace EasyDir
 
         }
 
+        public void SelAll()
+        {
+            if(_fileSearcher.Assets.Count>0)
+            dataGridView.SelectAll();
+        }
+        public void ClearSel()
+        {
+            if (_fileSearcher.Assets.Count > 0)
+                dataGridView.ClearSelection();
+        }
+
         public void SortData( int colIndex)
         {
             var list = _fileSearcher.Assets.ToList();

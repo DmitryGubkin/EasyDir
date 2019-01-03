@@ -536,6 +536,16 @@ namespace EasyDir
             {
                 _dataEditorHelper.RevoveSelData();
             }
+
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                _dataEditorHelper.SelAll();
+            }
+
+            if (e.KeyData == (Keys.Control | Keys.D))
+            {
+                _dataEditorHelper.ClearSel();
+            }
         }
 
         private void btn_CopyFiles_Click(object sender, EventArgs e)
