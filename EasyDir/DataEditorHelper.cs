@@ -83,7 +83,7 @@ namespace EasyDir
             _fileSearcher.UpdateCheckInfo();
         }
 
-        public void RevoveSelData()
+        public void RemoveSelData()
         {
             if(dataGridView.SelectedCells.Count<1)
             {
@@ -182,10 +182,25 @@ namespace EasyDir
             if(_fileSearcher.Assets.Count>0)
             dataGridView.SelectAll();
         }
+
         public void ClearSel()
         {
             if (_fileSearcher.Assets.Count > 0)
                 dataGridView.ClearSelection();
+        }
+
+        public void SelectRow()
+        {
+            if (dataGridView.Rows.Count < 1 || dataGridView.SelectedCells.Count <0)
+                return;
+          //  HashSet<int> _rows = new HashSet<int>();
+            foreach(DataGridViewCell item in dataGridView.SelectedCells)
+            {
+               
+                    dataGridView.Rows[item.RowIndex].Selected = true;
+                
+            }
+            
         }
 
         public void SortData( int colIndex)
@@ -256,6 +271,21 @@ namespace EasyDir
                             list = RevSortlist;
                         }
 
+                        break;
+                    }
+
+                case 4:
+                    {
+                        var RevSortlist = list.OrderByDescending(x => x.GetFileSize()).ToList();
+
+                        if (list[0].FileExt == RevSortlist[0].FileExt)
+                        {
+                            list = list.OrderBy(x => x.GetFileSize()).ToList();
+                        }
+                        else
+                        {
+                            list = RevSortlist;
+                        }
                         break;
                     }
 

@@ -132,9 +132,13 @@ namespace EasyDir
             DataEditor.Columns[1].ReadOnly = true;
             DataEditor.Columns[2].ReadOnly = true;
             DataEditor.Columns[3].ReadOnly = true;
+            DataEditor.Columns[4].ReadOnly = true;
 
             DataEditor.Columns[3].Width = 50;
             DataEditor.Columns[3].HeaderText = ".*";
+
+            DataEditor.Columns[4].Width = 70;
+            DataEditor.Columns[4].HeaderText = "Size";
 
 
             DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
@@ -461,11 +465,18 @@ namespace EasyDir
 
         private void DE_ShowFileInExplorer(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1 && e.RowIndex != -1)
+            if (e.ColumnIndex == 1 )
             {
-               // MessageBox.Show("");
+                // MessageBox.Show("");
+                if(e.RowIndex != -1)
                 _dataEditorHelper.ShowFileinExplorer((string)DataEditor.Rows[e.RowIndex].Cells[1].Value);
             }
+            else
+            {
+                if (e.RowIndex != -1)
+                    _dataEditorHelper.SelectRow();
+            }
+
         }
 
         private void DE_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -541,7 +552,7 @@ namespace EasyDir
         {
             if(e.KeyCode == Keys.Delete || e.KeyData == (Keys.Control | Keys.X))
             {
-                _dataEditorHelper.RevoveSelData();
+                _dataEditorHelper.RemoveSelData();
             }
 
             if (e.KeyData == (Keys.Control | Keys.A))

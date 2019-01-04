@@ -16,6 +16,7 @@ namespace EasyDir
         public static PathHelper GetInstance { get => _instance; }
 
         private string[] _pathDivs = { @"\", @":\"};
+        private string[] _FileSizes = { "B", "KB", "MB", "GB", "TB" };
 
         private PathHelper() { }
 
@@ -272,5 +273,43 @@ namespace EasyDir
            string res = GetFolders(_filePath, _topRoot) +_pathDivs[0];
             return res;
         }
+
+        public double GetFileSize(string _path)
+        {
+            double _fileSize = 0;
+            if (string.IsNullOrEmpty(_path))
+                return _fileSize;
+
+            if(File.Exists(_path))
+            {
+                _fileSize = new FileInfo(_path).Length;
+            }
+
+            return _fileSize;
+
+        }
+
+        public double GetFilesSize(List<string> _paths)
+        {
+            double _fileSize = 0;
+            foreach(var item in _paths)
+            {
+                _fileSize += new FileInfo(item).Length;
+            }
+            return _fileSize;
+        }
+
+        public string GetFileSizeFormated( double len)
+        {
+            int order = 0;
+            while (len >= 1024 && order < _FileSizes.Length - 1)
+            {
+                order++;
+                len = len / 1024;
+            }
+            string result = String.Format("{0:0.##} {1}", len, _FileSizes[order]);
+            return result;
+        }
+
     }
 }
