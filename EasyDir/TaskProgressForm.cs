@@ -12,18 +12,19 @@ namespace EasyDir
 {
     public partial class TaskProgressForm : Form
     {
-        AssetNameHelper a;
+
+        public BackgroundWorker _backgroundWorker;
 
         public TaskProgressForm()
         {
             InitializeComponent();
-            a = AssetNameHelper.instance;
+          
         }
         
 
         private void TaskProgressForm_Load(object sender, EventArgs e)
         {
-           // MessageBox.Show(a.CheckedListBoxControl.Items.Count.ToString());
+           
         }
     }
 }

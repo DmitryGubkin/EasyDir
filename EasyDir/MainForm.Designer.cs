@@ -46,8 +46,8 @@
             this.tb_AssetName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.cb_SearchMode = new System.Windows.Forms.ComboBox();
-            this.cb_NameMatchMode = new System.Windows.Forms.ComboBox();
+            this.cmb_SearchMode = new System.Windows.Forms.ComboBox();
+            this.cmb_NameMatchMode = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_RemoveName = new System.Windows.Forms.Button();
             this.btn_AddName = new System.Windows.Forms.Button();
@@ -75,7 +75,7 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.cb_SubFolders = new System.Windows.Forms.CheckBox();
-            this.btn_CopyFiles = new System.Windows.Forms.Button();
+            this.btn_ProcessFiles = new System.Windows.Forms.Button();
             this.cb_AllowOverWrite = new System.Windows.Forms.CheckBox();
             this.cb_FoldersOnly = new System.Windows.Forms.CheckBox();
             this.MainContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -334,8 +334,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.cb_SearchMode, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.cb_NameMatchMode, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cmb_SearchMode, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cmb_NameMatchMode, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.cbl_Names, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -349,35 +349,35 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(238, 366);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // cb_SearchMode
+            // cmb_SearchMode
             // 
-            this.cb_SearchMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_SearchMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.cb_SearchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_SearchMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_SearchMode.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cb_SearchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.cb_SearchMode.FormattingEnabled = true;
-            this.cb_SearchMode.Location = new System.Drawing.Point(5, 0);
-            this.cb_SearchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.cb_SearchMode.Name = "cb_SearchMode";
-            this.cb_SearchMode.Size = new System.Drawing.Size(228, 24);
-            this.cb_SearchMode.TabIndex = 1;
+            this.cmb_SearchMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmb_SearchMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cmb_SearchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SearchMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmb_SearchMode.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cmb_SearchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.cmb_SearchMode.FormattingEnabled = true;
+            this.cmb_SearchMode.Location = new System.Drawing.Point(5, 0);
+            this.cmb_SearchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.cmb_SearchMode.Name = "cmb_SearchMode";
+            this.cmb_SearchMode.Size = new System.Drawing.Size(228, 24);
+            this.cmb_SearchMode.TabIndex = 1;
             // 
-            // cb_NameMatchMode
+            // cmb_NameMatchMode
             // 
-            this.cb_NameMatchMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_NameMatchMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.cb_NameMatchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_NameMatchMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_NameMatchMode.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.cb_NameMatchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.cb_NameMatchMode.FormattingEnabled = true;
-            this.cb_NameMatchMode.Location = new System.Drawing.Point(5, 29);
-            this.cb_NameMatchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.cb_NameMatchMode.Name = "cb_NameMatchMode";
-            this.cb_NameMatchMode.Size = new System.Drawing.Size(228, 24);
-            this.cb_NameMatchMode.TabIndex = 1;
+            this.cmb_NameMatchMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmb_NameMatchMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cmb_NameMatchMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_NameMatchMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmb_NameMatchMode.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cmb_NameMatchMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.cmb_NameMatchMode.FormattingEnabled = true;
+            this.cmb_NameMatchMode.Location = new System.Drawing.Point(5, 29);
+            this.cmb_NameMatchMode.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.cmb_NameMatchMode.Name = "cmb_NameMatchMode";
+            this.cmb_NameMatchMode.Size = new System.Drawing.Size(228, 24);
+            this.cmb_NameMatchMode.TabIndex = 1;
             // 
             // tableLayoutPanel4
             // 
@@ -777,7 +777,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.cb_SubFolders, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.btn_CopyFiles, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_ProcessFiles, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_AllowOverWrite, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_FoldersOnly, 0, 2);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(291, 0);
@@ -805,23 +805,23 @@
             this.cb_SubFolders.Text = "Sub Folders";
             this.cb_SubFolders.UseVisualStyleBackColor = true;
             // 
-            // btn_CopyFiles
+            // btn_ProcessFiles
             // 
-            this.btn_CopyFiles.AutoSize = true;
-            this.btn_CopyFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_CopyFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_CopyFiles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_CopyFiles.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_CopyFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_CopyFiles.Location = new System.Drawing.Point(104, 0);
-            this.btn_CopyFiles.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_CopyFiles.Name = "btn_CopyFiles";
-            this.tableLayoutPanel8.SetRowSpan(this.btn_CopyFiles, 3);
-            this.btn_CopyFiles.Size = new System.Drawing.Size(105, 63);
-            this.btn_CopyFiles.TabIndex = 15;
-            this.btn_CopyFiles.Text = "Copy Files";
-            this.btn_CopyFiles.UseVisualStyleBackColor = false;
-            this.btn_CopyFiles.Click += new System.EventHandler(this.btn_CopyFiles_Click);
+            this.btn_ProcessFiles.AutoSize = true;
+            this.btn_ProcessFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_ProcessFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_ProcessFiles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ProcessFiles.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_ProcessFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_ProcessFiles.Location = new System.Drawing.Point(104, 0);
+            this.btn_ProcessFiles.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_ProcessFiles.Name = "btn_ProcessFiles";
+            this.tableLayoutPanel8.SetRowSpan(this.btn_ProcessFiles, 3);
+            this.btn_ProcessFiles.Size = new System.Drawing.Size(105, 63);
+            this.btn_ProcessFiles.TabIndex = 15;
+            this.btn_ProcessFiles.Text = "Process Files";
+            this.btn_ProcessFiles.UseVisualStyleBackColor = false;
+            this.btn_ProcessFiles.Click += new System.EventHandler(this.btn_CopyFiles_Click);
             // 
             // cb_AllowOverWrite
             // 
@@ -996,9 +996,9 @@
         private System.Windows.Forms.ToolStripMenuItem AN_RemoveSel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ComboBox cb_SearchMode;
+        private System.Windows.Forms.ComboBox cmb_SearchMode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ComboBox cb_NameMatchMode;
+        private System.Windows.Forms.ComboBox cmb_NameMatchMode;
         private System.Windows.Forms.Button btn_MakeFolders;
         private System.Windows.Forms.ToolStripMenuItem AN_AddNode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -1011,7 +1011,7 @@
         private System.Windows.Forms.Button btn_DE_CleaAll;
         private System.Windows.Forms.DataGridView DataEditor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button btn_CopyFiles;
+        private System.Windows.Forms.Button btn_ProcessFiles;
         private System.Windows.Forms.CheckBox cb_AllowOverWrite;
         private System.Windows.Forms.CheckBox cb_SubFolders;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;

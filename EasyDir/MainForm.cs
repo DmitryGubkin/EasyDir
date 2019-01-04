@@ -94,10 +94,17 @@ namespace EasyDir
             tb_AssetName.DataBindings.Add("Text", _assetNameHelper, "NodeName", true, DataSourceUpdateMode.OnPropertyChanged);
             lb_CheckInfo.DataBindings.Add("Text", _fileSearcher, "AssetsInfo", true, DataSourceUpdateMode.OnPropertyChanged);
 
+            tb_Out.DataBindings.Add("Text", _fileProcessor, "OutPath", true, DataSourceUpdateMode.OnPropertyChanged);
+            tb_TopRoot.DataBindings.Add("Text", _fileProcessor, "TopRoot", true, DataSourceUpdateMode.OnPropertyChanged);
+            cb_AllowOverWrite.DataBindings.Add("Checked", _fileProcessor, "Overwrite", true, DataSourceUpdateMode.OnPropertyChanged);
+            cb_SubFolders.DataBindings.Add("Checked", _fileProcessor, "SubRoots", true, DataSourceUpdateMode.OnPropertyChanged);
+            cb_FoldersOnly.DataBindings.Add("Checked", _fileProcessor, "FoldersOnly", true, DataSourceUpdateMode.OnPropertyChanged);
+
+
 
             //Asset Manager Init
-            _comboBoxHelper.FillComboBox(cb_SearchMode, ComboBoxTypes.Seartch);
-            _comboBoxHelper.FillComboBox(cb_NameMatchMode, ComboBoxTypes.NameMatch);
+            _comboBoxHelper.FillComboBox(cmb_SearchMode, ComboBoxTypes.Seartch);
+            _comboBoxHelper.FillComboBox(cmb_NameMatchMode, ComboBoxTypes.NameMatch);
 
             //data editor init
             DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -333,8 +340,8 @@ namespace EasyDir
         private void btn_SearchAssets_Click(object sender, EventArgs e)
         {
             //  _assetNameHelper.GetNames().Count.ToString();
-            _fileSearcher.Search(tb_In.Text, (SearchTypes)_comboBoxHelper.GetSearchMode(cb_SearchMode),
-                (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cb_NameMatchMode), _assetNameHelper.GetNames());
+            _fileSearcher.Search(tb_In.Text, (SearchTypes)_comboBoxHelper.GetSearchMode(cmb_SearchMode),
+                (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode), _assetNameHelper.GetNames());
 
         }
 
@@ -557,7 +564,12 @@ namespace EasyDir
                 btn_SelOut_Click(sender, e);
             }
 
-            _fileProcessor.CopyFiles(tb_Out.Text,tb_TopRoot.Text, cb_AllowOverWrite.Checked,cb_SubFolders.Checked,cb_FoldersOnly.Checked);
+            _fileProcessor.CopyFiles();
+
+            //TaskProgressForm taskProgressForm = new TaskProgressForm();
+            // taskProgressForm.ShowDialog();
+
+            // _fileProcessor.ShowMessage();
         }
     }
     }
