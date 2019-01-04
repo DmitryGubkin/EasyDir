@@ -21,3 +21,4 @@ D:\C# Dev\EasyDir\EasyDir\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csproj.CopyComplete
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.MainForm.resources
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.TaskProgressForm.resources
+D:\C# Dev\EasyDir\EasyDir\bin\Debug\Aga.Controls.dll

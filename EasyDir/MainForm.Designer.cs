@@ -74,15 +74,16 @@
             this.btn_DE_CleaAll = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.cb_SubFolders = new System.Windows.Forms.CheckBox();
             this.btn_CopyFiles = new System.Windows.Forms.Button();
             this.cb_AllowOverWrite = new System.Windows.Forms.CheckBox();
+            this.cb_FoldersOnly = new System.Windows.Forms.CheckBox();
             this.MainContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolOpenSourceFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolOpenOut = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolPreviewPath = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.cb_SubFolders = new System.Windows.Forms.CheckBox();
             this.tp_in.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -763,6 +764,8 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(500, 63);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
@@ -771,19 +774,36 @@
             this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel8.ColumnCount = 2;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.cb_SubFolders, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.btn_CopyFiles, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_AllowOverWrite, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.cb_SubFolders, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.cb_FoldersOnly, 0, 2);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(291, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 2;
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel8.Size = new System.Drawing.Size(209, 63);
             this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // cb_SubFolders
+            // 
+            this.cb_SubFolders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_SubFolders.AutoSize = true;
+            this.cb_SubFolders.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_SubFolders.ForeColor = System.Drawing.Color.Turquoise;
+            this.cb_SubFolders.Location = new System.Drawing.Point(5, 20);
+            this.cb_SubFolders.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.cb_SubFolders.Name = "cb_SubFolders";
+            this.cb_SubFolders.Size = new System.Drawing.Size(99, 20);
+            this.cb_SubFolders.TabIndex = 16;
+            this.cb_SubFolders.Text = "Sub Folders";
+            this.cb_SubFolders.UseVisualStyleBackColor = true;
             // 
             // btn_CopyFiles
             // 
@@ -793,11 +813,11 @@
             this.btn_CopyFiles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_CopyFiles.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btn_CopyFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_CopyFiles.Location = new System.Drawing.Point(116, 0);
+            this.btn_CopyFiles.Location = new System.Drawing.Point(104, 0);
             this.btn_CopyFiles.Margin = new System.Windows.Forms.Padding(0);
             this.btn_CopyFiles.Name = "btn_CopyFiles";
-            this.tableLayoutPanel8.SetRowSpan(this.btn_CopyFiles, 2);
-            this.btn_CopyFiles.Size = new System.Drawing.Size(93, 63);
+            this.tableLayoutPanel8.SetRowSpan(this.btn_CopyFiles, 3);
+            this.btn_CopyFiles.Size = new System.Drawing.Size(105, 63);
             this.btn_CopyFiles.TabIndex = 15;
             this.btn_CopyFiles.Text = "Copy Files";
             this.btn_CopyFiles.UseVisualStyleBackColor = false;
@@ -808,14 +828,30 @@
             this.cb_AllowOverWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_AllowOverWrite.AutoSize = true;
+            this.cb_AllowOverWrite.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cb_AllowOverWrite.ForeColor = System.Drawing.Color.Turquoise;
-            this.cb_AllowOverWrite.Location = new System.Drawing.Point(0, 5);
-            this.cb_AllowOverWrite.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
+            this.cb_AllowOverWrite.Location = new System.Drawing.Point(5, 0);
+            this.cb_AllowOverWrite.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.cb_AllowOverWrite.Name = "cb_AllowOverWrite";
-            this.cb_AllowOverWrite.Size = new System.Drawing.Size(111, 23);
+            this.cb_AllowOverWrite.Size = new System.Drawing.Size(99, 20);
             this.cb_AllowOverWrite.TabIndex = 16;
             this.cb_AllowOverWrite.Text = "Overwrite";
             this.cb_AllowOverWrite.UseVisualStyleBackColor = true;
+            // 
+            // cb_FoldersOnly
+            // 
+            this.cb_FoldersOnly.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_FoldersOnly.AutoSize = true;
+            this.cb_FoldersOnly.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cb_FoldersOnly.ForeColor = System.Drawing.Color.Turquoise;
+            this.cb_FoldersOnly.Location = new System.Drawing.Point(5, 40);
+            this.cb_FoldersOnly.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.cb_FoldersOnly.Name = "cb_FoldersOnly";
+            this.cb_FoldersOnly.Size = new System.Drawing.Size(99, 20);
+            this.cb_FoldersOnly.TabIndex = 16;
+            this.cb_FoldersOnly.Text = "Folders Only";
+            this.cb_FoldersOnly.UseVisualStyleBackColor = true;
             // 
             // MainContexMenu
             // 
@@ -882,20 +918,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 378);
             this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // cb_SubFolders
-            // 
-            this.cb_SubFolders.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_SubFolders.AutoSize = true;
-            this.cb_SubFolders.ForeColor = System.Drawing.Color.Turquoise;
-            this.cb_SubFolders.Location = new System.Drawing.Point(0, 33);
-            this.cb_SubFolders.Margin = new System.Windows.Forms.Padding(0, 5, 5, 0);
-            this.cb_SubFolders.Name = "cb_SubFolders";
-            this.cb_SubFolders.Size = new System.Drawing.Size(111, 23);
-            this.cb_SubFolders.TabIndex = 16;
-            this.cb_SubFolders.Text = "Sub Folders";
-            this.cb_SubFolders.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -989,10 +1011,11 @@
         private System.Windows.Forms.Button btn_DE_CleaAll;
         private System.Windows.Forms.DataGridView DataEditor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Button btn_CopyFiles;
         private System.Windows.Forms.CheckBox cb_AllowOverWrite;
         private System.Windows.Forms.CheckBox cb_SubFolders;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.CheckBox cb_FoldersOnly;
     }
 }
 

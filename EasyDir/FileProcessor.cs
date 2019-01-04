@@ -14,12 +14,13 @@ namespace EasyDir
         private PathHelper _pathHelper = PathHelper.GetInstance;
 
         private FileProcessor() { }
+
         public static FileProcessor GetFileProcessor()
         {
             return _fileProcessor;
         }
 
-        public void CopyFiles(string _OutPath, string _topRoot, bool overwrite,bool SubRoots)
+        public void CopyFiles(string _OutPath, string _topRoot, bool overwrite,bool SubRoots, bool FoldersOnly)
         {
             if (string.IsNullOrEmpty(_OutPath) == true || Directory.Exists(_OutPath) == false)
                 return;
@@ -30,19 +31,31 @@ namespace EasyDir
             {
                 if (SubRoots == false)
                 {
-                    if (Path.GetFullPath(_OutPath + Path.GetFileName(asset.FullPath)) == asset.FullPath)
+                    var _newPath = _OutPath + @"\" + Path.GetFileName(asset.FullPath);
+
+                    if (Path.GetFullPath(_newPath) != asset.FullPath)
                     {
-                    }
-                    else
-                    {
-                        File.Copy(asset.FullPath, _OutPath, overwrite);
-                    }
-                   
+                        if (File.Exists(_newPath) == true && overwrite == false)
+                            continue;
+                        try
+                        {
+                            File.Copy(asset.FullPath, _newPath, overwrite);
+                        }
+                        catch
+                        {
+                            var dlgRes = System.Windows.Forms.MessageBox.Show("Error On File Copying\nContinue Processing ?", "File Processor",
+                              System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+                            if (dlgRes == System.Windows.Forms.DialogResult.No)
+                                return;
+                        }
+                       
+                    }   
                 }
                 else
                 {
                     var _newPath = _pathHelper.GetFoldersFromFile(asset.GetDirPath(), _topRoot);
                     _newPath = _OutPath + _newPath;
+
 
                     if (!Directory.Exists(_newPath))
                     {
@@ -50,31 +63,34 @@ namespace EasyDir
                         {
                            new DirectoryInfo(_newPath).Create();
                         }
-                        catch (Exception e)
+                        catch 
                         {
-                           System.Windows.Forms.MessageBox.Show(e.ToString());
+                          var dlgRes =  System.Windows.Forms.MessageBox.Show("Error On Folder Creation\nContinue Processing ?", "File Processor",
+                               System.Windows.Forms.MessageBoxButtons.YesNo,System.Windows.Forms.MessageBoxIcon.Question);
+                            if (dlgRes == System.Windows.Forms.DialogResult.No)
+                                return;
                         }
 
                     }
-                    else
+
+                    if (Path.GetFullPath(_newPath + @"\" + Path.GetFileName(asset.FullPath)) != asset.FullPath &&
+                        Directory.Exists(_newPath) == true && FoldersOnly == false) //source protect
                     {
-                        if (Path.GetFullPath(_newPath + @"\" + Path.GetFileName(asset.FullPath)) == asset.FullPath) //source protect
+                        if (File.Exists(_newPath + @"\" + Path.GetFileName(asset.FullPath)) == true && overwrite == false)
+                            continue;
+                        try
                         {
-
+                            File.Copy(asset.FullPath, (_newPath + @"\" + Path.GetFileName(asset.FullPath)), overwrite);
                         }
-                        else
+                        catch
                         {
-                            if (File.Exists(_newPath + @"\" + Path.GetFileName(asset.FullPath)) == true && overwrite == false)
-                            {
-                            }
-                            else
-                            {
-                                File.Copy(asset.FullPath, (_newPath + @"\" + Path.GetFileName(asset.FullPath)), overwrite);
-                            }
+                            var dlgRes = System.Windows.Forms.MessageBox.Show("Error On File Copying\nContinue Processing ?", "File Processor",
+                               System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question);
+                            if (dlgRes == System.Windows.Forms.DialogResult.No)
+                                return;
                         }
-                        
-                    }
-                   
+                       
+                    }        
 
                 }
             }

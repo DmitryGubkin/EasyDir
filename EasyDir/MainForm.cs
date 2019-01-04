@@ -557,7 +557,7 @@ namespace EasyDir
                 btn_SelOut_Click(sender, e);
             }
 
-            _fileProcessor.CopyFiles(tb_Out.Text,tb_TopRoot.Text, cb_AllowOverWrite.Checked,true);
+            _fileProcessor.CopyFiles(tb_Out.Text,tb_TopRoot.Text, cb_AllowOverWrite.Checked,cb_SubFolders.Checked,cb_FoldersOnly.Checked);
         }
     }
     }
