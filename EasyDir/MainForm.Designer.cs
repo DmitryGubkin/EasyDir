@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tb_Out = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SelOut = new System.Windows.Forms.Button();
@@ -71,6 +71,7 @@
             this.DE_All_Check = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_All_UnCheck = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_All_InvCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_All_Sel_Checked = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_All_Sel_UnChecked = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.DE_SelectAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +88,7 @@
             this.DE_Remove = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Remove_Checked = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Remove_UnChecked = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_DE_CheckAll = new System.Windows.Forms.Button();
             this.btn_DE_UNCheckAll = new System.Windows.Forms.Button();
@@ -106,8 +108,6 @@
             this.MCM_StripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MCM_PreviewPath = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.DE_All_Sel_Checked = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tp_in.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -622,24 +622,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataEditor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(58)))));
             this.DataEditor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataEditor.ContextMenuStrip = this.DE_ContexMenu;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataEditor.Location = new System.Drawing.Point(5, 44);
             this.DataEditor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 3);
             this.DataEditor.Name = "DataEditor";
@@ -699,7 +699,7 @@
             this.DE_All_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_Check.Name = "DE_All_Check";
-            this.DE_All_Check.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Check.Size = new System.Drawing.Size(178, 22);
             this.DE_All_Check.Text = "Check";
             this.DE_All_Check.Click += new System.EventHandler(this.DE_All_Check_Click);
             // 
@@ -708,7 +708,7 @@
             this.DE_All_UnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_UnCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_UnCheck.Name = "DE_All_UnCheck";
-            this.DE_All_UnCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_UnCheck.Size = new System.Drawing.Size(178, 22);
             this.DE_All_UnCheck.Text = "UnCheck";
             this.DE_All_UnCheck.Click += new System.EventHandler(this.DE_All_UnCheck_Click);
             // 
@@ -717,16 +717,25 @@
             this.DE_All_InvCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_InvCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_InvCheck.Name = "DE_All_InvCheck";
-            this.DE_All_InvCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_InvCheck.Size = new System.Drawing.Size(178, 22);
             this.DE_All_InvCheck.Text = "Invert Check";
             this.DE_All_InvCheck.Click += new System.EventHandler(this.DE_All_InvCheck_Click);
+            // 
+            // DE_All_Sel_Checked
+            // 
+            this.DE_All_Sel_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_All_Sel_Checked.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_All_Sel_Checked.Name = "DE_All_Sel_Checked";
+            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(178, 22);
+            this.DE_All_Sel_Checked.Text = "Select Checked";
+            this.DE_All_Sel_Checked.Click += new System.EventHandler(this.DE_All_Sel_Checked_Click);
             // 
             // DE_All_Sel_UnChecked
             // 
             this.DE_All_Sel_UnChecked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Sel_UnChecked.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_All_Sel_UnChecked.Name = "DE_All_Sel_UnChecked";
-            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(178, 22);
             this.DE_All_Sel_UnChecked.Text = "Select UnChecked";
             this.DE_All_Sel_UnChecked.Click += new System.EventHandler(this.DE_All_Sel_UnChecked_Click);
             // 
@@ -774,7 +783,7 @@
             this.DE_Sel_Invert.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_Invert.Name = "DE_Sel_Invert";
             this.DE_Sel_Invert.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.DE_Sel_Invert.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_Invert.Size = new System.Drawing.Size(149, 22);
             this.DE_Sel_Invert.Text = "Invert";
             this.DE_Sel_Invert.Click += new System.EventHandler(this.DE_Sel_Invert_Click);
             // 
@@ -784,7 +793,7 @@
             this.DE_Sel_Check.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.DE_Sel_Check.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_Check.Name = "DE_Sel_Check";
-            this.DE_Sel_Check.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_Check.Size = new System.Drawing.Size(149, 22);
             this.DE_Sel_Check.Text = "Check";
             this.DE_Sel_Check.Click += new System.EventHandler(this.DE_Sel_Check_Click);
             // 
@@ -794,7 +803,7 @@
             this.DE_Sel_UnCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.DE_Sel_UnCheck.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_UnCheck.Name = "DE_Sel_UnCheck";
-            this.DE_Sel_UnCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_UnCheck.Size = new System.Drawing.Size(149, 22);
             this.DE_Sel_UnCheck.Text = "UnCheck";
             this.DE_Sel_UnCheck.Click += new System.EventHandler(this.DE_Sel_UnCheck_Click);
             // 
@@ -804,7 +813,7 @@
             this.DE_Sel_InvCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.DE_Sel_InvCheck.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_InvCheck.Name = "DE_Sel_InvCheck";
-            this.DE_Sel_InvCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_InvCheck.Size = new System.Drawing.Size(149, 22);
             this.DE_Sel_InvCheck.Text = "Invert Check";
             this.DE_Sel_InvCheck.Click += new System.EventHandler(this.DE_Sel_InvCheck_Click);
             // 
@@ -853,7 +862,7 @@
             this.DE_Remove_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_Remove_Checked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.DE_Remove_Checked.Name = "DE_Remove_Checked";
-            this.DE_Remove_Checked.Size = new System.Drawing.Size(180, 22);
+            this.DE_Remove_Checked.Size = new System.Drawing.Size(139, 22);
             this.DE_Remove_Checked.Text = "Checked";
             this.DE_Remove_Checked.Click += new System.EventHandler(this.DE_Remove_Checked_Click);
             // 
@@ -862,9 +871,14 @@
             this.DE_Remove_UnChecked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_Remove_UnChecked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.DE_Remove_UnChecked.Name = "DE_Remove_UnChecked";
-            this.DE_Remove_UnChecked.Size = new System.Drawing.Size(180, 22);
+            this.DE_Remove_UnChecked.Size = new System.Drawing.Size(139, 22);
             this.DE_Remove_UnChecked.Text = "UnChecked";
             this.DE_Remove_UnChecked.Click += new System.EventHandler(this.DE_Remove_UnChecked_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(194, 6);
             // 
             // tableLayoutPanel6
             // 
@@ -1162,20 +1176,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 378);
             this.tableLayoutPanel2.TabIndex = 4;
-            // 
-            // DE_All_Sel_Checked
-            // 
-            this.DE_All_Sel_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.DE_All_Sel_Checked.ForeColor = System.Drawing.Color.Turquoise;
-            this.DE_All_Sel_Checked.Name = "DE_All_Sel_Checked";
-            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(180, 22);
-            this.DE_All_Sel_Checked.Text = "Select Checked";
-            this.DE_All_Sel_Checked.Click += new System.EventHandler(this.DE_All_Sel_Checked_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(194, 6);
             // 
             // MainForm
             // 

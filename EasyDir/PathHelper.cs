@@ -105,7 +105,7 @@ namespace EasyDir
 
                 if (_makeFoders == true)
                 {
-                    ShowFolder(_path);
+                    ShowFolder( _path);
                 }
                 else //Preview Directory
                 {
@@ -170,16 +170,16 @@ namespace EasyDir
             if(String.IsNullOrEmpty(_path) == false )
             {
                 string filePath = null;
-
-                if(Directory.Exists(_path))
+                 
+                if (Directory.Exists(_path))
                 {
-                    filePath = _path;
+                    filePath = Path.GetFullPath(_path);
                 }
                 else
                 {
                     if (File.Exists(_path))
                     {
-                        filePath = "/select, \"" + _path + "\""; ;
+                        filePath = "/select, \"" + Path.GetFullPath(_path) + "\""; ;
                     }
                 }
 
