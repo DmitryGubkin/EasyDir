@@ -30,17 +30,18 @@ namespace EasyDir
         private string DefAssetName = "Asset_Name";
         private bool FocusQNameEditor = false;
         private List<string> DragFilesBuffer = new List<string>();
+
+        ToolStripLabel DE_Info = new ToolStripLabel("Selection : 0 | 0 B");
         
 
 
         public static MainForm GetFormInstance
         {
-            get {
+            get
+            {
                 if (MainFormInstance == null || MainFormInstance.IsDisposed)
                 {
                     MainFormInstance = new MainForm();
-                   //MainFormInstance.ResizeBegin += (s, e) => { MainFormInstance.SuspendLayout(); };
-                   // MainFormInstance.ResizeEnd += (s, e) => { MainFormInstance.ResumeLayout(true); };
                 }
                 return MainFormInstance;
             }
@@ -63,8 +64,10 @@ namespace EasyDir
             PathToolTip.IsBalloon = true;
             PathToolTip.ShowAlways = true;
 
-            AN_ContexMenu.Renderer = MainContexMenu.Renderer = new CustomContextMenuRender();
-            AN_ContexMenu.ShowImageMargin = MainContexMenu.ShowImageMargin = false;
+            DE_ContexMenu.Renderer = AN_ContexMenu.Renderer = MainContexMenu.Renderer = new CustomContextMenuRender();
+            DE_ContexMenu.ShowImageMargin = AN_ContexMenu.ShowImageMargin = MainContexMenu.ShowImageMargin = false;
+            
+
             tb_AssetName.Text = DefAssetName;
 
             tb_In.MouseLeave += new EventHandler(PathTT_Disable);
@@ -120,6 +123,9 @@ namespace EasyDir
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
             DataEditor.AllowUserToResizeRows = false;
 
+            DE_Info.ForeColor = Color.FromArgb(241, 241, 241);
+            DE_Info.Font = new Font("Tahoma", 12f, GraphicsUnit.Pixel);
+            DE_ContexMenu.Items.Add(DE_Info);
 
         }
 
@@ -146,10 +152,11 @@ namespace EasyDir
             DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_ShowFileInExplorer);
             DataEditor.CellValueChanged += new DataGridViewCellEventHandler(DE_CellValueChanged);
             DataEditor.ColumnHeaderMouseClick += new DataGridViewCellMouseEventHandler(SortDataByClick);
-            DataEditor.ColumnHeaderMouseDoubleClick += new DataGridViewCellMouseEventHandler(SortDataByClick); 
+            DataEditor.ColumnHeaderMouseDoubleClick += new DataGridViewCellMouseEventHandler(SortDataByClick);
             DataEditor.DragEnter += new DragEventHandler(DataDragEnter);
             DataEditor.DragDrop += new DragEventHandler(DE_DragAndDrop);
 
+            
 
         }
 
@@ -160,7 +167,7 @@ namespace EasyDir
 
         private void btn_SelIn_Click(object sender, EventArgs e)
         {
-
+            
             tb_In.Text = _dialogHelper.GetFolder(tb_In.Text, "Select Source Folder") ?? tb_In.Text;
 
         }
@@ -376,7 +383,7 @@ namespace EasyDir
 
         private void cbl_Names_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == (Keys.Control | Keys.D))
+            if (e.KeyData == (Keys.Control | Keys.N))
             {
                 e.Handled = e.SuppressKeyPress = true;
                 _assetNameHelper.AddNode(tb_AssetName.Text);
@@ -399,11 +406,11 @@ namespace EasyDir
         }
 
         private void DataDragEnter(object sender, DragEventArgs e)
-        { 
+        {
             DragFilesBuffer.Clear();
             e.Effect = DragDropEffects.None;
             DragFilesBuffer = _pathHelper.GetDragedFiles(sender, e);
-            if (DragFilesBuffer.Count > 0 )
+            if (DragFilesBuffer.Count > 0)
             {
                 e.Effect = DragDropEffects.Copy;
             }
@@ -460,16 +467,16 @@ namespace EasyDir
                 _dataEditorHelper.MultyCheck(e.RowIndex);
                 DataEditor.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
-            
+
         }
 
         private void DE_ShowFileInExplorer(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1 )
+            if (e.ColumnIndex == 1)
             {
                 // MessageBox.Show("");
-                if(e.RowIndex != -1)
-                _dataEditorHelper.ShowFileinExplorer((string)DataEditor.Rows[e.RowIndex].Cells[1].Value);
+                if (e.RowIndex != -1)
+                    _dataEditorHelper.ShowFileinExplorer((string)DataEditor.Rows[e.RowIndex].Cells[1].Value);
             }
             else
             {
@@ -488,15 +495,15 @@ namespace EasyDir
 
         }
 
-        private void SortDataByClick (object sender, DataGridViewCellMouseEventArgs e)
+        private void SortDataByClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             _dataEditorHelper.SortData(e.ColumnIndex);
-           
+
         }
 
-        
 
-        private void CheckBoxCheck (object sender, EventArgs e)
+
+        private void CheckBoxCheck(object sender, EventArgs e)
         {
             _dataEditorHelper.SetCheck(((CheckBox)sender).Checked);
 
@@ -536,7 +543,7 @@ namespace EasyDir
             if (e.Button == MouseButtons.Middle)
             {
                 DragFilesBuffer = _dataEditorHelper.GetSelectedFiles();
-                if(DragFilesBuffer.Count > 0)
+                if (DragFilesBuffer.Count > 0)
                 {
                     this.DoDragDrop(new DataObject(DataFormats.FileDrop, DragFilesBuffer.ToArray()), DragDropEffects.Copy);
 
@@ -550,7 +557,7 @@ namespace EasyDir
 
         private void DataEditor_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Delete || e.KeyData == (Keys.Control | Keys.X))
+            if (e.KeyCode == Keys.Delete || e.KeyData == (Keys.Control | Keys.X))
             {
                 _dataEditorHelper.RemoveSelData();
             }
@@ -563,6 +570,11 @@ namespace EasyDir
             if (e.KeyData == (Keys.Control | Keys.D))
             {
                 _dataEditorHelper.ClearSel();
+            }
+
+            if (e.KeyData == (Keys.Control | Keys.I))
+            {
+                _dataEditorHelper.InvertSel();
             }
         }
 
@@ -581,6 +593,100 @@ namespace EasyDir
             // taskProgressForm.ShowDialog();
 
             // _fileProcessor.ShowMessage();
+        }
+
+        private void DE_ClearDead_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.DeadClean();
+        }
+
+        private void DE_ClearAll_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.ClearData();
+        }
+
+        private void DE_SelRemove_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.RemoveSelData();
+        }
+
+        private void DE_SelectAll_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SelAll();
+        }
+
+        private void DE_SelectNone_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.ClearSel();
+        }
+
+        private void DE_Sel_Invert_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.InvertSel();
+        }
+
+        private void DE_Remove_Checked_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.RemoveByCheck(true);
+        }
+
+        private void DE_Remove_UnChecked_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.RemoveByCheck(false);
+        }
+
+        private void DE_ShowInExp_Click(object sender, EventArgs e)
+        {
+            if (DataEditor.SelectedCells.Count < 1)
+                return;
+
+            if (DataEditor.SelectedCells[0].RowIndex != -1)
+                _dataEditorHelper.ShowFileinExplorer((string)DataEditor.Rows[DataEditor.SelectedCells[0].RowIndex].Cells[1].Value);
+        }
+
+        private void DE_All_Check_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetCheck(true);
+        }
+
+        private void DE_All_UnCheck_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetCheck(false);
+        }
+
+        private void DE_All_InvCheck_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.InvCheck();
+        }
+
+        private void DE_Sel_Check_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetSelCheck(true, false);
+        }
+
+        private void DE_Sel_UnCheck_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetSelCheck(false, false);
+        }
+
+        private void DE_Sel_InvCheck_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SetSelCheck(true, true);
+        }
+
+        private void DE_All_Sel_UnChecked_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SelByCheck(false);
+        }
+
+        private void DE_All_Sel_Checked_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SelByCheck(true);
+        }
+
+        private void DE_ContexMenu_Opening(object sender, CancelEventArgs e)
+        {
+            DE_Info.Text = _dataEditorHelper.GetSelInfo();
         }
     }
     }

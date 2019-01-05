@@ -59,13 +59,20 @@ namespace EasyDir
         public void DeadClean()
         {
             int DeadCount = 0;
+            List<Asset> _assets = new List<Asset>();
+
             for (int i=0; i<_fileSearcher.Assets.Count; i++)
             {
                 if(!(System.IO.File.Exists( _fileSearcher.Assets[i].FullPath)))
                 {
-                    _fileSearcher.Assets.Remove(_fileSearcher.Assets[i]);
-                    DeadCount++;
+                    _assets.Add(_fileSearcher.Assets[i]);
                 }
+            }
+
+            foreach(var asset in _assets)
+            {
+                _fileSearcher.Assets.Remove(asset);
+                DeadCount++;
             }
 
             dataGridView.Refresh();
@@ -74,6 +81,7 @@ namespace EasyDir
             if (DeadCount > 0)
                 MessageBox.Show(("Dead Assets Removed: " + DeadCount.ToString()),
                     "Dead Assets Cleaner",MessageBoxButtons.OK, MessageBoxIcon.Information);
+            GC.Collect();
         }
 
         public void ClearData()
@@ -193,14 +201,124 @@ namespace EasyDir
         {
             if (dataGridView.Rows.Count < 1 || dataGridView.SelectedCells.Count <0)
                 return;
-          //  HashSet<int> _rows = new HashSet<int>();
+          
             foreach(DataGridViewCell item in dataGridView.SelectedCells)
             {
                
-                    dataGridView.Rows[item.RowIndex].Selected = true;
+              dataGridView.Rows[item.RowIndex].Selected = true;
                 
             }
             
+        }
+
+        public void InvertSel()
+        {
+            SelectRow();
+            HashSet<int> _rows = new HashSet<int>();
+            foreach (DataGridViewRow item in dataGridView.Rows)
+            {
+                if (item.Selected == false)
+                {
+                    _rows.Add(item.Index);
+                }
+            }
+            ClearSel();
+            foreach (int index in _rows)
+            {
+                dataGridView.Rows[index].Selected = true;
+            }
+        }
+
+        public void RemoveByCheck(bool _check)
+        {
+            List<Asset> _assets = new List<Asset>();
+
+            for (int i =0; i< _fileSearcher.Assets.Count; i++)
+            {
+                if(_fileSearcher.Assets[i].Checked == _check)
+                {
+                    _assets.Add(_fileSearcher.Assets[i]);
+                }
+            }
+
+            foreach(var asset in _assets)
+            {
+                _fileSearcher.Assets.Remove(asset);
+            }
+
+            dataGridView.Refresh();
+            _fileSearcher.UpdateCheckInfo();
+
+            GC.Collect();
+        }
+
+        public void SetSelCheck(bool _check, bool _invert)
+        {
+            if (dataGridView.SelectedCells.Count < 1)
+                return;
+
+            HashSet<int> _rows = new HashSet<int>();
+            foreach(DataGridViewCell cell in dataGridView.SelectedCells)
+            {
+                _rows.Add(cell.RowIndex);
+            }
+            
+            foreach (var row in _rows)
+            {
+                if(_invert)
+                {
+                    _fileSearcher.Assets[row].Checked = !_fileSearcher.Assets[row].Checked;
+                }
+                else
+                {
+                    _fileSearcher.Assets[row].Checked = _check;
+                }
+            }
+
+            dataGridView.Refresh();
+            _fileSearcher.UpdateCheckInfo();
+
+            GC.Collect();
+        }
+
+        public void SelByCheck(bool _check)
+        {
+            if (dataGridView.Rows.Count < 1)
+                return;
+
+            ClearSel();
+                
+            for(int i=0; i<_fileSearcher.Assets.Count; i++)
+            {
+                if(_fileSearcher.Assets[i].Checked == _check)
+                {
+                    dataGridView.Rows[i].Selected = true;
+                }
+            }
+        }
+
+        public string GetSelInfo()
+        {
+            string result = "Selection : 0 | 0 B";
+            if (dataGridView.SelectedCells.Count < 1 || dataGridView.Rows.Count<1)
+                return result;
+
+            double size = 0;
+            HashSet<int> rows = new HashSet<int>();
+            foreach (DataGridViewCell cell in dataGridView.SelectedCells)
+            {
+                if (rows.Add(cell.RowIndex))
+                {
+                    size += _pathHelper.GetFileSize(_fileSearcher.Assets[cell.RowIndex].FullPath);
+                }
+            }
+
+            if( size >0 && rows.Count>0)
+            result = string.Format("Selection : {0} | {1}", rows.Count, _pathHelper.GetFileSizeFormated(size));
+
+            rows.Clear();
+
+            return result;
         }
 
         public void SortData( int colIndex)

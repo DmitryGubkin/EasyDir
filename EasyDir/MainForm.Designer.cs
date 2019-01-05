@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tb_Out = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SelOut = new System.Windows.Forms.Button();
@@ -53,8 +53,8 @@
             this.btn_AddName = new System.Windows.Forms.Button();
             this.cbl_Names = new System.Windows.Forms.CheckedListBox();
             this.AN_ContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.AN_AddNode = new System.Windows.Forms.ToolStripMenuItem();
             this.AN_QuickNameEditor = new System.Windows.Forms.ToolStripTextBox();
+            this.AN_AddNode = new System.Windows.Forms.ToolStripMenuItem();
             this.AN_QNESeparator = new System.Windows.Forms.ToolStripSeparator();
             this.AN_CheckAll = new System.Windows.Forms.ToolStripMenuItem();
             this.AN_UnCheckAll = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +65,28 @@
             this.AN_ClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.DataEditor = new System.Windows.Forms.DataGridView();
+            this.DE_ContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.DE_ShowInExp = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_All = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_All_Check = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_All_UnCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_All_InvCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_All_Sel_UnChecked = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.DE_SelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_SelectNone = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Selection = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Sel_Invert = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Sel_Check = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Sel_UnCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Sel_InvCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.DE_SelRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_ClearDead = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_ClearAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Remove = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Remove_Checked = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Remove_UnChecked = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_DE_CheckAll = new System.Windows.Forms.Button();
             this.btn_DE_UNCheckAll = new System.Windows.Forms.Button();
@@ -75,15 +97,17 @@
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.cb_SubFolders = new System.Windows.Forms.CheckBox();
-            this.btn_ProcessFiles = new System.Windows.Forms.Button();
+            this.btn_CopyFiles = new System.Windows.Forms.Button();
             this.cb_AllowOverWrite = new System.Windows.Forms.CheckBox();
             this.cb_FoldersOnly = new System.Windows.Forms.CheckBox();
             this.MainContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolOpenSourceFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolOpenOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolPreviewPath = new System.Windows.Forms.ToolStripMenuItem();
+            this.MCM_OpenSourceFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.MCM_OpenOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.MCM_StripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MCM_PreviewPath = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.DE_All_Sel_Checked = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tp_in.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -91,6 +115,7 @@
             this.AN_ContexMenu.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataEditor)).BeginInit();
+            this.DE_ContexMenu.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -461,8 +486,8 @@
             this.AN_ContexMenu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AN_ContexMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.AN_ContexMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AN_AddNode,
             this.AN_QuickNameEditor,
+            this.AN_AddNode,
             this.AN_QNESeparator,
             this.AN_CheckAll,
             this.AN_UnCheckAll,
@@ -480,15 +505,6 @@
             this.AN_ContexMenu.Opened += new System.EventHandler(this.AN_ContexMenu_Opened);
             this.AN_ContexMenu.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.AN_ContexMenu_PreviewKeyDown);
             // 
-            // AN_AddNode
-            // 
-            this.AN_AddNode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.AN_AddNode.Name = "AN_AddNode";
-            this.AN_AddNode.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.AN_AddNode.Size = new System.Drawing.Size(199, 22);
-            this.AN_AddNode.Text = "Add Name Pattern";
-            this.AN_AddNode.Click += new System.EventHandler(this.AN_AddNode_Click);
-            // 
             // AN_QuickNameEditor
             // 
             this.AN_QuickNameEditor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
@@ -502,6 +518,15 @@
             this.AN_QuickNameEditor.ToolTipText = "Quick Name Pattern Edit\r\nEnter - Rename\r\nSpace - Rename and Close\r\n";
             this.AN_QuickNameEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AN_QuickNameEditor_KeyDown);
             this.AN_QuickNameEditor.Validated += new System.EventHandler(this.toolStripTextBox1_Validated);
+            // 
+            // AN_AddNode
+            // 
+            this.AN_AddNode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.AN_AddNode.Name = "AN_AddNode";
+            this.AN_AddNode.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.AN_AddNode.Size = new System.Drawing.Size(199, 22);
+            this.AN_AddNode.Text = "Add Name Pattern";
+            this.AN_AddNode.Click += new System.EventHandler(this.AN_AddNode_Click);
             // 
             // AN_QNESeparator
             // 
@@ -597,23 +622,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataEditor.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(58)))));
             this.DataEditor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataEditor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataEditor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DataEditor.ContextMenuStrip = this.DE_ContexMenu;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataEditor.DefaultCellStyle = dataGridViewCellStyle4;
             this.DataEditor.Location = new System.Drawing.Point(5, 44);
             this.DataEditor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 3);
             this.DataEditor.Name = "DataEditor";
@@ -621,6 +647,224 @@
             this.DataEditor.TabIndex = 1;
             this.DataEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataEditor_KeyDown);
             this.DataEditor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DataEditor_MouseDown);
+            // 
+            // DE_ContexMenu
+            // 
+            this.DE_ContexMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_ContexMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DE_ContexMenu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DE_ContexMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.DE_ContexMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DE_ShowInExp,
+            this.DE_All,
+            this.toolStripSeparator4,
+            this.DE_SelectAll,
+            this.DE_SelectNone,
+            this.DE_Selection,
+            this.toolStripSeparator3,
+            this.DE_SelRemove,
+            this.DE_ClearDead,
+            this.DE_ClearAll,
+            this.DE_Remove,
+            this.toolStripSeparator1});
+            this.DE_ContexMenu.Name = "ImgContexMenu";
+            this.DE_ContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.DE_ContexMenu.ShowImageMargin = false;
+            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 220);
+            this.DE_ContexMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DE_ContexMenu_Opening);
+            // 
+            // DE_ShowInExp
+            // 
+            this.DE_ShowInExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_ShowInExp.Name = "DE_ShowInExp";
+            this.DE_ShowInExp.Size = new System.Drawing.Size(197, 22);
+            this.DE_ShowInExp.Text = "Show in Explorer";
+            this.DE_ShowInExp.Click += new System.EventHandler(this.DE_ShowInExp_Click);
+            // 
+            // DE_All
+            // 
+            this.DE_All.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DE_All_Check,
+            this.DE_All_UnCheck,
+            this.DE_All_InvCheck,
+            this.DE_All_Sel_Checked,
+            this.DE_All_Sel_UnChecked});
+            this.DE_All.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_All.Name = "DE_All";
+            this.DE_All.Size = new System.Drawing.Size(197, 22);
+            this.DE_All.Text = "All";
+            // 
+            // DE_All_Check
+            // 
+            this.DE_All_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_All_Check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_All_Check.Name = "DE_All_Check";
+            this.DE_All_Check.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Check.Text = "Check";
+            this.DE_All_Check.Click += new System.EventHandler(this.DE_All_Check_Click);
+            // 
+            // DE_All_UnCheck
+            // 
+            this.DE_All_UnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_All_UnCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_All_UnCheck.Name = "DE_All_UnCheck";
+            this.DE_All_UnCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_UnCheck.Text = "UnCheck";
+            this.DE_All_UnCheck.Click += new System.EventHandler(this.DE_All_UnCheck_Click);
+            // 
+            // DE_All_InvCheck
+            // 
+            this.DE_All_InvCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_All_InvCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_All_InvCheck.Name = "DE_All_InvCheck";
+            this.DE_All_InvCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_InvCheck.Text = "Invert Check";
+            this.DE_All_InvCheck.Click += new System.EventHandler(this.DE_All_InvCheck_Click);
+            // 
+            // DE_All_Sel_UnChecked
+            // 
+            this.DE_All_Sel_UnChecked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_All_Sel_UnChecked.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_All_Sel_UnChecked.Name = "DE_All_Sel_UnChecked";
+            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Sel_UnChecked.Text = "Select UnChecked";
+            this.DE_All_Sel_UnChecked.Click += new System.EventHandler(this.DE_All_Sel_UnChecked_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(194, 6);
+            // 
+            // DE_SelectAll
+            // 
+            this.DE_SelectAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DE_SelectAll.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_SelectAll.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.DE_SelectAll.Name = "DE_SelectAll";
+            this.DE_SelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.DE_SelectAll.Size = new System.Drawing.Size(197, 22);
+            this.DE_SelectAll.Text = "Select All";
+            this.DE_SelectAll.Click += new System.EventHandler(this.DE_SelectAll_Click);
+            // 
+            // DE_SelectNone
+            // 
+            this.DE_SelectNone.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DE_SelectNone.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_SelectNone.Name = "DE_SelectNone";
+            this.DE_SelectNone.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.DE_SelectNone.Size = new System.Drawing.Size(197, 22);
+            this.DE_SelectNone.Text = "Select None";
+            this.DE_SelectNone.Click += new System.EventHandler(this.DE_SelectNone_Click);
+            // 
+            // DE_Selection
+            // 
+            this.DE_Selection.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DE_Sel_Invert,
+            this.DE_Sel_Check,
+            this.DE_Sel_UnCheck,
+            this.DE_Sel_InvCheck});
+            this.DE_Selection.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Selection.Name = "DE_Selection";
+            this.DE_Selection.Size = new System.Drawing.Size(197, 22);
+            this.DE_Selection.Text = "Selection";
+            // 
+            // DE_Sel_Invert
+            // 
+            this.DE_Sel_Invert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Sel_Invert.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Sel_Invert.Name = "DE_Sel_Invert";
+            this.DE_Sel_Invert.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.DE_Sel_Invert.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_Invert.Text = "Invert";
+            this.DE_Sel_Invert.Click += new System.EventHandler(this.DE_Sel_Invert_Click);
+            // 
+            // DE_Sel_Check
+            // 
+            this.DE_Sel_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Sel_Check.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DE_Sel_Check.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Sel_Check.Name = "DE_Sel_Check";
+            this.DE_Sel_Check.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_Check.Text = "Check";
+            this.DE_Sel_Check.Click += new System.EventHandler(this.DE_Sel_Check_Click);
+            // 
+            // DE_Sel_UnCheck
+            // 
+            this.DE_Sel_UnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Sel_UnCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DE_Sel_UnCheck.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Sel_UnCheck.Name = "DE_Sel_UnCheck";
+            this.DE_Sel_UnCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_UnCheck.Text = "UnCheck";
+            this.DE_Sel_UnCheck.Click += new System.EventHandler(this.DE_Sel_UnCheck_Click);
+            // 
+            // DE_Sel_InvCheck
+            // 
+            this.DE_Sel_InvCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Sel_InvCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DE_Sel_InvCheck.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Sel_InvCheck.Name = "DE_Sel_InvCheck";
+            this.DE_Sel_InvCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_Sel_InvCheck.Text = "Invert Check";
+            this.DE_Sel_InvCheck.Click += new System.EventHandler(this.DE_Sel_InvCheck_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(194, 6);
+            // 
+            // DE_SelRemove
+            // 
+            this.DE_SelRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.DE_SelRemove.Name = "DE_SelRemove";
+            this.DE_SelRemove.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.DE_SelRemove.Size = new System.Drawing.Size(197, 22);
+            this.DE_SelRemove.Text = "Remove Selection";
+            this.DE_SelRemove.Click += new System.EventHandler(this.DE_SelRemove_Click);
+            // 
+            // DE_ClearDead
+            // 
+            this.DE_ClearDead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.DE_ClearDead.Name = "DE_ClearDead";
+            this.DE_ClearDead.Size = new System.Drawing.Size(197, 22);
+            this.DE_ClearDead.Text = "Clear Dead";
+            this.DE_ClearDead.Click += new System.EventHandler(this.DE_ClearDead_Click);
+            // 
+            // DE_ClearAll
+            // 
+            this.DE_ClearAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.DE_ClearAll.Name = "DE_ClearAll";
+            this.DE_ClearAll.Size = new System.Drawing.Size(197, 22);
+            this.DE_ClearAll.Text = "Clear All";
+            this.DE_ClearAll.Click += new System.EventHandler(this.DE_ClearAll_Click);
+            // 
+            // DE_Remove
+            // 
+            this.DE_Remove.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DE_Remove_Checked,
+            this.DE_Remove_UnChecked});
+            this.DE_Remove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.DE_Remove.Name = "DE_Remove";
+            this.DE_Remove.Size = new System.Drawing.Size(197, 22);
+            this.DE_Remove.Text = "Remove";
+            // 
+            // DE_Remove_Checked
+            // 
+            this.DE_Remove_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Remove_Checked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.DE_Remove_Checked.Name = "DE_Remove_Checked";
+            this.DE_Remove_Checked.Size = new System.Drawing.Size(180, 22);
+            this.DE_Remove_Checked.Text = "Checked";
+            this.DE_Remove_Checked.Click += new System.EventHandler(this.DE_Remove_Checked_Click);
+            // 
+            // DE_Remove_UnChecked
+            // 
+            this.DE_Remove_UnChecked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Remove_UnChecked.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.DE_Remove_UnChecked.Name = "DE_Remove_UnChecked";
+            this.DE_Remove_UnChecked.Size = new System.Drawing.Size(180, 22);
+            this.DE_Remove_UnChecked.Text = "UnChecked";
+            this.DE_Remove_UnChecked.Click += new System.EventHandler(this.DE_Remove_UnChecked_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -777,7 +1021,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.cb_SubFolders, 0, 1);
-            this.tableLayoutPanel8.Controls.Add(this.btn_ProcessFiles, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_CopyFiles, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_AllowOverWrite, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_FoldersOnly, 0, 2);
             this.tableLayoutPanel8.Location = new System.Drawing.Point(291, 0);
@@ -805,23 +1049,23 @@
             this.cb_SubFolders.Text = "Sub Folders";
             this.cb_SubFolders.UseVisualStyleBackColor = true;
             // 
-            // btn_ProcessFiles
+            // btn_CopyFiles
             // 
-            this.btn_ProcessFiles.AutoSize = true;
-            this.btn_ProcessFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.btn_ProcessFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_ProcessFiles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_ProcessFiles.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.btn_ProcessFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_ProcessFiles.Location = new System.Drawing.Point(104, 0);
-            this.btn_ProcessFiles.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_ProcessFiles.Name = "btn_ProcessFiles";
-            this.tableLayoutPanel8.SetRowSpan(this.btn_ProcessFiles, 3);
-            this.btn_ProcessFiles.Size = new System.Drawing.Size(105, 63);
-            this.btn_ProcessFiles.TabIndex = 15;
-            this.btn_ProcessFiles.Text = "Process Files";
-            this.btn_ProcessFiles.UseVisualStyleBackColor = false;
-            this.btn_ProcessFiles.Click += new System.EventHandler(this.btn_CopyFiles_Click);
+            this.btn_CopyFiles.AutoSize = true;
+            this.btn_CopyFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.btn_CopyFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_CopyFiles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_CopyFiles.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btn_CopyFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_CopyFiles.Location = new System.Drawing.Point(104, 0);
+            this.btn_CopyFiles.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_CopyFiles.Name = "btn_CopyFiles";
+            this.tableLayoutPanel8.SetRowSpan(this.btn_CopyFiles, 3);
+            this.btn_CopyFiles.Size = new System.Drawing.Size(105, 63);
+            this.btn_CopyFiles.TabIndex = 15;
+            this.btn_CopyFiles.Text = "Copy Files";
+            this.btn_CopyFiles.UseVisualStyleBackColor = false;
+            this.btn_CopyFiles.Click += new System.EventHandler(this.btn_CopyFiles_Click);
             // 
             // cb_AllowOverWrite
             // 
@@ -860,47 +1104,47 @@
             this.MainContexMenu.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MainContexMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.MainContexMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolOpenSourceFolder,
-            this.toolOpenOut,
-            this.toolStripSeparator1,
-            this.toolPreviewPath});
+            this.MCM_OpenSourceFolder,
+            this.MCM_OpenOut,
+            this.MCM_StripSeparator1,
+            this.MCM_PreviewPath});
             this.MainContexMenu.Name = "ImgContexMenu";
             this.MainContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.MainContexMenu.Size = new System.Drawing.Size(227, 76);
             // 
-            // toolOpenSourceFolder
+            // MCM_OpenSourceFolder
             // 
-            this.toolOpenSourceFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.toolOpenSourceFolder.ForeColor = System.Drawing.Color.Turquoise;
-            this.toolOpenSourceFolder.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.toolOpenSourceFolder.Name = "toolOpenSourceFolder";
-            this.toolOpenSourceFolder.ShowShortcutKeys = false;
-            this.toolOpenSourceFolder.Size = new System.Drawing.Size(226, 22);
-            this.toolOpenSourceFolder.Text = "Show Source In Explorer ...";
-            this.toolOpenSourceFolder.Click += new System.EventHandler(this.toolOpenSourceFolder_Click);
+            this.MCM_OpenSourceFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MCM_OpenSourceFolder.ForeColor = System.Drawing.Color.Turquoise;
+            this.MCM_OpenSourceFolder.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.MCM_OpenSourceFolder.Name = "MCM_OpenSourceFolder";
+            this.MCM_OpenSourceFolder.ShowShortcutKeys = false;
+            this.MCM_OpenSourceFolder.Size = new System.Drawing.Size(226, 22);
+            this.MCM_OpenSourceFolder.Text = "Show Source In Explorer ...";
+            this.MCM_OpenSourceFolder.Click += new System.EventHandler(this.toolOpenSourceFolder_Click);
             // 
-            // toolOpenOut
+            // MCM_OpenOut
             // 
-            this.toolOpenOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolOpenOut.ForeColor = System.Drawing.Color.Turquoise;
-            this.toolOpenOut.Name = "toolOpenOut";
-            this.toolOpenOut.ShowShortcutKeys = false;
-            this.toolOpenOut.Size = new System.Drawing.Size(226, 22);
-            this.toolOpenOut.Text = "Show Out In Explorer ...";
-            this.toolOpenOut.Click += new System.EventHandler(this.toolOpenOut_Click);
+            this.MCM_OpenOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MCM_OpenOut.ForeColor = System.Drawing.Color.Turquoise;
+            this.MCM_OpenOut.Name = "MCM_OpenOut";
+            this.MCM_OpenOut.ShowShortcutKeys = false;
+            this.MCM_OpenOut.Size = new System.Drawing.Size(226, 22);
+            this.MCM_OpenOut.Text = "Show Out In Explorer ...";
+            this.MCM_OpenOut.Click += new System.EventHandler(this.toolOpenOut_Click);
             // 
-            // toolStripSeparator1
+            // MCM_StripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(223, 6);
+            this.MCM_StripSeparator1.Name = "MCM_StripSeparator1";
+            this.MCM_StripSeparator1.Size = new System.Drawing.Size(223, 6);
             // 
-            // toolPreviewPath
+            // MCM_PreviewPath
             // 
-            this.toolPreviewPath.ForeColor = System.Drawing.Color.Turquoise;
-            this.toolPreviewPath.Name = "toolPreviewPath";
-            this.toolPreviewPath.Size = new System.Drawing.Size(226, 22);
-            this.toolPreviewPath.Text = "Preview Final Path";
-            this.toolPreviewPath.Click += new System.EventHandler(this.toolPreviewPath_Click);
+            this.MCM_PreviewPath.ForeColor = System.Drawing.Color.Turquoise;
+            this.MCM_PreviewPath.Name = "MCM_PreviewPath";
+            this.MCM_PreviewPath.Size = new System.Drawing.Size(226, 22);
+            this.MCM_PreviewPath.Text = "Preview Final Path";
+            this.MCM_PreviewPath.Click += new System.EventHandler(this.toolPreviewPath_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -918,6 +1162,20 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 378);
             this.tableLayoutPanel2.TabIndex = 4;
+            // 
+            // DE_All_Sel_Checked
+            // 
+            this.DE_All_Sel_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_All_Sel_Checked.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_All_Sel_Checked.Name = "DE_All_Sel_Checked";
+            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Sel_Checked.Text = "Select Checked";
+            this.DE_All_Sel_Checked.Click += new System.EventHandler(this.DE_All_Sel_Checked_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(194, 6);
             // 
             // MainForm
             // 
@@ -951,6 +1209,7 @@
             this.AN_ContexMenu.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataEditor)).EndInit();
+            this.DE_ContexMenu.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -979,11 +1238,11 @@
         private System.Windows.Forms.Button btn_RemoveName;
         private System.Windows.Forms.TextBox tb_TopRoot;
         private System.Windows.Forms.ContextMenuStrip MainContexMenu;
-        private System.Windows.Forms.ToolStripMenuItem toolOpenSourceFolder;
-        private System.Windows.Forms.ToolStripMenuItem toolOpenOut;
-        private System.Windows.Forms.ToolStripMenuItem toolPreviewPath;
+        private System.Windows.Forms.ToolStripMenuItem MCM_OpenSourceFolder;
+        private System.Windows.Forms.ToolStripMenuItem MCM_OpenOut;
+        private System.Windows.Forms.ToolStripMenuItem MCM_PreviewPath;
         private System.Windows.Forms.Button btn_SearchAssets;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator MCM_StripSeparator1;
         private System.Windows.Forms.ContextMenuStrip AN_ContexMenu;
         private System.Windows.Forms.ToolStripMenuItem AN_CheckAll;
         private System.Windows.Forms.ToolStripMenuItem AN_UnCheckAll;
@@ -1011,11 +1270,35 @@
         private System.Windows.Forms.Button btn_DE_CleaAll;
         private System.Windows.Forms.DataGridView DataEditor;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-        private System.Windows.Forms.Button btn_ProcessFiles;
+        private System.Windows.Forms.Button btn_CopyFiles;
         private System.Windows.Forms.CheckBox cb_AllowOverWrite;
         private System.Windows.Forms.CheckBox cb_SubFolders;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.CheckBox cb_FoldersOnly;
+        private System.Windows.Forms.ContextMenuStrip DE_ContexMenu;
+        private System.Windows.Forms.ToolStripMenuItem DE_SelectAll;
+        private System.Windows.Forms.ToolStripMenuItem DE_SelectNone;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem DE_Selection;
+        private System.Windows.Forms.ToolStripMenuItem DE_SelRemove;
+        private System.Windows.Forms.ToolStripMenuItem DE_ClearDead;
+        private System.Windows.Forms.ToolStripMenuItem DE_ClearAll;
+        private System.Windows.Forms.ToolStripMenuItem DE_ShowInExp;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem DE_Sel_Check;
+        private System.Windows.Forms.ToolStripMenuItem DE_Sel_UnCheck;
+        private System.Windows.Forms.ToolStripMenuItem DE_Sel_InvCheck;
+        private System.Windows.Forms.ToolStripMenuItem DE_Remove;
+        private System.Windows.Forms.ToolStripMenuItem DE_Remove_Checked;
+        private System.Windows.Forms.ToolStripMenuItem DE_Remove_UnChecked;
+        private System.Windows.Forms.ToolStripMenuItem DE_All;
+        private System.Windows.Forms.ToolStripMenuItem DE_All_Check;
+        private System.Windows.Forms.ToolStripMenuItem DE_All_UnCheck;
+        private System.Windows.Forms.ToolStripMenuItem DE_All_InvCheck;
+        private System.Windows.Forms.ToolStripMenuItem DE_Sel_Invert;
+        private System.Windows.Forms.ToolStripMenuItem DE_All_Sel_UnChecked;
+        private System.Windows.Forms.ToolStripMenuItem DE_All_Sel_Checked;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
