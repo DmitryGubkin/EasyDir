@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.IO;
 using System.Windows.Forms;
 
@@ -13,6 +14,9 @@ namespace EasyDir
         private FileSearcher _fileSearcher = FileSearcher.GetInstance;
         private static FileProcessor _fileProcessor = new FileProcessor();
         private PathHelper _pathHelper = PathHelper.GetInstance;
+        
+        CancellationTokenSource cancelTokenSource;
+        CancellationToken token;
 
         private string _outPath;
         private string _topRoot;
@@ -26,7 +30,9 @@ namespace EasyDir
         public bool SubRoots { get => _subRoots; set => _subRoots = value; }
         public bool FoldersOnly { get => _foldersOnly; set => _foldersOnly = value; }
 
-        private FileProcessor() { }
+        private FileProcessor()
+        {
+        }
 
         public static FileProcessor GetFileProcessor()
         {
@@ -35,13 +41,20 @@ namespace EasyDir
 
         public void CopyFiles()
         {
-            if (string.IsNullOrEmpty(_outPath) == true || Directory.Exists(_outPath) == false)
+            if (string.IsNullOrEmpty(_outPath) == true || Directory.Exists(_outPath) == false || _fileSearcher.Assets.Count<1)
                 return;
 
             var assets = _fileSearcher.Assets.Where(x => x.Checked == true && File.Exists(x.FullPath)).Select(x => x).ToList();
+
            // System.Windows.Forms.MessageBox.Show(assets.Count.ToString());
             foreach (var asset in assets)
             {
+                if( token != null && token.IsCancellationRequested)
+                {
+                    MessageBox.Show("File Processor Aborted");
+                    return;
+                }
+                
                 if (_subRoots == false )
                 {
                     var _newPath = _outPath + @"\" + Path.GetFileName(asset.FullPath);
@@ -106,10 +119,25 @@ namespace EasyDir
                     }        
 
                 }
+                
             }
 
             
             _pathHelper.ShowFolder(_outPath);
+        }
+
+        public async void CopyFilesAsync()
+        {
+            cancelTokenSource = new CancellationTokenSource();
+            token = cancelTokenSource.Token;
+            await Task.Run(() => CopyFiles());
+
+        }
+
+        public void AbortCopy()
+        {
+            if(cancelTokenSource != null && token != null)
+            cancelTokenSource.Cancel();
         }
     }
 }

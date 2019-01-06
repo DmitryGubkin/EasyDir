@@ -51,7 +51,8 @@ namespace EasyDir
                             _topRoot = _topRoot.Substring(Path.GetPathRoot(_topRoot).Length);
 
                         // MessageBox.Show(_topRoot);
-                        if (_path.Length > _topRoot.Length)
+
+                        if (_path.Length >= _topRoot.Length)
                         {
                             if ((_path.Substring(0, (_topRoot.Length))) == _topRoot && _topRoot.Contains(_pathDivs[0]))
                             {

@@ -109,6 +109,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processing ...";
+            this.Activated += new System.EventHandler(this.TaskProgressForm_Activated);
             this.Load += new System.EventHandler(this.TaskProgressForm_Load);
             this.tl_MainPanel.ResumeLayout(false);
             this.tl_MainPanel.PerformLayout();
@@ -119,8 +120,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tl_MainPanel;
-        private System.Windows.Forms.ProgressBar pb_Staticstic;
-        private System.Windows.Forms.Label lb_CurrStage;
         private System.Windows.Forms.Button btn_Abort;
+        public System.Windows.Forms.ProgressBar pb_Staticstic;
+        public System.Windows.Forms.Label lb_CurrStage;
     }
 }

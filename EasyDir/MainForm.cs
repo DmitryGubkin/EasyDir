@@ -593,11 +593,7 @@ namespace EasyDir
             }
 
             _fileProcessor.CopyFiles();
-
-            //TaskProgressForm taskProgressForm = new TaskProgressForm();
-            // taskProgressForm.ShowDialog();
-
-            // _fileProcessor.ShowMessage();
+            
         }
 
         private void DE_ClearDead_Click(object sender, EventArgs e)
@@ -712,6 +708,15 @@ namespace EasyDir
         private void btn_UnCheckByNames_Click(object sender, EventArgs e)
         {
             _dataEditorHelper.CheckByNames(_assetNameHelper.GetNames(), (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode), false);
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            //if (e.KeyData == (Keys.Alt | Keys.F1))
+            //{
+            //    _fileProcessor.AbortCopy();
+            //}
         }
     }
     }
