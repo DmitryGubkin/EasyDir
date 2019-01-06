@@ -321,6 +321,80 @@ namespace EasyDir
             return result;
         }
 
+        public void FocusSelection()
+        {
+            if (dataGridView.SelectedCells.Count < 1 || dataGridView.Rows.Count < 1)
+                return;
+
+            SelectRow();
+
+            int count = dataGridView.SelectedRows.Count;
+
+            if (count < 1)
+                return;
+
+            if(count == dataGridView.Rows.Count)
+            {
+                dataGridView.FirstDisplayedScrollingRowIndex = 0;
+                return;
+            }
+
+            int index = 0;
+            var rows = dataGridView.SelectedRows;
+            foreach (DataGridViewRow row in rows)
+            {
+                var asset = _fileSearcher.Assets[row.Index];
+                _fileSearcher.Assets[row.Index] = _fileSearcher.Assets[index];
+                _fileSearcher.Assets[index] = asset;
+                index++;
+            }
+
+            ClearSel();
+
+            for (int i =0; i<count; i++)
+            {
+                dataGridView.Rows[i].Selected = true;
+            }
+
+            dataGridView.FirstDisplayedScrollingRowIndex = 0;
+            GC.Collect();
+
+        }
+
+        public void SelectByNames(List<string> _namePatters, NameMatchModes _matchMode)
+        {
+            if (dataGridView.Rows.Count < 1 || _matchMode == NameMatchModes.None || _namePatters.Count < 1)
+                return;
+            ClearSel();
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                foreach (var pattern in _namePatters)
+                {
+                    if (_matchMode == NameMatchModes.MatchName)
+                    {
+                        if (_fileSearcher.Assets[row.Index].FileName.Contains(pattern))
+                            row.Selected = true;
+                    }
+                    else
+                    {
+                        if (_matchMode == NameMatchModes.AbsoluteMatch)
+                        {
+                            if (_fileSearcher.Assets[row.Index].FileName == pattern)
+                                row.Selected = true;
+                        }
+                    }
+                }
+            }
+
+            FocusSelection();
+        }
+
+        public void CheckByNames(List<string> _namePatters, NameMatchModes _matchMode, bool _check)
+        {
+            SelectByNames(_namePatters, _matchMode);
+            SetSelCheck(_check, false);
+        }
+
         public void SortData( int colIndex)
         {
             var list = _fileSearcher.Assets.ToList();

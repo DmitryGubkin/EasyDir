@@ -19,7 +19,7 @@ namespace EasyDir
     [Flags]
     public enum ComboBoxTypes
     {
-        Seartch,
+        Search,
         NameMatch
     }
 }

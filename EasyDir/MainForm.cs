@@ -106,7 +106,7 @@ namespace EasyDir
 
 
             //Asset Manager Init
-            _comboBoxHelper.FillComboBox(cmb_SearchMode, ComboBoxTypes.Seartch);
+            _comboBoxHelper.FillComboBox(cmb_SearchMode, ComboBoxTypes.Search);
             _comboBoxHelper.FillComboBox(cmb_NameMatchMode, ComboBoxTypes.NameMatch);
 
             //data editor init
@@ -576,6 +576,11 @@ namespace EasyDir
             {
                 _dataEditorHelper.InvertSel();
             }
+
+            if (e.KeyData == (Keys.Alt | Keys.F))
+            {
+                _dataEditorHelper.FocusSelection();
+            }
         }
 
         private void btn_CopyFiles_Click(object sender, EventArgs e)
@@ -687,6 +692,26 @@ namespace EasyDir
         private void DE_ContexMenu_Opening(object sender, CancelEventArgs e)
         {
             DE_Info.Text = _dataEditorHelper.GetSelInfo();
+        }
+
+        private void DE_Sel_Focus_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.FocusSelection();
+        }
+
+        private void btn_SelByNames_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SelectByNames(_assetNameHelper.GetNames(), (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode));
+        }
+
+        private void btn_CheckByNames_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.CheckByNames(_assetNameHelper.GetNames(), (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode),true);
+        }
+
+        private void btn_UnCheckByNames_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.CheckByNames(_assetNameHelper.GetNames(), (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode), false);
         }
     }
     }

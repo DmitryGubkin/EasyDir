@@ -24,7 +24,7 @@ namespace EasyDir
 
                 object[] _Items = null;
 
-                if(_type == ComboBoxTypes.Seartch)
+                if(_type == ComboBoxTypes.Search)
                 {
                     _Items = SearchTypesItmes;
                 }
