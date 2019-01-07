@@ -17,7 +17,9 @@ namespace EasyDir
         private static DataEditorHelper dataEditorHelper;
         private DataGridView dataGridView;
         private PathHelper _pathHelper = PathHelper.GetInstance;
-        
+        private SearchForm _searchForm = SearchForm.GetFormInstance;
+        private char[] _SearchSeparators = { ';', '.', '@' };
+
         private DataEditorHelper() { }
 
         public static DataEditorHelper Getinstance ()
@@ -339,24 +341,32 @@ namespace EasyDir
                 return;
             }
 
-            int index = 0;
-            var rows = dataGridView.SelectedRows;
-            foreach (DataGridViewRow row in rows)
+            
+            
+            var rowsIndxs = new List<int>();
+
+            foreach(DataGridViewRow row in dataGridView.SelectedRows)
             {
-                var asset = _fileSearcher.Assets[row.Index];
-                _fileSearcher.Assets[row.Index] = _fileSearcher.Assets[index];
-                _fileSearcher.Assets[index] = asset;
-                index++;
+                rowsIndxs.Add(row.Index);
             }
+
+            rowsIndxs = rowsIndxs.OrderBy(x => x).ToList();
+            int index = 0;
 
             ClearSel();
 
-            for (int i =0; i<count; i++)
+            foreach (var rowIndex in rowsIndxs)
             {
-                dataGridView.Rows[i].Selected = true;
+                var asset = _fileSearcher.Assets[rowIndex];
+                _fileSearcher.Assets[rowIndex] = _fileSearcher.Assets[index];
+                _fileSearcher.Assets[index] = asset;
+                dataGridView.Rows[index].Selected = true;
+                index++;
+
             }
 
             dataGridView.FirstDisplayedScrollingRowIndex = 0;
+            dataGridView.RefreshEdit();
             GC.Collect();
 
         }
@@ -394,6 +404,64 @@ namespace EasyDir
             SelectByNames(_namePatters, _matchMode);
             SetSelCheck(_check, false);
         }
+
+        public void OpenSearchForm()
+        {
+            _searchForm = SearchForm.GetFormInstance;
+            _searchForm.TopMost = true;
+
+            bool formOpen = Application.OpenForms.Cast<Form>().Any(form => form.Name == _searchForm.Name);
+
+            if(formOpen == false)
+            {
+                _searchForm.Show();
+            }
+            else
+            {
+            }
+            
+        }
+
+       public void FindItems(string _string)
+        {
+            if (_fileSearcher.Assets.Count < 1 || string.IsNullOrEmpty(_string))
+            {
+                ClearSel();
+                return;
+            }
+
+            ClearSel();
+            var _searchItems = SplitSearchString(_string);
+            for (int i=0; i<_fileSearcher.Assets.Count;i++)
+            {
+              foreach(var item in _searchItems)
+                {
+                    if(_fileSearcher.Assets[i].FileName.ToUpper().Contains(item.ToUpper()))
+                    {
+                        if (string.IsNullOrEmpty(item) == false)
+                           
+                        dataGridView.Rows[i].Selected = true;
+                    }
+                }
+            }
+
+            
+            FocusSelection();
+        }
+
+        private List<string> SplitSearchString (string _string)
+        {
+            List<string> _items = new List<string>();
+
+            if (string.IsNullOrEmpty(_string))
+                return _items;
+
+            _items = _string.Split(_SearchSeparators[0]).ToList();
+            _items = _items.Where(x => !string.IsNullOrWhiteSpace(x)).Select(x => x = x.Trim()).Distinct().ToList();
+            return _items;
+        }
+
+       
 
         public void SortData( int colIndex)
         {

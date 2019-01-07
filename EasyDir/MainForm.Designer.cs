@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SelOut = new System.Windows.Forms.Button();
             this.btn_SearchAssets = new System.Windows.Forms.Button();
-            this.tp_in = new System.Windows.Forms.TableLayoutPanel();
+            this.Top_Panel = new System.Windows.Forms.TableLayoutPanel();
             this.btn_SeTopRoot = new System.Windows.Forms.Button();
             this.tb_TopRoot = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -112,8 +112,9 @@
             this.MCM_OpenOut = new System.Windows.Forms.ToolStripMenuItem();
             this.MCM_StripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MCM_PreviewPath = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tp_in.SuspendLayout();
+            this.DE_MainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.DE_Search = new System.Windows.Forms.ToolStripMenuItem();
+            this.Top_Panel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataEditor)).BeginInit();
@@ -126,7 +127,7 @@
             this.AN_ContexMenu.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.MainContexMenu.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.DE_MainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tb_Out
@@ -192,35 +193,35 @@
             this.btn_SearchAssets.UseVisualStyleBackColor = false;
             this.btn_SearchAssets.Click += new System.EventHandler(this.btn_SearchAssets_Click);
             // 
-            // tp_in
+            // Top_Panel
             // 
-            this.tp_in.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Top_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tp_in.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.tp_in.ColumnCount = 4;
-            this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tp_in.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tp_in.Controls.Add(this.btn_SelOut, 2, 2);
-            this.tp_in.Controls.Add(this.tb_Out, 1, 2);
-            this.tp_in.Controls.Add(this.label1, 0, 2);
-            this.tp_in.Controls.Add(this.btn_SeTopRoot, 2, 1);
-            this.tp_in.Controls.Add(this.tb_TopRoot, 1, 1);
-            this.tp_in.Controls.Add(this.label3, 0, 1);
-            this.tp_in.Controls.Add(this.tb_In, 1, 0);
-            this.tp_in.Controls.Add(this.label2, 0, 0);
-            this.tp_in.Controls.Add(this.btn_SelIn, 2, 0);
-            this.tp_in.Controls.Add(this.btn_MakeFolders, 3, 0);
-            this.tp_in.Location = new System.Drawing.Point(9, 9);
-            this.tp_in.Margin = new System.Windows.Forms.Padding(0);
-            this.tp_in.Name = "tp_in";
-            this.tp_in.RowCount = 3;
-            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tp_in.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tp_in.Size = new System.Drawing.Size(766, 80);
-            this.tp_in.TabIndex = 0;
+            this.Top_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.Top_Panel.ColumnCount = 4;
+            this.Top_Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.Top_Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Top_Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.Top_Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.Top_Panel.Controls.Add(this.btn_SelOut, 2, 2);
+            this.Top_Panel.Controls.Add(this.tb_Out, 1, 2);
+            this.Top_Panel.Controls.Add(this.label1, 0, 2);
+            this.Top_Panel.Controls.Add(this.btn_SeTopRoot, 2, 1);
+            this.Top_Panel.Controls.Add(this.tb_TopRoot, 1, 1);
+            this.Top_Panel.Controls.Add(this.label3, 0, 1);
+            this.Top_Panel.Controls.Add(this.tb_In, 1, 0);
+            this.Top_Panel.Controls.Add(this.label2, 0, 0);
+            this.Top_Panel.Controls.Add(this.btn_SelIn, 2, 0);
+            this.Top_Panel.Controls.Add(this.btn_MakeFolders, 3, 0);
+            this.Top_Panel.Location = new System.Drawing.Point(9, 9);
+            this.Top_Panel.Margin = new System.Windows.Forms.Padding(0);
+            this.Top_Panel.Name = "Top_Panel";
+            this.Top_Panel.RowCount = 3;
+            this.Top_Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.Top_Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.Top_Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.Top_Panel.Size = new System.Drawing.Size(766, 80);
+            this.Top_Panel.TabIndex = 0;
             // 
             // btn_SeTopRoot
             // 
@@ -323,7 +324,7 @@
             this.btn_MakeFolders.Location = new System.Drawing.Point(696, 2);
             this.btn_MakeFolders.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
             this.btn_MakeFolders.Name = "btn_MakeFolders";
-            this.tp_in.SetRowSpan(this.btn_MakeFolders, 3);
+            this.Top_Panel.SetRowSpan(this.btn_MakeFolders, 3);
             this.btn_MakeFolders.Size = new System.Drawing.Size(67, 76);
             this.btn_MakeFolders.TabIndex = 9;
             this.btn_MakeFolders.Text = "Make Folders";
@@ -426,6 +427,7 @@
             this.DE_ContexMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.DE_ContexMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DE_ShowInExp,
+            this.DE_Search,
             this.DE_All,
             this.toolStripSeparator4,
             this.DE_SelectAll,
@@ -440,7 +442,7 @@
             this.DE_ContexMenu.Name = "ImgContexMenu";
             this.DE_ContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.DE_ContexMenu.ShowImageMargin = false;
-            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 220);
+            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 242);
             this.DE_ContexMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DE_ContexMenu_Opening);
             // 
             // DE_ShowInExp
@@ -448,7 +450,7 @@
             this.DE_ShowInExp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_ShowInExp.Name = "DE_ShowInExp";
             this.DE_ShowInExp.Size = new System.Drawing.Size(197, 22);
-            this.DE_ShowInExp.Text = "Show in Explorer";
+            this.DE_ShowInExp.Text = "Show in Explorer ...";
             this.DE_ShowInExp.Click += new System.EventHandler(this.DE_ShowInExp_Click);
             // 
             // DE_All
@@ -469,7 +471,7 @@
             this.DE_All_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_Check.Name = "DE_All_Check";
-            this.DE_All_Check.Size = new System.Drawing.Size(178, 22);
+            this.DE_All_Check.Size = new System.Drawing.Size(180, 22);
             this.DE_All_Check.Text = "Check";
             this.DE_All_Check.Click += new System.EventHandler(this.DE_All_Check_Click);
             // 
@@ -478,7 +480,7 @@
             this.DE_All_UnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_UnCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_UnCheck.Name = "DE_All_UnCheck";
-            this.DE_All_UnCheck.Size = new System.Drawing.Size(178, 22);
+            this.DE_All_UnCheck.Size = new System.Drawing.Size(180, 22);
             this.DE_All_UnCheck.Text = "UnCheck";
             this.DE_All_UnCheck.Click += new System.EventHandler(this.DE_All_UnCheck_Click);
             // 
@@ -487,7 +489,7 @@
             this.DE_All_InvCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_InvCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_InvCheck.Name = "DE_All_InvCheck";
-            this.DE_All_InvCheck.Size = new System.Drawing.Size(178, 22);
+            this.DE_All_InvCheck.Size = new System.Drawing.Size(180, 22);
             this.DE_All_InvCheck.Text = "Invert Check";
             this.DE_All_InvCheck.Click += new System.EventHandler(this.DE_All_InvCheck_Click);
             // 
@@ -496,7 +498,7 @@
             this.DE_All_Sel_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Sel_Checked.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_All_Sel_Checked.Name = "DE_All_Sel_Checked";
-            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(178, 22);
+            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(180, 22);
             this.DE_All_Sel_Checked.Text = "Select Checked";
             this.DE_All_Sel_Checked.Click += new System.EventHandler(this.DE_All_Sel_Checked_Click);
             // 
@@ -505,7 +507,7 @@
             this.DE_All_Sel_UnChecked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Sel_UnChecked.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_All_Sel_UnChecked.Name = "DE_All_Sel_UnChecked";
-            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(178, 22);
+            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(180, 22);
             this.DE_All_Sel_UnChecked.Text = "Select UnChecked";
             this.DE_All_Sel_UnChecked.Click += new System.EventHandler(this.DE_All_Sel_UnChecked_Click);
             // 
@@ -1249,22 +1251,31 @@
             this.MCM_PreviewPath.Text = "Preview Final Path";
             this.MCM_PreviewPath.Click += new System.EventHandler(this.toolPreviewPath_Click);
             // 
-            // tableLayoutPanel2
+            // DE_MainPanel
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DE_MainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 101);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(766, 383);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.DE_MainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(53)))));
+            this.DE_MainPanel.ColumnCount = 2;
+            this.DE_MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.DE_MainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.DE_MainPanel.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.DE_MainPanel.Location = new System.Drawing.Point(9, 101);
+            this.DE_MainPanel.Name = "DE_MainPanel";
+            this.DE_MainPanel.RowCount = 1;
+            this.DE_MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.DE_MainPanel.Size = new System.Drawing.Size(766, 383);
+            this.DE_MainPanel.TabIndex = 1;
+            // 
+            // DE_Search
+            // 
+            this.DE_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_Search.Name = "DE_Search";
+            this.DE_Search.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.DE_Search.Size = new System.Drawing.Size(197, 22);
+            this.DE_Search.Text = "Search ...";
+            this.DE_Search.Click += new System.EventHandler(this.DE_Search_Click);
             // 
             // MainForm
             // 
@@ -1274,8 +1285,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(784, 496);
             this.ContextMenuStrip = this.MainContexMenu;
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tp_in);
+            this.Controls.Add(this.DE_MainPanel);
+            this.Controls.Add(this.Top_Panel);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
@@ -1289,8 +1300,8 @@
             this.Text = "EasyDir";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            this.tp_in.ResumeLayout(false);
-            this.tp_in.PerformLayout();
+            this.Top_Panel.ResumeLayout(false);
+            this.Top_Panel.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataEditor)).EndInit();
@@ -1308,7 +1319,7 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
             this.MainContexMenu.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.DE_MainPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1317,7 +1328,7 @@
         private System.Windows.Forms.TextBox tb_Out;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_SelOut;
-        private System.Windows.Forms.TableLayoutPanel tp_in;
+        private System.Windows.Forms.TableLayoutPanel Top_Panel;
         private System.Windows.Forms.Button btn_SelIn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_In;
@@ -1352,7 +1363,7 @@
         private System.Windows.Forms.ComboBox cmb_NameMatchMode;
         private System.Windows.Forms.Button btn_MakeFolders;
         private System.Windows.Forms.ToolStripMenuItem AN_AddNode;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel DE_MainPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btn_DE_CheckAll;
         private System.Windows.Forms.Button btn_DE_UNCheckAll;
@@ -1396,6 +1407,7 @@
         private System.Windows.Forms.Button btn_SelByNames;
         private System.Windows.Forms.Button btn_UnCheckByNames;
         private System.Windows.Forms.Button btn_CheckByNames;
+        private System.Windows.Forms.ToolStripMenuItem DE_Search;
     }
 }
 

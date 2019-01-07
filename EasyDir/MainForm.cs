@@ -22,6 +22,7 @@ namespace EasyDir
         ComboBoxHelper _comboBoxHelper = new ComboBoxHelper();
         DataEditorHelper _dataEditorHelper;
         FileProcessor _fileProcessor = FileProcessor.GetFileProcessor();
+        public bool lockUI = false;
 
         AssetNameHelper _assetNameHelper;
         ToolTip PathToolTip = new ToolTip();
@@ -159,6 +160,7 @@ namespace EasyDir
             
 
         }
+
 
         private void btn_SelOut_Click(object sender, EventArgs e)
         {
@@ -531,7 +533,7 @@ namespace EasyDir
 
         private void btn_DE_CleaAll_Click(object sender, EventArgs e)
         {
-            _dataEditorHelper.ClearData();
+             _dataEditorHelper.ClearData();
         }
 
         private void DataEditor_MouseDown(object sender, MouseEventArgs e)
@@ -580,6 +582,10 @@ namespace EasyDir
             if (e.KeyData == (Keys.Alt | Keys.F))
             {
                 _dataEditorHelper.FocusSelection();
+            }
+            if (e.KeyData == (Keys.Control | Keys.F))
+            {
+                _dataEditorHelper.OpenSearchForm();
             }
         }
 
@@ -712,11 +718,22 @@ namespace EasyDir
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.KeyData == (Keys.Control | Keys.F))
+            {
+                _dataEditorHelper.OpenSearchForm();
+                e.Handled = e.SuppressKeyPress = true;
+            }
 
-            //if (e.KeyData == (Keys.Alt | Keys.F1))
+            //if (e.KeyData ==Keys.Escape)
             //{
             //    _fileProcessor.AbortCopy();
+            //       e.Handled = e.SuppressKeyPress = true;
             //}
+        }
+
+        private void DE_Search_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.OpenSearchForm();
         }
     }
     }

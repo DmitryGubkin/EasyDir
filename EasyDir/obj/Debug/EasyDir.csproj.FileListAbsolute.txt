@@ -1,7 +1,6 @@
 D:\C# Dev\EasyDir\EasyDir\bin\Debug\EasyDir.exe.config
 D:\C# Dev\EasyDir\EasyDir\bin\Debug\EasyDir.exe
 D:\C# Dev\EasyDir\EasyDir\bin\Debug\EasyDir.pdb
-D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csprojAssemblyReference.cache
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.Properties.Resources.resources
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csproj.GenerateResource.cache
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csproj.CoreCompileInputs.cache
@@ -22,3 +21,4 @@ D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csproj.CopyComplete
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.MainForm.resources
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.TaskProgressForm.resources
 D:\C# Dev\EasyDir\EasyDir\bin\Debug\Aga.Controls.dll
+D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.SearchForm.resources
