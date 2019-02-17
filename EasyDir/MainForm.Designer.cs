@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tb_Out = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_SelOut = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@
             this.DataEditor = new System.Windows.Forms.DataGridView();
             this.DE_ContexMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DE_ShowInExp = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Search = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_All = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_All_Check = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_All_UnCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +115,7 @@
             this.MCM_StripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MCM_PreviewPath = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_MainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.DE_Search = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Sel_EntireRow = new System.Windows.Forms.ToolStripMenuItem();
             this.Top_Panel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -442,7 +444,7 @@
             this.DE_ContexMenu.Name = "ImgContexMenu";
             this.DE_ContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.DE_ContexMenu.ShowImageMargin = false;
-            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 242);
+            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 264);
             this.DE_ContexMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DE_ContexMenu_Opening);
             // 
             // DE_ShowInExp
@@ -452,6 +454,15 @@
             this.DE_ShowInExp.Size = new System.Drawing.Size(197, 22);
             this.DE_ShowInExp.Text = "Show in Explorer ...";
             this.DE_ShowInExp.Click += new System.EventHandler(this.DE_ShowInExp_Click);
+            // 
+            // DE_Search
+            // 
+            this.DE_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DE_Search.Name = "DE_Search";
+            this.DE_Search.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.DE_Search.Size = new System.Drawing.Size(197, 22);
+            this.DE_Search.Text = "Search ...";
+            this.DE_Search.Click += new System.EventHandler(this.DE_Search_Click);
             // 
             // DE_All
             // 
@@ -471,7 +482,7 @@
             this.DE_All_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Check.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_Check.Name = "DE_All_Check";
-            this.DE_All_Check.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Check.Size = new System.Drawing.Size(178, 22);
             this.DE_All_Check.Text = "Check";
             this.DE_All_Check.Click += new System.EventHandler(this.DE_All_Check_Click);
             // 
@@ -480,7 +491,7 @@
             this.DE_All_UnCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_UnCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_UnCheck.Name = "DE_All_UnCheck";
-            this.DE_All_UnCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_UnCheck.Size = new System.Drawing.Size(178, 22);
             this.DE_All_UnCheck.Text = "UnCheck";
             this.DE_All_UnCheck.Click += new System.EventHandler(this.DE_All_UnCheck_Click);
             // 
@@ -489,7 +500,7 @@
             this.DE_All_InvCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_InvCheck.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DE_All_InvCheck.Name = "DE_All_InvCheck";
-            this.DE_All_InvCheck.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_InvCheck.Size = new System.Drawing.Size(178, 22);
             this.DE_All_InvCheck.Text = "Invert Check";
             this.DE_All_InvCheck.Click += new System.EventHandler(this.DE_All_InvCheck_Click);
             // 
@@ -498,7 +509,7 @@
             this.DE_All_Sel_Checked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Sel_Checked.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_All_Sel_Checked.Name = "DE_All_Sel_Checked";
-            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Sel_Checked.Size = new System.Drawing.Size(178, 22);
             this.DE_All_Sel_Checked.Text = "Select Checked";
             this.DE_All_Sel_Checked.Click += new System.EventHandler(this.DE_All_Sel_Checked_Click);
             // 
@@ -507,7 +518,7 @@
             this.DE_All_Sel_UnChecked.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.DE_All_Sel_UnChecked.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_All_Sel_UnChecked.Name = "DE_All_Sel_UnChecked";
-            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(180, 22);
+            this.DE_All_Sel_UnChecked.Size = new System.Drawing.Size(178, 22);
             this.DE_All_Sel_UnChecked.Text = "Select UnChecked";
             this.DE_All_Sel_UnChecked.Click += new System.EventHandler(this.DE_All_Sel_UnChecked_Click);
             // 
@@ -541,6 +552,7 @@
             // 
             this.DE_Selection.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DE_Sel_Focus,
+            this.DE_Sel_EntireRow,
             this.DE_Sel_Invert,
             this.DE_Sel_Check,
             this.DE_Sel_UnCheck,
@@ -556,7 +568,7 @@
             this.DE_Sel_Focus.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_Focus.Name = "DE_Sel_Focus";
             this.DE_Sel_Focus.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this.DE_Sel_Focus.Size = new System.Drawing.Size(149, 22);
+            this.DE_Sel_Focus.Size = new System.Drawing.Size(198, 22);
             this.DE_Sel_Focus.Text = "Focus";
             this.DE_Sel_Focus.Click += new System.EventHandler(this.DE_Sel_Focus_Click);
             // 
@@ -566,7 +578,7 @@
             this.DE_Sel_Invert.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_Invert.Name = "DE_Sel_Invert";
             this.DE_Sel_Invert.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.DE_Sel_Invert.Size = new System.Drawing.Size(149, 22);
+            this.DE_Sel_Invert.Size = new System.Drawing.Size(198, 22);
             this.DE_Sel_Invert.Text = "Invert";
             this.DE_Sel_Invert.Click += new System.EventHandler(this.DE_Sel_Invert_Click);
             // 
@@ -576,7 +588,7 @@
             this.DE_Sel_Check.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.DE_Sel_Check.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_Check.Name = "DE_Sel_Check";
-            this.DE_Sel_Check.Size = new System.Drawing.Size(149, 22);
+            this.DE_Sel_Check.Size = new System.Drawing.Size(198, 22);
             this.DE_Sel_Check.Text = "Check";
             this.DE_Sel_Check.Click += new System.EventHandler(this.DE_Sel_Check_Click);
             // 
@@ -586,7 +598,7 @@
             this.DE_Sel_UnCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.DE_Sel_UnCheck.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_UnCheck.Name = "DE_Sel_UnCheck";
-            this.DE_Sel_UnCheck.Size = new System.Drawing.Size(149, 22);
+            this.DE_Sel_UnCheck.Size = new System.Drawing.Size(198, 22);
             this.DE_Sel_UnCheck.Text = "UnCheck";
             this.DE_Sel_UnCheck.Click += new System.EventHandler(this.DE_Sel_UnCheck_Click);
             // 
@@ -596,7 +608,7 @@
             this.DE_Sel_InvCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.DE_Sel_InvCheck.ForeColor = System.Drawing.Color.Turquoise;
             this.DE_Sel_InvCheck.Name = "DE_Sel_InvCheck";
-            this.DE_Sel_InvCheck.Size = new System.Drawing.Size(149, 22);
+            this.DE_Sel_InvCheck.Size = new System.Drawing.Size(198, 22);
             this.DE_Sel_InvCheck.Text = "Invert Check";
             this.DE_Sel_InvCheck.Click += new System.EventHandler(this.DE_Sel_InvCheck_Click);
             // 
@@ -845,6 +857,7 @@
             this.cb_SubFolders.TabIndex = 27;
             this.cb_SubFolders.Text = "Sub Folders";
             this.cb_SubFolders.UseVisualStyleBackColor = true;
+            this.cb_SubFolders.CheckedChanged += new System.EventHandler(this.cb_SubFolders_CheckedChanged);
             // 
             // btn_CopyFiles
             // 
@@ -1268,14 +1281,15 @@
             this.DE_MainPanel.Size = new System.Drawing.Size(766, 383);
             this.DE_MainPanel.TabIndex = 1;
             // 
-            // DE_Search
+            // DE_Sel_EntireRow
             // 
-            this.DE_Search.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.DE_Search.Name = "DE_Search";
-            this.DE_Search.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.DE_Search.Size = new System.Drawing.Size(197, 22);
-            this.DE_Search.Text = "Search ...";
-            this.DE_Search.Click += new System.EventHandler(this.DE_Search_Click);
+            this.DE_Sel_EntireRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Sel_EntireRow.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Sel_EntireRow.Name = "DE_Sel_EntireRow";
+            this.DE_Sel_EntireRow.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.DE_Sel_EntireRow.Size = new System.Drawing.Size(198, 22);
+            this.DE_Sel_EntireRow.Text = "Entire Row(s)";
+            this.DE_Sel_EntireRow.Click += new System.EventHandler(this.DE_Sel_EntireRow_Click);
             // 
             // MainForm
             // 
@@ -1290,11 +1304,11 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(800, 535);
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EasyDir";
@@ -1408,6 +1422,7 @@
         private System.Windows.Forms.Button btn_UnCheckByNames;
         private System.Windows.Forms.Button btn_CheckByNames;
         private System.Windows.Forms.ToolStripMenuItem DE_Search;
+        private System.Windows.Forms.ToolStripMenuItem DE_Sel_EntireRow;
     }
 }
 

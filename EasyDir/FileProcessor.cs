@@ -121,8 +121,7 @@ namespace EasyDir
                 }
                 
             }
-
-            
+ 
             _pathHelper.ShowFolder(_outPath);
         }
 

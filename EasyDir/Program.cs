@@ -16,7 +16,11 @@ namespace EasyDir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(MainForm.GetFormInstance);
+
+             Application.Run(MainForm.GetFormInstance);
+
+            //TestForm tf = new TestForm();
+            //Application.Run(tf);
         }
     }
 }

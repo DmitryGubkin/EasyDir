@@ -22,3 +22,6 @@ D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.MainForm.resources
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.TaskProgressForm.resources
 D:\C# Dev\EasyDir\EasyDir\bin\Debug\Aga.Controls.dll
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.SearchForm.resources
+D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csprojAssemblyReference.cache
+D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.TestForm.resources
+D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.g.resources

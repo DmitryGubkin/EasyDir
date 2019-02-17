@@ -31,6 +31,7 @@ namespace EasyDir
         private string DefAssetName = "Asset_Name";
         private bool FocusQNameEditor = false;
         private List<string> DragFilesBuffer = new List<string>();
+        private BindingSource source = null;
 
         ToolStripLabel DE_Info = new ToolStripLabel("Selection : 0 | 0 B");
         
@@ -56,7 +57,8 @@ namespace EasyDir
             _dataEditorHelper.SetDataViewer();
 
             //Data Source Binding
-            var source = new BindingSource(_fileSearcher.Assets, null);
+
+            source = new BindingSource(_fileSearcher.Assets, null);
             DataEditor.DataSource = source;
 
             PathToolTip.ToolTipIcon = ToolTipIcon.Info;
@@ -104,6 +106,7 @@ namespace EasyDir
             cb_SubFolders.DataBindings.Add("Checked", _fileProcessor, "SubRoots", true, DataSourceUpdateMode.OnPropertyChanged);
             cb_FoldersOnly.DataBindings.Add("Checked", _fileProcessor, "FoldersOnly", true, DataSourceUpdateMode.OnPropertyChanged);
 
+            cb_FoldersOnly.Enabled = cb_SubFolders.Checked;
 
 
             //Asset Manager Init
@@ -140,6 +143,9 @@ namespace EasyDir
             DataEditor.Columns[2].ReadOnly = true;
             DataEditor.Columns[3].ReadOnly = true;
             DataEditor.Columns[4].ReadOnly = true;
+
+             DataEditor.Columns[1].HeaderText = "Full Path";
+             DataEditor.Columns[2].HeaderText = "File Name";
 
             DataEditor.Columns[3].Width = 50;
             DataEditor.Columns[3].HeaderText = ".*";
@@ -352,7 +358,8 @@ namespace EasyDir
 
         private void btn_SearchAssets_Click(object sender, EventArgs e)
         {
-            //  _assetNameHelper.GetNames().Count.ToString();
+              _assetNameHelper.GetNames().Count.ToString();
+
             _fileSearcher.Search(tb_In.Text, (SearchTypes)_comboBoxHelper.GetSearchMode(cmb_SearchMode),
                 (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode), _assetNameHelper.GetNames());
 
@@ -587,6 +594,13 @@ namespace EasyDir
             {
                 _dataEditorHelper.OpenSearchForm();
             }
+
+
+            if (e.KeyData == (Keys.Control | Keys.R))
+            {
+                _dataEditorHelper.SelectRow();
+            }
+            
         }
 
         private void btn_CopyFiles_Click(object sender, EventArgs e)
@@ -734,6 +748,16 @@ namespace EasyDir
         private void DE_Search_Click(object sender, EventArgs e)
         {
             _dataEditorHelper.OpenSearchForm();
+        }
+
+        private void cb_SubFolders_CheckedChanged(object sender, EventArgs e)
+        {
+            cb_FoldersOnly.Enabled = cb_SubFolders.Checked;
+        }
+
+        private void DE_Sel_EntireRow_Click(object sender, EventArgs e)
+        {
+            _dataEditorHelper.SelectRow();
         }
     }
     }
