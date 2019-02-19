@@ -114,7 +114,6 @@ namespace EasyDir
             _comboBoxHelper.FillComboBox(cmb_NameMatchMode, ComboBoxTypes.NameMatch);
 
             //data editor init
-            DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DataEditor.AllowUserToAddRows = false;
             DataEditor.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             DataEditor.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
@@ -123,7 +122,6 @@ namespace EasyDir
             DataEditor.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
             DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 128);
 
-            DataEditor.RowHeadersVisible = false;
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
             DataEditor.AllowUserToResizeRows = false;
 
@@ -136,23 +134,7 @@ namespace EasyDir
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DataEditor.Columns[0].Width = 30;
-            DataEditor.Columns[0].HeaderText = "";
-
-            DataEditor.Columns[1].ReadOnly = true;
-            DataEditor.Columns[2].ReadOnly = true;
-            DataEditor.Columns[3].ReadOnly = true;
-            DataEditor.Columns[4].ReadOnly = true;
-
-             DataEditor.Columns[1].HeaderText = "Full Path";
-             DataEditor.Columns[2].HeaderText = "File Name";
-
-            DataEditor.Columns[3].Width = 50;
-            DataEditor.Columns[3].HeaderText = ".*";
-
-            DataEditor.Columns[4].Width = 70;
-            DataEditor.Columns[4].HeaderText = "Size";
-
+            DE_Style();
 
             DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
             DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_CellChanged);
@@ -165,6 +147,33 @@ namespace EasyDir
 
             
 
+        }
+
+        public void DE_Style()
+        {
+            DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DataEditor.RowHeadersVisible = true;
+            DataEditor.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            DataEditor.RowHeadersWidth = 30;
+
+            DataEditor.Columns[0].Width = 50;
+            DataEditor.Columns[0].HeaderText = "Check";
+            DataEditor.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            DataEditor.Columns[1].ReadOnly = true;
+            DataEditor.Columns[2].ReadOnly = true;
+            DataEditor.Columns[3].ReadOnly = true;
+            DataEditor.Columns[4].ReadOnly = true;
+
+            DataEditor.Columns[1].HeaderText = "Full Path";
+            DataEditor.Columns[2].HeaderText = "File Name";
+
+            DataEditor.Columns[3].Width = 50;
+            DataEditor.Columns[3].HeaderText = ".*";
+
+            DataEditor.Columns[4].Width = 70;
+            DataEditor.Columns[4].HeaderText = "Size";
+            
         }
 
 
@@ -358,10 +367,25 @@ namespace EasyDir
 
         private void btn_SearchAssets_Click(object sender, EventArgs e)
         {
-              _assetNameHelper.GetNames().Count.ToString();
+            lb_CheckInfo.DataBindings.Clear();
+            DataEditor.DataSource = null;
+            DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            DataEditor.RowHeadersVisible = false;
+
+            _assetNameHelper.GetNames().Count.ToString();
+
+            if (string.IsNullOrEmpty(tb_In.Text) == true)
+            {
+                btn_SelIn_Click(sender,e);
+            }
 
             _fileSearcher.Search(tb_In.Text, (SearchTypes)_comboBoxHelper.GetSearchMode(cmb_SearchMode),
                 (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode), _assetNameHelper.GetNames());
+
+            
+            DataEditor.DataSource = source;
+            lb_CheckInfo.DataBindings.Add("Text", _fileSearcher, "AssetsInfo", true, DataSourceUpdateMode.OnPropertyChanged);
+            DE_Style();
 
         }
 
@@ -371,11 +395,6 @@ namespace EasyDir
             {
                 btn_SelIn_Click(sender, e);
             }
-
-            //if (String.IsNullOrEmpty(tb_TopRoot.Text) && System.IO.Directory.Exists(tb_In.Text))
-            //{
-            //    btn_SeTopRoot_Click(sender, e);
-            //}
 
             if (String.IsNullOrEmpty(tb_Out.Text))
             {
@@ -605,6 +624,7 @@ namespace EasyDir
 
         private void btn_CopyFiles_Click(object sender, EventArgs e)
         {
+            
             DataEditor.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
             if (String.IsNullOrEmpty(tb_Out.Text))
@@ -613,7 +633,6 @@ namespace EasyDir
             }
 
             _fileProcessor.CopyFiles();
-            
         }
 
         private void DE_ClearDead_Click(object sender, EventArgs e)

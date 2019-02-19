@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\EasyDir_ico_01.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge.Controls">
       <HintPath>C:\Users\Dmitry_Gubkin\.nuget\packages\aforge.controls\2.2.5\lib\AForge.Controls.dll</HintPath>

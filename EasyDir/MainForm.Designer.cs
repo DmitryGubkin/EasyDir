@@ -62,6 +62,7 @@
             this.DE_SelectNone = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Selection = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Sel_Focus = new System.Windows.Forms.ToolStripMenuItem();
+            this.DE_Sel_EntireRow = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Sel_Invert = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Sel_Check = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_Sel_UnCheck = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +116,6 @@
             this.MCM_StripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.MCM_PreviewPath = new System.Windows.Forms.ToolStripMenuItem();
             this.DE_MainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.DE_Sel_EntireRow = new System.Windows.Forms.ToolStripMenuItem();
             this.Top_Panel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -142,7 +142,7 @@
             this.tb_Out.Location = new System.Drawing.Point(91, 54);
             this.tb_Out.Margin = new System.Windows.Forms.Padding(0);
             this.tb_Out.Name = "tb_Out";
-            this.tb_Out.Size = new System.Drawing.Size(484, 24);
+            this.tb_Out.Size = new System.Drawing.Size(524, 24);
             this.tb_Out.TabIndex = 5;
             this.tb_Out.MouseEnter += new System.EventHandler(this.tb_Out_MouseEnter);
             // 
@@ -168,7 +168,7 @@
             this.btn_SelOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_SelOut.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btn_SelOut.ForeColor = System.Drawing.Color.Turquoise;
-            this.btn_SelOut.Location = new System.Drawing.Point(580, 54);
+            this.btn_SelOut.Location = new System.Drawing.Point(620, 54);
             this.btn_SelOut.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btn_SelOut.Name = "btn_SelOut";
             this.btn_SelOut.Size = new System.Drawing.Size(111, 24);
@@ -222,7 +222,7 @@
             this.Top_Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.Top_Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.Top_Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.Top_Panel.Size = new System.Drawing.Size(766, 80);
+            this.Top_Panel.Size = new System.Drawing.Size(806, 80);
             this.Top_Panel.TabIndex = 0;
             // 
             // btn_SeTopRoot
@@ -233,7 +233,7 @@
             this.btn_SeTopRoot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_SeTopRoot.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btn_SeTopRoot.ForeColor = System.Drawing.Color.Turquoise;
-            this.btn_SeTopRoot.Location = new System.Drawing.Point(580, 28);
+            this.btn_SeTopRoot.Location = new System.Drawing.Point(620, 28);
             this.btn_SeTopRoot.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btn_SeTopRoot.Name = "btn_SeTopRoot";
             this.btn_SeTopRoot.Size = new System.Drawing.Size(111, 22);
@@ -252,7 +252,7 @@
             this.tb_TopRoot.Location = new System.Drawing.Point(91, 27);
             this.tb_TopRoot.Margin = new System.Windows.Forms.Padding(0);
             this.tb_TopRoot.Name = "tb_TopRoot";
-            this.tb_TopRoot.Size = new System.Drawing.Size(484, 24);
+            this.tb_TopRoot.Size = new System.Drawing.Size(524, 24);
             this.tb_TopRoot.TabIndex = 4;
             this.tb_TopRoot.MouseEnter += new System.EventHandler(this.tb_TopRoot_MouseEnter);
             // 
@@ -280,7 +280,7 @@
             this.tb_In.Location = new System.Drawing.Point(91, 1);
             this.tb_In.Margin = new System.Windows.Forms.Padding(0);
             this.tb_In.Name = "tb_In";
-            this.tb_In.Size = new System.Drawing.Size(484, 24);
+            this.tb_In.Size = new System.Drawing.Size(524, 24);
             this.tb_In.TabIndex = 3;
             this.tb_In.MouseEnter += new System.EventHandler(this.tb_In_MouseEnter);
             // 
@@ -306,7 +306,7 @@
             this.btn_SelIn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_SelIn.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btn_SelIn.ForeColor = System.Drawing.Color.Turquoise;
-            this.btn_SelIn.Location = new System.Drawing.Point(580, 2);
+            this.btn_SelIn.Location = new System.Drawing.Point(620, 2);
             this.btn_SelIn.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.btn_SelIn.Name = "btn_SelIn";
             this.btn_SelIn.Size = new System.Drawing.Size(111, 22);
@@ -323,7 +323,7 @@
             this.btn_MakeFolders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_MakeFolders.Font = new System.Drawing.Font("Tahoma", 9F);
             this.btn_MakeFolders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_MakeFolders.Location = new System.Drawing.Point(696, 2);
+            this.btn_MakeFolders.Location = new System.Drawing.Point(736, 2);
             this.btn_MakeFolders.Margin = new System.Windows.Forms.Padding(0, 2, 3, 2);
             this.btn_MakeFolders.Name = "btn_MakeFolders";
             this.Top_Panel.SetRowSpan(this.btn_MakeFolders, 3);
@@ -361,7 +361,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(760, 377);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(800, 377);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // tableLayoutPanel5
@@ -381,7 +381,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(510, 371);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(550, 371);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // DataEditor
@@ -415,7 +415,7 @@
             this.DataEditor.Location = new System.Drawing.Point(5, 44);
             this.DataEditor.Margin = new System.Windows.Forms.Padding(5, 5, 5, 3);
             this.DataEditor.Name = "DataEditor";
-            this.DataEditor.Size = new System.Drawing.Size(500, 251);
+            this.DataEditor.Size = new System.Drawing.Size(540, 251);
             this.DataEditor.StandardTab = true;
             this.DataEditor.TabIndex = 30;
             this.DataEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataEditor_KeyDown);
@@ -444,7 +444,7 @@
             this.DE_ContexMenu.Name = "ImgContexMenu";
             this.DE_ContexMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.DE_ContexMenu.ShowImageMargin = false;
-            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 264);
+            this.DE_ContexMenu.Size = new System.Drawing.Size(198, 242);
             this.DE_ContexMenu.Opening += new System.ComponentModel.CancelEventHandler(this.DE_ContexMenu_Opening);
             // 
             // DE_ShowInExp
@@ -572,6 +572,16 @@
             this.DE_Sel_Focus.Text = "Focus";
             this.DE_Sel_Focus.Click += new System.EventHandler(this.DE_Sel_Focus_Click);
             // 
+            // DE_Sel_EntireRow
+            // 
+            this.DE_Sel_EntireRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.DE_Sel_EntireRow.ForeColor = System.Drawing.Color.Turquoise;
+            this.DE_Sel_EntireRow.Name = "DE_Sel_EntireRow";
+            this.DE_Sel_EntireRow.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.DE_Sel_EntireRow.Size = new System.Drawing.Size(198, 22);
+            this.DE_Sel_EntireRow.Text = "Entire Row(s)";
+            this.DE_Sel_EntireRow.Click += new System.EventHandler(this.DE_Sel_EntireRow_Click);
+            // 
             // DE_Sel_Invert
             // 
             this.DE_Sel_Invert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
@@ -695,7 +705,7 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(504, 33);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(544, 33);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // btn_DE_CheckAll
@@ -819,7 +829,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(500, 63);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(540, 63);
             this.tableLayoutPanel7.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -833,7 +843,7 @@
             this.tableLayoutPanel8.Controls.Add(this.btn_CopyFiles, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_AllowOverWrite, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.cb_FoldersOnly, 0, 2);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(291, 0);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(331, 0);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 3;
@@ -917,7 +927,7 @@
             this.tableLayoutPanel1.Controls.Add(this.cbl_Names, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel9, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(519, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(559, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -1278,18 +1288,8 @@
             this.DE_MainPanel.Name = "DE_MainPanel";
             this.DE_MainPanel.RowCount = 1;
             this.DE_MainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.DE_MainPanel.Size = new System.Drawing.Size(766, 383);
+            this.DE_MainPanel.Size = new System.Drawing.Size(806, 383);
             this.DE_MainPanel.TabIndex = 1;
-            // 
-            // DE_Sel_EntireRow
-            // 
-            this.DE_Sel_EntireRow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.DE_Sel_EntireRow.ForeColor = System.Drawing.Color.Turquoise;
-            this.DE_Sel_EntireRow.Name = "DE_Sel_EntireRow";
-            this.DE_Sel_EntireRow.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.DE_Sel_EntireRow.Size = new System.Drawing.Size(198, 22);
-            this.DE_Sel_EntireRow.Text = "Entire Row(s)";
-            this.DE_Sel_EntireRow.Click += new System.EventHandler(this.DE_Sel_EntireRow_Click);
             // 
             // MainForm
             // 
@@ -1297,7 +1297,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(784, 496);
+            this.ClientSize = new System.Drawing.Size(824, 496);
             this.ContextMenuStrip = this.MainContexMenu;
             this.Controls.Add(this.DE_MainPanel);
             this.Controls.Add(this.Top_Panel);
@@ -1307,7 +1307,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(800, 535);
+            this.MinimumSize = new System.Drawing.Size(840, 535);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
