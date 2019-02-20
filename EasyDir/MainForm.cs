@@ -69,6 +69,7 @@ namespace EasyDir
 
             DE_ContexMenu.Renderer = AN_ContexMenu.Renderer = MainContexMenu.Renderer = new CustomContextMenuRender();
             DE_ContexMenu.ShowImageMargin = AN_ContexMenu.ShowImageMargin = MainContexMenu.ShowImageMargin = false;
+            DE_ContexMenu.ShowCheckMargin = AN_ContexMenu.ShowCheckMargin = MainContexMenu.ShowCheckMargin = false;
             
 
             tb_AssetName.Text = DefAssetName;
@@ -145,9 +146,8 @@ namespace EasyDir
             DataEditor.DragEnter += new DragEventHandler(DataDragEnter);
             DataEditor.DragDrop += new DragEventHandler(DE_DragAndDrop);
 
-            
-
         }
+
 
         public void DE_Style()
         {
@@ -367,8 +367,8 @@ namespace EasyDir
 
         private void btn_SearchAssets_Click(object sender, EventArgs e)
         {
+            DataEditor.SuspendDrawing();
             lb_CheckInfo.DataBindings.Clear();
-            DataEditor.DataSource = null;
             DataEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             DataEditor.RowHeadersVisible = false;
 
@@ -383,7 +383,7 @@ namespace EasyDir
                 (NameMatchModes)_comboBoxHelper.GetNameMatchMode(cmb_NameMatchMode), _assetNameHelper.GetNames());
 
             
-            DataEditor.DataSource = source;
+            DataEditor.ResumeDrawing();
             lb_CheckInfo.DataBindings.Add("Text", _fileSearcher, "AssetsInfo", true, DataSourceUpdateMode.OnPropertyChanged);
             DE_Style();
 

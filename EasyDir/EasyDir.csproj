@@ -41,6 +41,9 @@
     <Reference Include="Aga.Controls, Version=1.7.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AdamsLair.TreeViewAdv.1.7.6.0\lib\net20\Aga.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -67,6 +70,7 @@
     <Compile Include="AssetNameHelper.cs" />
     <Compile Include="AssetPathComparer.cs" />
     <Compile Include="ComboBoxHelper.cs" />
+    <Compile Include="ControlHelper.cs" />
     <Compile Include="CustomContextMenuRender.cs" />
     <Compile Include="CCMRC.cs" />
     <Compile Include="DataEditorHelper.cs" />
