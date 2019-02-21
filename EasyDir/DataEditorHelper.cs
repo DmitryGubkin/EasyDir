@@ -95,46 +95,34 @@ namespace EasyDir
 
         public void RemoveSelData()
         {
-            if(dataGridView.SelectedCells.Count<1)
-            {
-                return;
-            }
+            SelectRow();
 
-            HashSet<string> selData = new HashSet<string>();
-            List<Asset> assetsToRemove = new List<Asset>();
-
-            for (int i = 0; i < dataGridView.SelectedCells.Count; i++)
+            if (dataGridView.SelectedRows.Count > 0)
             {
-                selData.Add((string)dataGridView.Rows[dataGridView.SelectedCells[i].RowIndex].Cells[1].Value);
-            }
-
-            if (selData.Count>0)
-            {
-                if(selData.Count>4)
+                if (dataGridView.SelectedRows.Count > 4)
                 {
-                    if(MessageBox.Show("Delete " + selData.Count.ToString() +" Assets ?","Assets Delete",
-                        MessageBoxButtons.YesNo,MessageBoxIcon.Question) != DialogResult.Yes)
+                    if (MessageBox.Show("Delete " + dataGridView.SelectedRows.Count.ToString() + " Assets ?", "Assets Delete",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                     {
                         GC.Collect();
                         return;
                     }
                 }
-               
-                foreach(var fullPath in selData)
-                {
-                    var asset = _fileSearcher.Assets.Where(x => x.FullPath == fullPath).Select(x => x).ToList();
-                    if(asset.Count>0)
-                    {
-                        assetsToRemove.AddRange(asset);
-                    } 
-                }
-            }
 
-            foreach (var asset in assetsToRemove)
-            {
-                _fileSearcher.Assets.Remove(asset);
+                if (dataGridView.SelectedRows.Count == dataGridView.Rows.Count)
+                {
+                    ClearData();
+                    return;
+                }
+                
+                dataGridView.SuspendDrawing();
+
+                foreach (DataGridViewRow row in dataGridView.SelectedRows)
+                {
+                    dataGridView.Rows.RemoveAt(row.Index);
+                }
+                dataGridView.ResumeDrawing();
             }
-            GC.Collect();
         }
 
         public void MultyCheck(int Row)
@@ -325,6 +313,8 @@ namespace EasyDir
 
         public void FocusSelection()
         {
+
+
             if (dataGridView.SelectedCells.Count < 1 || dataGridView.Rows.Count < 1)
                 return;
 
@@ -340,30 +330,43 @@ namespace EasyDir
                 dataGridView.FirstDisplayedScrollingRowIndex = 0;
                 return;
             }
-
             
-            
-            var rowsIndxs = new List<int>();
+            //var rowsIndxs = new List<int>();
+            int selRowsCount = dataGridView.SelectedRows.Count;
 
-            foreach(DataGridViewRow row in dataGridView.SelectedRows)
+            foreach(DataGridViewRow row in dataGridView.Rows)
             {
-                rowsIndxs.Add(row.Index);
+               // rowsIndxs.Add(row.Index);
+               _fileSearcher.Assets[row.Index].RowSelected = row.Selected;
             }
 
-            rowsIndxs = rowsIndxs.OrderBy(x => x).ToList();
-            int index = 0;
+            var list = _fileSearcher.Assets.ToList();
 
-            ClearSel();
+            //ClearSel();
+            list = list.OrderByDescending(x => x.RowSelected).ToList();
 
-            foreach (var rowIndex in rowsIndxs)
+            _fileSearcher.Assets = new BindingList<Asset>(list);
+            dataGridView.DataSource = _fileSearcher.Assets;
+            for (int i = 0; i < selRowsCount; i++)
             {
-                var asset = _fileSearcher.Assets[rowIndex];
-                _fileSearcher.Assets[rowIndex] = _fileSearcher.Assets[index];
-                _fileSearcher.Assets[index] = asset;
-                dataGridView.Rows[index].Selected = true;
-                index++;
-
+                dataGridView.Rows[i].Selected = true;
             }
+            
+
+            //rowsIndxs = rowsIndxs.OrderBy(x => x).ToList();
+            //int index = 0;
+
+            //ClearSel();
+
+            //foreach (var rowIndex in rowsIndxs)
+            //{
+            //    var asset = _fileSearcher.Assets[rowIndex];
+            //    _fileSearcher.Assets[rowIndex] = _fileSearcher.Assets[index];
+            //    _fileSearcher.Assets[index] = asset;
+            //    dataGridView.Rows[index].Selected = true;
+            //    index++;
+
+            //}
 
             dataGridView.FirstDisplayedScrollingRowIndex = 0;
             dataGridView.RefreshEdit();
@@ -373,6 +376,8 @@ namespace EasyDir
 
         public void SelectByNames(List<string> _namePatters, NameMatchModes _matchMode)
         {
+           
+
             if (dataGridView.Rows.Count < 1 || _matchMode == NameMatchModes.None || _namePatters.Count < 1)
                 return;
             ClearSel();
@@ -444,8 +449,7 @@ namespace EasyDir
                     }
                 }
             }
-
-            
+ 
             FocusSelection();
         }
 

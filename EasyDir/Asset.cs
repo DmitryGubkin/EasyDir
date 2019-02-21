@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace EasyDir
         private bool _checked;
         private string _fileSizeFormated;
         private double _fileSize;
+        private bool _rowSelected;
 
         private PathHelper _pathHelper = PathHelper.GetInstance;
 
@@ -24,6 +26,8 @@ namespace EasyDir
         public string FileName { get => _fileName; set => _fileName = value; }
         public string FileExt { get => _fileExt; set => _fileExt = value; }
         public string FileSizeFormated { get => _fileSizeFormated; set => _fileSizeFormated = value; }
+        [Browsable(false)] public bool RowSelected { get => _rowSelected; set => _rowSelected = value; }
+
 
         public string GetDirPath()
         {
@@ -50,6 +54,7 @@ namespace EasyDir
             _fileSize = 0;
             _fileSizeFormated = "0.0 B";
             _checked = true;
+            _rowSelected = false;
         }
 
         public Asset (string fullPath)

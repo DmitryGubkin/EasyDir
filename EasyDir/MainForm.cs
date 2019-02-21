@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Compression;
+using  System.Reflection;
 
 
 namespace EasyDir
@@ -22,7 +23,6 @@ namespace EasyDir
         ComboBoxHelper _comboBoxHelper = new ComboBoxHelper();
         DataEditorHelper _dataEditorHelper;
         FileProcessor _fileProcessor = FileProcessor.GetFileProcessor();
-        public bool lockUI = false;
 
         AssetNameHelper _assetNameHelper;
         ToolTip PathToolTip = new ToolTip();
@@ -33,10 +33,8 @@ namespace EasyDir
         private List<string> DragFilesBuffer = new List<string>();
         private BindingSource source = null;
 
-        ToolStripLabel DE_Info = new ToolStripLabel("Selection : 0 | 0 B");
+        ToolStripLabel  DE_Info = new ToolStripLabel("Selection : 0 | 0 B");
         
-
-
         public static MainForm GetFormInstance
         {
             get
@@ -116,6 +114,7 @@ namespace EasyDir
 
             //data editor init
             DataEditor.AllowUserToAddRows = false;
+            
             DataEditor.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             DataEditor.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
             DataEditor.ColumnHeadersDefaultCellStyle.ForeColor = Color.Turquoise;
@@ -125,6 +124,15 @@ namespace EasyDir
 
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
             DataEditor.AllowUserToResizeRows = false;
+
+            //double buffer on
+            typeof(DataGridView).InvokeMember(
+                "DoubleBuffered",
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty,
+                null,
+                DataEditor,
+                new object[] { true });
+
 
             DE_Info.ForeColor = Color.FromArgb(241, 241, 241);
             DE_Info.Font = new Font("Tahoma", 12f, GraphicsUnit.Pixel);
