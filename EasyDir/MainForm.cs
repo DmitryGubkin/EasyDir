@@ -120,7 +120,7 @@ namespace EasyDir
             DataEditor.ColumnHeadersDefaultCellStyle.ForeColor = Color.Turquoise;
             DataEditor.EnableHeadersVisualStyles = false;
             DataEditor.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 43);
-            DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 192, 128);
+            DataEditor.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(190, 125, 60);  
 
             DataEditor.DefaultCellStyle.Font = new Font("Tahoma", 12, GraphicsUnit.Pixel);
             DataEditor.AllowUserToResizeRows = false;
