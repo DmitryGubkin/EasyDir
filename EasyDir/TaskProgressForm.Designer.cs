@@ -92,6 +92,7 @@
             this.btn_Abort.TabIndex = 14;
             this.btn_Abort.Text = "Abort";
             this.btn_Abort.UseVisualStyleBackColor = false;
+            this.btn_Abort.Click += new System.EventHandler(this.btn_Abort_Click);
             // 
             // TaskProgressForm
             // 
@@ -109,8 +110,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Processing ...";
-            this.Activated += new System.EventHandler(this.TaskProgressForm_Activated);
             this.Load += new System.EventHandler(this.TaskProgressForm_Load);
+            this.Shown += new System.EventHandler(this.TaskProgressForm_Shown);
             this.tl_MainPanel.ResumeLayout(false);
             this.tl_MainPanel.PerformLayout();
             this.ResumeLayout(false);

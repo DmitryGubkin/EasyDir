@@ -28,15 +28,18 @@ namespace EasyDir
 
         private void TaskProgressForm_Load(object sender, EventArgs e)
         {
-            //btn_Abort.Click += new EventHandler(_fileProcessor.OnCancelClicked);
-            MessageBox.Show("Copy starting");
+           
         }
 
-        private void TaskProgressForm_Activated(object sender, EventArgs e)
+
+        private void btn_Abort_Click(object sender, EventArgs e)
         {
-            
+            _fileProcessor.AbortCopy();
         }
 
-
+        private void TaskProgressForm_Shown(object sender, EventArgs e)
+        {
+            _fileProcessor.CopyFilesAsync();
+        }
     }
 }

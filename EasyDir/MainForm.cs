@@ -640,7 +640,9 @@ namespace EasyDir
                 btn_SelOut_Click(sender, e);
             }
 
-            _fileProcessor.CopyFiles();
+             _fileProcessor.CopyFiles();
+            //TaskProgressForm form = new TaskProgressForm();
+            //form.ShowDialog();
         }
 
         private void DE_ClearDead_Click(object sender, EventArgs e)

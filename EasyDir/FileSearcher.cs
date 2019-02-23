@@ -101,7 +101,8 @@ namespace EasyDir
 
                     catch
                     {
-                        MessageBox.Show("To Many Fiels OR\nDisk Root Selected As Source","Search Error");
+                        MessageBox.Show("Too Many Files OR\nDisk Root Selected As Source", "Search Error",
+                            MessageBoxButtons.OK,MessageBoxIcon.Information);
                         return;
                     }
 

@@ -127,6 +127,8 @@ namespace EasyDir
 
         public async void CopyFilesAsync()
         {
+            
+
             cancelTokenSource = new CancellationTokenSource();
             token = cancelTokenSource.Token;
             await Task.Run(() => CopyFiles());
@@ -135,8 +137,7 @@ namespace EasyDir
 
         public void AbortCopy()
         {
-            if(cancelTokenSource != null && token != null)
-            cancelTokenSource.Cancel();
+            cancelTokenSource?.Cancel();
         }
     }
 }

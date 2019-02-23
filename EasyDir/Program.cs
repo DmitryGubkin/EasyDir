@@ -18,8 +18,6 @@ namespace EasyDir
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainForm.GetFormInstance);
 
-            //TestForm tf = new TestForm();
-            //Application.Run(tf);
         }
     }
 }
