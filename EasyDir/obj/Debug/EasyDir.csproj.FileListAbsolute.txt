@@ -23,3 +23,5 @@ D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.TaskProgressForm.resources
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.SearchForm.resources
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.csprojAssemblyReference.cache
 D:\C# Dev\EasyDir\EasyDir\obj\Debug\EasyDir.g.resources
+D:\C# Dev\EasyDir\EasyDir\bin\Debug\FastColoredTextBox.dll
+D:\C# Dev\EasyDir\EasyDir\bin\Debug\FastColoredTextBox.xml

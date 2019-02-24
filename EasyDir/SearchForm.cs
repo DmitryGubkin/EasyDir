@@ -18,6 +18,7 @@ namespace EasyDir
         private DataEditorHelper _dataEditorHelper;
         private int _maxLiveSearch = 12000; // live search limit
         private TypeAssistant assistant;
+        private ToolTip _searchTip = new ToolTip();
 
 
         private SearchForm()
@@ -28,6 +29,12 @@ namespace EasyDir
             assistant.Idled += assistant_Idled;
 
             this.SetStyle(ControlStyles.ResizeRedraw, true);
+
+            _searchTip.ToolTipIcon = ToolTipIcon.Info;
+            _searchTip.AutoPopDelay = Int16.MaxValue;
+            _searchTip.InitialDelay = 1500;
+            _searchTip.IsBalloon = true;
+            _searchTip.ShowAlways = true;
 
         }
 
@@ -70,11 +77,18 @@ namespace EasyDir
             
             _dataEditorHelper = DataEditorHelper.Getinstance();
             _dataEditorHelper.FindItems(tb_SearchField.Text);
+            
+
+            _searchTip.ToolTipTitle = "Use Character";
+            _searchTip.SetToolTip(tb_SearchField,
+                $"{_dataEditorHelper._SearchSeparators[0]} - as separator for multi searching" +
+                $"\n{_dataEditorHelper._SearchSeparators[1]} - allow register sensitivity" +
+                $"\n{_dataEditorHelper._SearchSeparators[2]} - absolute match");
         }
 
-        private async void tb_SearchField_TextChanged(object sender, EventArgs e)
+        private  void tb_SearchField_TextChanged(object sender, EventArgs e)
         {
-            assistant.TextChanged();
+              assistant.TextChanged();
         }
         
 
@@ -93,6 +107,16 @@ namespace EasyDir
                 e.Handled = e.SuppressKeyPress = true;
             }
           
+        }
+
+        private void tb_SearchField_MouseLeave(object sender, EventArgs e)
+        {
+            _searchTip.Active = false;
+        }
+
+        private void tb_SearchField_MouseEnter(object sender, EventArgs e)
+        {
+            _searchTip.Active = true;
         }
     }
 }

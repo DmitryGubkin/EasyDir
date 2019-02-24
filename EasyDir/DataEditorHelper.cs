@@ -18,7 +18,8 @@ namespace EasyDir
         private DataGridView dataGridView;
         private PathHelper _pathHelper = PathHelper.GetInstance;
         private SearchForm _searchForm = SearchForm.GetFormInstance;
-        private char[] _SearchSeparators = { ';', '.', '@' };
+        public readonly char[] _SearchSeparators = { ';', '*', '%'};
+        private bool[] _searchMod = {false, false}; // 0 - register(*), 1- absolute match(%)
 
         private DataEditorHelper() { }
 
@@ -331,18 +332,14 @@ namespace EasyDir
                 return;
             }
             
-            //var rowsIndxs = new List<int>();
             int selRowsCount = dataGridView.SelectedRows.Count;
 
             foreach(DataGridViewRow row in dataGridView.Rows)
             {
-               // rowsIndxs.Add(row.Index);
                _fileSearcher.Assets[row.Index].RowSelected = row.Selected;
             }
 
             var list = _fileSearcher.Assets.ToList();
-
-            //ClearSel();
             list = list.OrderByDescending(x => x.RowSelected).ToList();
 
             _fileSearcher.Assets = new BindingList<Asset>(list);
@@ -351,22 +348,6 @@ namespace EasyDir
             {
                 dataGridView.Rows[i].Selected = true;
             }
-            
-
-            //rowsIndxs = rowsIndxs.OrderBy(x => x).ToList();
-            //int index = 0;
-
-            //ClearSel();
-
-            //foreach (var rowIndex in rowsIndxs)
-            //{
-            //    var asset = _fileSearcher.Assets[rowIndex];
-            //    _fileSearcher.Assets[rowIndex] = _fileSearcher.Assets[index];
-            //    _fileSearcher.Assets[index] = asset;
-            //    dataGridView.Rows[index].Selected = true;
-            //    index++;
-
-            //}
 
             dataGridView.FirstDisplayedScrollingRowIndex = 0;
             dataGridView.RefreshEdit();
@@ -413,7 +394,6 @@ namespace EasyDir
         public void OpenSearchForm()
         {
             _searchForm = SearchForm.GetFormInstance;
-            _searchForm.TopMost = true;
 
             bool formOpen = Application.OpenForms.Cast<Form>().Any(form => form.Name == _searchForm.Name);
 
@@ -421,8 +401,10 @@ namespace EasyDir
             {
                 _searchForm.Show();
             }
-            else
+
+            if (_searchForm.WindowState == FormWindowState.Minimized)
             {
+                _searchForm.WindowState = FormWindowState.Normal;
             }
             
         }
@@ -440,18 +422,48 @@ namespace EasyDir
             for (int i=0; i<_fileSearcher.Assets.Count;i++)
             {
               foreach(var item in _searchItems)
-                {
-                    if(_fileSearcher.Assets[i].FileName.ToUpper().Contains(item.ToUpper()))
+              {
+                  _searchMod = new[] {false, false};
+                  var curItem = item;
+
+                    if (curItem.Contains(_SearchSeparators[1]))
                     {
-                        if (string.IsNullOrEmpty(item) == false)
-                           
-                        dataGridView.Rows[i].Selected = true;
+                        curItem = curItem.Replace(_SearchSeparators[1].ToString(), "");
+                        _searchMod[0] = true;
                     }
-                }
+
+                    if (curItem.Contains(_SearchSeparators[2]))
+                    {
+                        curItem = curItem.Replace(_SearchSeparators[2].ToString(),"");
+                        _searchMod[1] = true;
+                    }
+
+                    curItem = curItem.Trim();
+
+                    if (string.IsNullOrEmpty(curItem) == false &&
+                        (SelectSearchItem(curItem, _fileSearcher.Assets[i].FileName)))
+                    { dataGridView.Rows[i].Selected = true;}
+              }
             }
  
             FocusSelection();
         }
+
+       private bool SelectSearchItem(string item, string source)
+       {
+           if (_searchMod[0] == false)
+           {
+               item = item.ToUpper();
+               source = source.ToUpper();
+           }
+
+           if (_searchMod[1] == true)
+           {
+               return source == item;
+           }
+ 
+           return source.Contains(item);
+       }
 
         private List<string> SplitSearchString (string _string)
         {

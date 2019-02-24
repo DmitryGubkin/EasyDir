@@ -59,7 +59,7 @@ namespace EasyDir
             source = new BindingSource(_fileSearcher.Assets, null);
             DataEditor.DataSource = source;
 
-            PathToolTip.ToolTipIcon = ToolTipIcon.Info;
+            //PathToolTip.ToolTipIcon = ToolTipIcon.Info;
             PathToolTip.AutoPopDelay = Int16.MaxValue;
             PathToolTip.InitialDelay = 1500;
             PathToolTip.IsBalloon = true;
@@ -240,16 +240,19 @@ namespace EasyDir
 
         private void tb_In_MouseEnter(object sender, EventArgs e)
         {
+            //PathToolTip.ToolTipTitle = "Source";
             TTPathText(tb_In);
         }
 
         private void tb_TopRoot_MouseEnter(object sender, EventArgs e)
         {
+           //PathToolTip.ToolTipTitle = "Top Root";
             TTPathText(tb_TopRoot);
         }
 
         private void tb_Out_MouseEnter(object sender, EventArgs e)
         {
+            //PathToolTip.ToolTipTitle = "Out";
             TTPathText(tb_Out);
         }
 
