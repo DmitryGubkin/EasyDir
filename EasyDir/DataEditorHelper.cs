@@ -123,6 +123,7 @@ namespace EasyDir
                     dataGridView.Rows.RemoveAt(row.Index);
                 }
                 dataGridView.ResumeDrawing();
+                _fileSearcher.UpdateCheckInfo();
             }
         }
 
