@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Compression;
 using  System.Reflection;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 
 namespace EasyDir
@@ -53,7 +54,7 @@ namespace EasyDir
             _fileSearcher.DataViewer = DataEditor;
             _dataEditorHelper = DataEditorHelper.Getinstance();
             _dataEditorHelper.SetDataViewer();
-
+ 
             //Data Source Binding
 
             source = new BindingSource(_fileSearcher.Assets, null);
@@ -144,7 +145,7 @@ namespace EasyDir
         private void MainForm_Load(object sender, EventArgs e)
         {
             DE_Style();
-
+            
             DataEditor.CellContentClick += new DataGridViewCellEventHandler(DE_CellChanged);
             DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_CellChanged);
             DataEditor.CellContentDoubleClick += new DataGridViewCellEventHandler(DE_ShowFileInExplorer);
